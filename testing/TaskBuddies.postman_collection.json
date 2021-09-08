@@ -1,0 +1,235 @@
+{
+	"info": {
+		"_postman_id": "1b77a5b8-4cc1-4041-93ad-14a5b05a8ed2",
+		"name": "TaskBuddies",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Board",
+			"item": [
+				{
+					"name": "http://localhost:3001/api/board/saveTaskImg",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM2M2Y4YTc4ZGY2MjU3ZDg0YjNmOGYiLCJuYW1lIjoiRGFuaWVsIFNhbmNoZXoiLCJyb2xlSWQiOiI2MTM2M2Y4Nzc4ZGY2MjU3ZDg0YjNmOGIiLCJpYXQiOjE2MzA5NDUxNjJ9.NT8AmDXnNbNT48aFlLmeimYLsw6cwZnNSdAZPKH0uBQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Danya",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "\"guardar img\"",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/Sanchez/Downloads/600_485843098.jpeg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/board/registerBoard",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"board",
+								"registerBoard"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SaveTask",
+			"item": [
+				{
+					"name": "http://localhost:3001/api/board/saveTaskImg",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM2M2Y4YTc4ZGY2MjU3ZDg0YjNmOGYiLCJuYW1lIjoiRGFuaWVsIFNhbmNoZXoiLCJyb2xlSWQiOiI2MTM2M2Y4Nzc4ZGY2MjU3ZDg0YjNmOGIiLCJpYXQiOjE2MzA5NDUxNjJ9.NT8AmDXnNbNT48aFlLmeimYLsw6cwZnNSdAZPKH0uBQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Danya",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "\"guardar img\"",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/Sanchez/Downloads/600_485843098.jpeg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/board/registerBoard",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"board",
+								"registerBoard"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ListTask",
+			"item": [
+				{
+					"name": "http://localhost:3001/api/task/listTask/Danya2",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM2M2Y4YTc4ZGY2MjU3ZDg0YjNmOGYiLCJuYW1lIjoiRGFuaWVsIFNhbmNoZXoiLCJyb2xlSWQiOiI2MTM2M2Y4Nzc4ZGY2MjU3ZDg0YjNmOGIiLCJpYXQiOjE2MzA5NDUxNjJ9.NT8AmDXnNbNT48aFlLmeimYLsw6cwZnNSdAZPKH0uBQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/task/listTask/Danya2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"task",
+								"listTask",
+								"Danya2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UpdateTask",
+			"item": [
+				{
+					"name": "http://localhost:3001/api/task/updateTask",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM2M2Y4YTc4ZGY2MjU3ZDg0YjNmOGYiLCJuYW1lIjoiRGFuaWVsIFNhbmNoZXoiLCJyb2xlSWQiOiI2MTM2M2Y4Nzc4ZGY2MjU3ZDg0YjNmOGIiLCJpYXQiOjE2MzA5NDUxNjJ9.NT8AmDXnNbNT48aFlLmeimYLsw6cwZnNSdAZPKH0uBQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\":\"61364a462592f558f81b1065\",\r\n    \"taskStatus\":\"done\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/task/updateTask",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"task",
+								"updateTask"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "http://localhost:3001/api/task/deleteTask/61364a462592f558f81b1065",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM2M2Y4YTc4ZGY2MjU3ZDg0YjNmOGYiLCJuYW1lIjoiRGFuaWVsIFNhbmNoZXoiLCJyb2xlSWQiOiI2MTM2M2Y4Nzc4ZGY2MjU3ZDg0YjNmOGIiLCJpYXQiOjE2MzA5NDUxNjJ9.NT8AmDXnNbNT48aFlLmeimYLsw6cwZnNSdAZPKH0uBQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/api/task/deleteTask/61364a462592f558f81b1065",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"task",
+						"deleteTask",
+						"61364a462592f558f81b1065"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

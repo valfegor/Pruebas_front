@@ -1,0 +1,382 @@
+{
+	"info": {
+		"_postman_id": "1b77a5b8-4cc1-4041-93ad-14a5b05a8ed2",
+		"name": "TaskBuddies",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Board",
+			"item": [
+				{
+					"name": "http://localhost:3001/api/board/saveTaskImg",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM2M2Y4YTc4ZGY2MjU3ZDg0YjNmOGYiLCJuYW1lIjoiRGFuaWVsIFNhbmNoZXoiLCJyb2xlSWQiOiI2MTM2M2Y4Nzc4ZGY2MjU3ZDg0YjNmOGIiLCJpYXQiOjE2MzA5NDUxNjJ9.NT8AmDXnNbNT48aFlLmeimYLsw6cwZnNSdAZPKH0uBQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Danya",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "\"guardar img\"",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/Sanchez/Downloads/600_485843098.jpeg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/board/registerBoard",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"board",
+								"registerBoard"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SaveTask",
+			"item": [
+				{
+					"name": "http://localhost:3001/api/board/saveTaskImg",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM2M2Y4YTc4ZGY2MjU3ZDg0YjNmOGYiLCJuYW1lIjoiRGFuaWVsIFNhbmNoZXoiLCJyb2xlSWQiOiI2MTM2M2Y4Nzc4ZGY2MjU3ZDg0YjNmOGIiLCJpYXQiOjE2MzA5NDUxNjJ9.NT8AmDXnNbNT48aFlLmeimYLsw6cwZnNSdAZPKH0uBQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Tarea10",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "ssss",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/Anthony Jordan/Pictures/Captura2222.PNG"
+								},
+								{
+									"key": "boardName",
+									"value": "Danya",
+									"type": "text"
+								},
+								{
+									"key": "score",
+									"value": "4",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/task/saveTask",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"task",
+								"saveTask"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ListTask",
+			"item": [
+				{
+					"name": "http://localhost:3001/api/task/listTask/Danya2",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM4N2EwNzg1OWFhMjNhZjQxODNkOGEiLCJuYW1lIjoicmFtYWxlcyBjYXJsYW5nYXMiLCJyb2xlSWQiOiI2MTM2M2Y4Nzc4ZGY2MjU3ZDg0YjNmOGIiLCJpYXQiOjE2MzEwOTEyMDd9.Sxi56fGNNVnNYRsOFK8cDrJx-57qM7avBMy-iUNVhs4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/task/listTask/613647108ca3a74ac84dbd9f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"task",
+								"listTask",
+								"613647108ca3a74ac84dbd9f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UpdateTask",
+			"item": [
+				{
+					"name": "http://localhost:3001/api/task/updateTask",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM2M2Y4YTc4ZGY2MjU3ZDg0YjNmOGYiLCJuYW1lIjoiRGFuaWVsIFNhbmNoZXoiLCJyb2xlSWQiOiI2MTM2M2Y4Nzc4ZGY2MjU3ZDg0YjNmOGIiLCJpYXQiOjE2MzA5NDUxNjJ9.NT8AmDXnNbNT48aFlLmeimYLsw6cwZnNSdAZPKH0uBQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\":\"61364a462592f558f81b1065\",\r\n    \"taskStatus\":\"done\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/task/updateTask",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"task",
+								"updateTask"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AssingTask",
+			"item": [
+				{
+					"name": "http://localhost:3001/api/task/assignTask",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_idtask\":\"6137982f7be08b311c33e333\",\r\n    \"_idUser\":\"61372c9421f8384014e382bf\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/task/assignTask",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"task",
+								"assignTask"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DeleteTask",
+			"item": [
+				{
+					"name": "http://localhost:3001/api/task/deleteTask/61364a462592f558f81b1065",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM2M2Y4YTc4ZGY2MjU3ZDg0YjNmOGYiLCJuYW1lIjoiRGFuaWVsIFNhbmNoZXoiLCJyb2xlSWQiOiI2MTM2M2Y4Nzc4ZGY2MjU3ZDg0YjNmOGIiLCJpYXQiOjE2MzA5NDUxNjJ9.NT8AmDXnNbNT48aFlLmeimYLsw6cwZnNSdAZPKH0uBQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/task/deleteTask/61364a462592f558f81b1065",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"task",
+								"deleteTask",
+								"61364a462592f558f81b1065"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UnassignTask",
+			"item": [
+				{
+					"name": "http://localhost:3001/api/task/unassingTask",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_idUser\":\"61372c9421f8384014e382bf\",\r\n    \"_idTask\":\"6137982f7be08b311c33e333\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/task/unassingTask",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"task",
+								"unassingTask"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ListRanking",
+			"item": [
+				{
+					"name": "http://localhost:3001/api/task/listRanking",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/task/listRanking",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"task",
+								"listRanking"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "listAssignedTask",
+			"item": [
+				{
+					"name": "http://localhost:3001/api/task/listAssignedTasks",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTM4N2EwNzg1OWFhMjNhZjQxODNkOGEiLCJuYW1lIjoicmFtYWxlcyBjYXJsYW5nYXMiLCJyb2xlSWQiOiI2MTM2M2Y4Nzc4ZGY2MjU3ZDg0YjNmOGIiLCJpYXQiOjE2MzEwOTEyMDd9.Sxi56fGNNVnNYRsOFK8cDrJx-57qM7avBMy-iUNVhs4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/task/listAssignedTasks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"task",
+								"listAssignedTasks"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
