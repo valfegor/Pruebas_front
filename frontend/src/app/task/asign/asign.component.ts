@@ -45,10 +45,7 @@ export class AsignComponent implements OnInit {
         (res)=>{
           this.userData = res.users;
           
-          for (const iterator of this.userData) {
-            this.name = iterator
-            console.log(this.name);
-          }
+          
         }
       )
   }
@@ -58,6 +55,7 @@ export class AsignComponent implements OnInit {
     this._taskService.getTasks().subscribe(
         (res)=>{
           this.taskData= res.filtro;
+          
           
         }
     )
@@ -73,6 +71,7 @@ export class AsignComponent implements OnInit {
         console.log(res);
         this.message = "Task asign";
         this.openSnackBarSuccesfull();
+        this.getTaskData()
       },
       (err)=>{
         this.message = err.error;

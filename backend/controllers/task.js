@@ -288,6 +288,7 @@ const unassingTask = async (req, res) => {
 
   const task2 = await Task.findByIdAndUpdate(req.body._idTask, {
     assigned: false,
+    assignedTo:req.user._id
   });
 
   if (!task2)
@@ -309,9 +310,9 @@ const listAsignedTaskForPerson = async (req, res) => {
   if (!validId) return res.status(400).send("Invalid id");
 */
 console.log(req.body._id)
-  if(!req.body._id) return res.status(400).send("Sorry Have to specify the user ");
+  if(!req.body._idUser) return res.status(400).send("Sorry Have to specify the user ");
 
-  const task = await Task.find({assignedTo: req.body._id})
+  const task = await Task.find({assignedTo: req.body._idUser})
 
   return res.status(200).send({ task});
 

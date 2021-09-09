@@ -66,6 +66,28 @@ listme(){
   )
 }
 
+
+unassignThistask(){
+  if(!this.registerData._idTask || ! this.registerData._idUser){
+    this.message = "Sorry have to fill al the camps please check"
+  }
+  else{
+    this._task.UnassignTask(this.registerData).subscribe(
+      (res)=>{
+        this.message = res.message;
+        this.openSnackBarSuccesfull();
+        this.listme()
+      },
+      (error)=>{
+        console.log(error)
+        this.message= error;
+        this.openSnackBarError();
+        
+      }
+    )
+  }
+}
+
   openSnackBarSuccesfull() {
     this._snackBar.open(this.message, 'X', {
       horizontalPosition: this.horizontalPosition,

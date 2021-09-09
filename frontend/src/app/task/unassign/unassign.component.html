@@ -7,7 +7,7 @@
         <div class="container">
           <mat-form-field>
             <mat-label>Escoge un rol</mat-label>
-            <mat-select [(ngModel)]="registerData._id">
+            <mat-select [(ngModel)]="registerData._idUser">
               <mat-option
               (click)="listme()"
                 *ngFor="let item of userData"
@@ -19,7 +19,7 @@
           </mat-form-field>
           <mat-form-field>
             <mat-label>Escoge un rol</mat-label>
-            <mat-select [(ngModel)]="registerData.name">
+            <mat-select [(ngModel)]="registerData._idTask">
               <mat-option
                 *ngFor="let task of tasksassinged"
                 value="{{ task._id }}"
@@ -36,6 +36,12 @@
         </div>
       </mat-card-content>
       <mat-card-actions>
+        <button
+            (click)="unassignThistask()"
+            class="button colorButton"  mat-raised-button >
+            Register
+          </button>
+      
       </mat-card-actions>
     </mat-card>
   </div>
