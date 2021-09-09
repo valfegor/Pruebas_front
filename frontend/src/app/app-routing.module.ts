@@ -29,7 +29,7 @@ const routes: Routes = [
   { path: 'saveBoard', component : SaveBoardComponent},
   { path: 'listBoard', component : ListBoardComponent},
   {path: 'asign', component : AsignComponent},
-  {path: 'listBoard/listboardtasks', component : ListboardtasksComponent}
+  {path: 'listBoard/listboardtasks/:_id', component : ListboardtasksComponent}
    
 ];
 

@@ -3,7 +3,7 @@
 
     <div  class="row position absolute" >      
       <div class = "col mt-4" *ngFor="let task of taskData" hideToggle="false" >
-
+       <a routerLink="listboardtasks/'{{task.name}}'">{{task.name}}</a>
         <div class="example-button-container">
           <button mat-mini-fab class="button" routerLink="/saveTask">
             New ListTask
@@ -17,7 +17,7 @@
           
         </mat-card-header>
         <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-        <a routerLink="listboardtasks">{{task.name}}</a>
+       
       </mat-card>
     
       </div>   
