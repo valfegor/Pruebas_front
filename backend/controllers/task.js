@@ -231,7 +231,7 @@ const asignTask = async (req, res) => {
 
   const existingUser = await User.findOne({ _id: req.body._idUser });
 
-  console.log(existingUser);
+  console.log(existingUser.name);
 
   const task = await Task.findByIdAndUpdate(
     { _id: req.body._idtask },
@@ -247,6 +247,7 @@ const asignTask = async (req, res) => {
     idTask: task._id,
     scoretask: task.score,
     completed: false,
+    username: existingUser.name,
   };
 
   const user = await User.findByIdAndUpdate(
