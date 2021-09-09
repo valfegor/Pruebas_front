@@ -27,4 +27,8 @@ export class TaskService {
    getBoardTask(task: any){
      return this.http.get<any>(this.env + 'task/listTask/'+ task);
    }
+
+   Unasign(task: any){
+     return this.http.get<any>(this.env + 'task/listAllAsigned'+task._id)
+   }
 }
