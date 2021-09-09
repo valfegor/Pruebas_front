@@ -303,12 +303,17 @@ const unassingTask = async (req, res) => {
 };
 
 const listAsignedTaskForPerson = async (req, res) => {
+/* 
   const validId = mongoose.Types.ObjectId.isValid(req.user._id);
   if (!validId) return res.status(400).send("Invalid id");
-
+*/
   if(!req.body._id) return res.status(400).send("Sorry Have to specify the user ");
 
-  const task = await Task.find({_id: req.body._id})
+  const task = await Task.find({assignedTo: req.body._id})
+
+  return res.status(200).send({ task});
+
+
 }
 
 const listAsignedTasks = async (req, res) => {
