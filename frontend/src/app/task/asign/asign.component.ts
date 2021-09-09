@@ -57,7 +57,7 @@ export class AsignComponent implements OnInit {
   getTaskData(){
     this._taskService.getTasks().subscribe(
         (res)=>{
-          this.taskData= res.task;
+          this.taskData= res.filtro;
           
         }
     )
