@@ -1,1 +1,30 @@
-<p>unassign works!</p>
+<div class="bgComponent">
+    <div class="form">
+      <mat-card class="card">
+        <mat-card-title>Please complete all information:</mat-card-title>
+        <br>
+        <mat-card-content>
+          <div class="container">
+            <mat-form-field>
+                <mat-label>Escoge un rol</mat-label>
+                <mat-select  [(ngModel)]="registerData._id">
+                  <mat-option *ngFor="let item of userData" value= {{item._id}}
+                >{{
+                    item.name
+                  }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+                 
+            <input type="file"  />     
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button
+            (click)="listme()"
+            class="button colorButton"  mat-raised-button >
+            Register
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>

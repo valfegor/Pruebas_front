@@ -29,6 +29,7 @@ export class TaskService {
    }
 
    Unasign(task: any){
-     return this.http.get<any>(this.env + 'task/listAllAsigned'+task._id)
+     console.log(task._id)
+     return this.http.get<any>(this.env + 'task/listAllAsigned',task._id)
    }
 }

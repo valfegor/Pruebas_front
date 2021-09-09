@@ -27,6 +27,7 @@ export class UnassignComponent implements OnInit {
   constructor(private _task:TaskService , private _snackBar: MatSnackBar , private _userService: UserService) { 
     this.message="";
     this.userData={}
+    this.registerData={}
   }
 
   ngOnInit(): void {
@@ -38,14 +39,19 @@ export class UnassignComponent implements OnInit {
       (res)=>{
         this.userData = res.users;
         
-        for (const iterator of this.userData) {
-          this.name = iterator
-          console.log(this.name);
-        }
+        
       }
     )
 }
   
+listme(){
+  console.log(this.registerData)
+  this._task.Unasign(this.registerData).subscribe(
+    (res)=>{
+      console.log(res);
+    }
+  )
+}
 
   openSnackBarSuccesfull() {
     this._snackBar.open(this.message, 'X', {
