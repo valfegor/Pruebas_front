@@ -3,7 +3,7 @@
 
     <div  class="row position absolute" >      
       <div class = "col mt-4" *ngFor="let task of taskData" hideToggle="false" >
-       <a routerLink="listboardtasks/'{{task.name}}'">{{task.name}}</a>
+       <a routerLink="listboardtasks/{{task._id}}">{{task.name}}</a>
         <div class="example-button-container">
           <button mat-mini-fab class="button" routerLink="/saveTask">
             New ListTask
