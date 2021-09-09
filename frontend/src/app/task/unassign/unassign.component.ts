@@ -37,6 +37,7 @@ export class UnassignComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUserData()
+    this.listme()
     
   }
 

@@ -19,7 +19,7 @@
           </mat-form-field>
           <mat-form-field>
             <mat-label>Escoge un rol</mat-label>
-            <mat-select [(ngModel)]="registerData._id">
+            <mat-select [(ngModel)]="registerData.name">
               <mat-option
                 *ngFor="let task of tasksassinged"
                 value="{{ task._id }}"
