@@ -53,6 +53,7 @@ listme(){
   this._task.Unasign(this.registerData).subscribe(
     (res)=>{
       this.tasksassinged= res.task;
+      this.show = true;
       console.log(this.tasksassinged)
     }
   )

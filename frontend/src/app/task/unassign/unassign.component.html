@@ -14,6 +14,15 @@
                   }}</mat-option>
                 </mat-select>
               </mat-form-field>
+              <mat-form-field *ngIf="show!=false">
+                <mat-label>Escoge un rol</mat-label>
+                <mat-select  [(ngModel)]="registerData._id">
+                  <mat-option *ngFor="let tasks of tasksassinged" value= {{tasks._name}}
+                >{{
+                    tasks.name
+                  }}</mat-option>
+                </mat-select>
+              </mat-form-field>
                  
             <input type="file"  />     
           </div>
@@ -30,6 +39,4 @@
   </div>
 
 
-  <div *ngIf="show=true">
-    <h1>hola</h1>
-  </div>
+  
