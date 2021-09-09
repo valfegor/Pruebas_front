@@ -22,6 +22,7 @@ export class UnassignComponent implements OnInit {
   public message: string;
   public tasksassinged:any;
   public show:boolean;
+  public boton:any;
   horizontalPosition: MatSnackBarHorizontalPosition = 'end';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   durationInSeconds: number = 2;
@@ -32,10 +33,12 @@ export class UnassignComponent implements OnInit {
     this.registerData={};
     this.tasksassinged={}
     this.show = false;
+    this.boton=document.getElementById('botonsito');
   }
 
   ngOnInit(): void {
     this.getUserData()
+    console.log(this.boton)
   }
 
   getUserData(){
@@ -54,6 +57,8 @@ listme(){
     (res)=>{
       this.tasksassinged= res.task;
       this.show = true;
+      console.log(this.boton);
+      this.boton.disabled=true;
       console.log(this.tasksassinged)
     }
   )

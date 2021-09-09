@@ -8,7 +8,7 @@
             <mat-form-field>
                 <mat-label>Escoge un rol</mat-label>
                 <mat-select  [(ngModel)]="registerData._id">
-                  <mat-option *ngFor="let item of userData" value= {{item._id}}
+                  <mat-option *ngFor="let item of userData" value= {{item._id}} class="boton" id="botonsito"
                 >{{
                     item.name
                   }}</mat-option>
