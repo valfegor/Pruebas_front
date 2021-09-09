@@ -14,10 +14,10 @@
         <mat-card-header>          
           <mat-card-title>{{ task.name }}</mat-card-title>
           <mat-card-subtitle> {{ task.description }} </mat-card-subtitle>
-          <a routerLink="">{{task.name}}</a>
+          
         </mat-card-header>
         <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-      
+        <a routerLink="listboardtasks">{{task.name}}</a>
       </mat-card>
     
       </div>   
