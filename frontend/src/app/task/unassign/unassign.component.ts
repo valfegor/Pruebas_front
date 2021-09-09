@@ -33,7 +33,7 @@ export class UnassignComponent implements OnInit {
     this.registerData={};
     this.tasksassinged={}
     this.show = false;
-    this.boton=document.getElementById('botonsito');
+    this.boton=document.getElementById('#botonsito');
   }
 
   ngOnInit(): void {
@@ -56,10 +56,11 @@ listme(){
   this._task.Unasign(this.registerData).subscribe(
     (res)=>{
       this.tasksassinged= res.task;
+      console.log(this.tasksassinged)
       this.show = true;
       console.log(this.boton);
       this.boton.disabled=true;
-      console.log(this.tasksassinged)
+      
     }
   )
 }

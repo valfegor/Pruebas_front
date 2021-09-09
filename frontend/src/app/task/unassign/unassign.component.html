@@ -8,21 +8,13 @@
             <mat-form-field>
                 <mat-label>Escoge un rol</mat-label>
                 <mat-select  [(ngModel)]="registerData._id">
-                  <mat-option *ngFor="let item of userData" value= {{item._id}} class="boton" id="botonsito"
+                  <mat-option *ngFor="let item of userData" value= {{item._id}} [disabled]="false"
                 >{{
                     item.name
                   }}</mat-option>
                 </mat-select>
               </mat-form-field>
-              <mat-form-field *ngIf="show!=false">
-                <mat-label>Escoge un rol</mat-label>
-                <mat-select  [(ngModel)]="registerData._id">
-                  <mat-option *ngFor="let tasks of tasksassinged" value= {{tasks._name}}
-                >{{
-                    tasks.name
-                  }}</mat-option>
-                </mat-select>
-              </mat-form-field>
+              
                  
             <input type="file"  />     
           </div>
@@ -39,4 +31,7 @@
   </div>
 
 
-  
+  <div *ngIf="show!=false">
+    <h1 *ngFor="let tasks of tasksassinged">{{tasks.name}}</h1>
+    <h1>{{registerData.name}}</h1>
+  </div>
