@@ -25,6 +25,6 @@ export class TaskService {
    }
 
    getBoardTask(task: any){
-     return this.http.get<any>(this.env + 'task//listTask/'+ task);
+     return this.http.get<any>(this.env + 'task/listTask/'+ task);
    }
 }
