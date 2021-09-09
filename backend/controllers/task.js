@@ -302,6 +302,15 @@ const unassingTask = async (req, res) => {
   return res.status(200).send({ message: "Succes Unassing The task" });
 };
 
+const listAsignedTaskForPerson = async (req, res) => {
+  const validId = mongoose.Types.ObjectId.isValid(req.user._id);
+  if (!validId) return res.status(400).send("Invalid id");
+
+  if(!req.body._id) return res.status(400).send("Sorry Have to specify the user ");
+
+  const task = await Task.find({_id: req.body._id})
+}
+
 const listAsignedTasks = async (req, res) => {
   const validId = mongoose.Types.ObjectId.isValid(req.user._id);
   if (!validId) return res.status(400).send("Invalid id");
@@ -348,6 +357,9 @@ const getAlltask = async (req, res) => {
 
 }
 
+
+
+
 module.exports = {
   saveTask,
   updateTask,
@@ -357,5 +369,6 @@ module.exports = {
   unassingTask,
   listAsignedTasks,
   listRankingPoints,
-  getAlltask
+  getAlltask,
+  listAsignedTaskForPerson
 };
