@@ -340,7 +340,12 @@ const listRankingPoints = async (req, res) => {
 const getAlltask = async (req, res) => {
   const task = await Task.find();
 
-  return res.status(200).send({task})
+  filtro = task.filter(element => element.assigned != true);
+
+  console.log(filtro);
+
+  return res.status(200).send({filtro});
+
 }
 
 module.exports = {
