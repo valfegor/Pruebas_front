@@ -9,6 +9,7 @@
             <mat-label>Escoge un rol</mat-label>
             <mat-select [(ngModel)]="registerData._id">
               <mat-option
+              (click)="listme()"
                 *ngFor="let item of userData"
                 value="{{ item._id }}"
                 [disabled]="false"
@@ -16,17 +17,25 @@
               >
             </mat-select>
           </mat-form-field>
+          <mat-form-field>
+            <mat-label>Escoge un rol</mat-label>
+            <mat-select [(ngModel)]="registerData._id">
+              <mat-option
+                *ngFor="let task of tasksassinged"
+                value="{{ task._id }}"
+                [disabled]="false"
+                >{{ task.name }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
           <mat-form-field *ngIf="show != false">
             <mat-label>Favorite food</mat-label>
-            <input matInput placeholder="User Select" value="{{tasksassinged.username}}" />
+            <input matInput placeholder="User Select" value="" />
           </mat-form-field>
           <input type="file" />
         </div>
       </mat-card-content>
       <mat-card-actions>
-        <button (click)="listme()" class="button colorButton" mat-raised-button>
-          Register
-        </button>
       </mat-card-actions>
     </mat-card>
   </div>
