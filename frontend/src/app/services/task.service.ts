@@ -28,8 +28,8 @@ export class TaskService {
      return this.http.get<any>(this.env + 'task/listTask/'+ task);
    }
 
-   Unasign(task: any){
-     console.log(task._id)
-     return this.http.get<any>(this.env + 'task/listAllAsigned',task._id)
+   Unasign(user: any){
+     console.log(user)
+     return this.http.post<any>(this.env + 'task/listAllAsigned',user)
    }
 }

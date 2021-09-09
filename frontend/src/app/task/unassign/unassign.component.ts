@@ -20,6 +20,8 @@ export class UnassignComponent implements OnInit {
   public name:any;
   public registerData:any;
   public message: string;
+  public tasksassinged:any;
+  public show:boolean;
   horizontalPosition: MatSnackBarHorizontalPosition = 'end';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   durationInSeconds: number = 2;
@@ -27,7 +29,9 @@ export class UnassignComponent implements OnInit {
   constructor(private _task:TaskService , private _snackBar: MatSnackBar , private _userService: UserService) { 
     this.message="";
     this.userData={}
-    this.registerData={}
+    this.registerData={};
+    this.tasksassinged={}
+    this.show = false;
   }
 
   ngOnInit(): void {
@@ -43,12 +47,13 @@ export class UnassignComponent implements OnInit {
       }
     )
 }
-  
+
 listme(){
   console.log(this.registerData)
   this._task.Unasign(this.registerData).subscribe(
     (res)=>{
-      console.log(res);
+      this.tasksassinged= res.task;
+      console.log(this.tasksassinged)
     }
   )
 }
