@@ -16,7 +16,7 @@ button {
   background: transparent;
 }
 .user {
-  font-size: 14px;
+  font-size: 19px;
 }
 mat-toolbar {
   background-color: #2b475e;
@@ -33,3 +33,4 @@ mat-toolbar {
     width: 160px;
   
 }
+
