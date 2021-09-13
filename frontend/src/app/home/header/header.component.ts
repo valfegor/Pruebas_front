@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -7,10 +7,14 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
- 
+  @Output() toggleSidebarForMe: EventEmitter<any> = new EventEmitter();
   constructor(public _userService: UserService) { }
 
   ngOnInit(): void {
+  }
+
+  toggleSidebar() {
+    this.toggleSidebarForMe.emit();
   }
 
   
