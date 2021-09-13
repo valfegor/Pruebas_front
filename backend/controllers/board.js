@@ -145,7 +145,7 @@ const deleteBoard = async (req, res) => {
 
   return res.status(200).send({ message: "deleted board" });
 
-  return res.status(200).send({ message: "RDdeleted" });
+ 
 };
 
 module.exports = {
