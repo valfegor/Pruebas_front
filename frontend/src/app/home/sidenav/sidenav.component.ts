@@ -7,10 +7,22 @@ import { UserService } from "../../services/user.service";
   styleUrls: ['./sidenav.component.css']
 })
 export class SidenavComponent implements OnInit {
-
-  constructor(public _userService: UserService) { }
+  public userData:any;
+  constructor(public _userService: UserService) {
+    this.userData = {}
+   }
 
   ngOnInit(): void {
   }
+
+  getUser(){
+    this._userService.getProfile().subscribe(
+      (res)=>{
+        this.userData = res.user;
+        console.log(this.userData);
+      }
+    )
+  }
+
 
 }

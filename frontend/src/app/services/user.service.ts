@@ -59,4 +59,8 @@ export class UserService {
   registerAdmin(user: any) {
     return this._http.post<any>(this.env + 'user/registerAdmin', user);
   }
+  
+  getProfile(){
+    return this._http.get<any>(this.env + 'user/getProfile');
+  }
 }
