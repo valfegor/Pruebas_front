@@ -21,6 +21,9 @@ export class SidenavComponent implements OnInit {
       (res)=>{
         this.userData = res.user;
         console.log(this.userData);
+      },
+      (err)=>{
+        console.log(err)
       }
     )
   }

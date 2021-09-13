@@ -8,11 +8,25 @@ import { UserService } from '../../services/user.service';
 })
 export class HeaderComponent implements OnInit {
   @Output() toggleSidebarForMe: EventEmitter<any> = new EventEmitter();
+  public userData:any;
   constructor(public _userService: UserService) { }
 
   ngOnInit(): void {
+    this.getUser();
+    this.userData={};
   }
 
+  getUser(){
+    this._userService.getProfile().subscribe(
+      (res)=>{
+        this.userData = res.user;
+        console.log(this.userData);
+      },
+      (err)=>{
+        console.log(err)
+      }
+    )
+  }
   toggleSidebar() {
     this.toggleSidebarForMe.emit();
   }
