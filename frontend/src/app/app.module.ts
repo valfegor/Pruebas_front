@@ -34,9 +34,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
-
-
-
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatMenuModule } from "@angular/material/menu";
+import {  MatDivider } from "@angular/material/divider";
 //servicios
 
 import { BoardService } from '../app/services/board.service';
