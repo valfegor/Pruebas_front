@@ -14,19 +14,17 @@
         <mat-icon>dashboard</mat-icon>Login
     </a>
     <a *ngIf="_userService.loggedIn()" mat-list-item routerLink="listBoard" routerLinkActive="list-item-active">
-        <mat-icon>dashboard</mat-icon>list Your Boards
+        <mat-icon>add_to_photos</mat-icon>list Your Boards
     </a>
     <a *ngIf="_userService.loggedIn()" mat-list-item routerLink="saveBoard" routerLinkActive="list-item-active">
         <mat-icon>edit</mat-icon>Create board
     </a>
     <a *ngIf="_userService.loggedIn()" mat-list-item routerLink="asign" routerLinkActive="list-item-active">
-        <mat-icon>edit</mat-icon>assign a task
+        <mat-icon>assignment</mat-icon>assign a task
     </a>
     <a *ngIf="_userService.loggedIn()" mat-list-item routerLink="profile" routerLinkActive="list-item-active">
-        <mat-icon>edit</mat-icon>Profile
+        <mat-icon>group</mat-icon>Profile
     </a>
-    <a mat-list-item  *ngIf="_userService.loggedIn()" (click)="_userService.logout()">
-        <mat-icon>edit</mat-icon>Logout
-    </a>
+    
     
 </mat-nav-list> 
