@@ -3,7 +3,7 @@
         <img src="../../../assets/img/logo.png" alt="Company Logo">
     </div>
     <mat-divider></mat-divider>
-    <h2 matSubheader class="mt-2">Welcome</h2>
+    <h2 matSubheader class="mt-2">Welcome {{userData.name}}</h2>
     <a *ngIf="!_userService.loggedIn()" mat-list-item routerLink="" routerLinkActive="list-item-active">
         <mat-icon>home</mat-icon>Home
     </a>

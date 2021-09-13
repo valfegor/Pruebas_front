@@ -13,6 +13,7 @@ export class SidenavComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.getUser();
   }
 
   getUser(){
