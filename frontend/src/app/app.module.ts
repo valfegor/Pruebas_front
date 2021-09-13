@@ -45,6 +45,7 @@ import { TokenInterceptorService } from '../app/services/token-interceptor.servi
 import { AsignComponent } from './task/asign/asign.component';
 import { ListboardtasksComponent } from './board/listboardtasks/listboardtasks.component';
 import { UnassignComponent } from './task/unassign/unassign.component';
+import { SidenavComponent } from './home/sidenav/sidenav.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { UnassignComponent } from './task/unassign/unassign.component';
     AsignComponent,
     ListboardtasksComponent,
     UnassignComponent,
+    SidenavComponent,
   ],
   imports: [
     BrowserModule,

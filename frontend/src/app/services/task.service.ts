@@ -17,24 +17,24 @@ export class TaskService {
    }
 
 
-   AssignTask(task: any){
+   AssignTask(task: Object){
      console.log(task)
      
 
      return this.http.put<any>(this.env + 'task/assignTask', task );
    }
 
-   getBoardTask(task: any){
+   getBoardTask(task: Object){
      return this.http.get<any>(this.env + 'task/listTask/'+ task);
    }
 
-   Unasign(user: any){
+   Unasign(user: Object){
      console.log(user)
      return this.http.post<any>(this.env + 'task/listAllAsigned',user)
    }
 
-   UnassignTask(task: any){
+   UnassignTask(task: Object){
      return this.http.put<any>(this.env + 'task/unassingTask',task);
    }
-   
+
 }
