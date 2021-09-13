@@ -1,40 +1,34 @@
-.headerSpacer {
-  flex: 1 1 auto;
+mat-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-a {
-  text-decoration: none;
-  color: #e1dcdc;
+ul , li {
+   
+    list-style: none;
   
 }
-
-.bgHeader {
-  background-color: #2b475e;
-  height: 65px;
+button {
+  outline: none;
+  border: 0;
+  background: transparent;
+}
+.user {
+  font-size: 14px;
+}
+mat-toolbar {
+  background: #f7f7f7;
+}
+.user-image {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+ 
 }
 
-img {
-  padding: 4px;
-  border: #969191 solid;
-  border-width: 0.5px 0.5px 0.5px 0.5px;
-  box-shadow: 2px 2px 5px #999;
-}
-ul {
-  font-family: "Lilita One";
-  font-size: 20px;
-  margin-top: 17px;
-}
-
-.selection {
-  font-family: "Lilita One";
-  font-size: 20px;
-  color: #e1dcdc;
-  width: 229px;
-  margin-top: 25px;
-}
-
-.option {
-  font-family: "Lilita One";
-  color: #ac7420;
+::ng-deep {
+ 
+    width: 160px;
   
 }

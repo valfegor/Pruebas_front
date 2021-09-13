@@ -1,20 +1,31 @@
-<mat-toolbar class="bgHeader">
-    <ul>
-        <img src="../../../assets/img/header-task-buddie.jpg" height="50px" alt="">
-    </ul>
-    <ul>
-      <a routerLink="listBoard">List board</a>
-    </ul>
-    <ul>
-      <a routerLink="saveBoard">Create board</a>
-    </ul>
-    <ul>
-      <a routerLink="listUser">Admin</a>
-    </ul>
-    <span class="headerSpacer"></span>
-    <ul>
-      <a mat-button routerLink="signUp"> Sign Up </a>
-      <a mat-button routerLink="login"> Login </a>
-      <a mat-button>Logout</a>
-    </ul>
-  </mat-toolbar>
+<mat-toolbar>
+  <mat-toolbar-row class="justify-content-between">
+    <button mat-icon-button >
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div class="row mr-2 ml-auto">
+      <ul class="row m-0 align-items-center">
+        <li>
+          <button
+            mat-button
+            [matMenuTriggerFor]="menu"
+            class="user mt-2 d-flex align-items-center"
+          >
+            <img src="../../../assets/img/airbuddies.png  " alt="" class="user-image mr-1 p-2" />
+
+            User Name
+            <mat-icon class="user-image-icon ml-1"
+              >keyboard_arrow_down</mat-icon
+            >
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+              <mat-icon>exit_to_app</mat-icon>
+              Logout
+            </button>
+          </mat-menu>
+        </li>
+      </ul>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
