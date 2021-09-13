@@ -36,7 +36,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatMenuModule } from "@angular/material/menu";
-import {  MatDivider } from "@angular/material/divider";
+import {  MatDividerModule} from "@angular/material/divider";
+
 //servicios
 
 import { BoardService } from '../app/services/board.service';
@@ -88,6 +89,9 @@ import { SidenavComponent } from './home/sidenav/sidenav.component';
     MatIconModule,
     MatSelectModule,
     MatPaginatorModule,
+    MatSidenavModule,
+    MatMenuModule,
+    MatDividerModule
   ],
   providers: [
     UserService,
