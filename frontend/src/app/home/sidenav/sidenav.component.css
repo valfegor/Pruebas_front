@@ -1,3 +1,17 @@
 .logo{
-    
+    text-align: center;
+    padding:2.6rem 1rem;
+
 }
+
+.logo img{
+    width:200px;
+
+}
+
+.mat-icon{
+    vertical-align: center;
+    margin-right: 1rem;
+
+}
+
