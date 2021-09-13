@@ -47,7 +47,7 @@ import { AsignComponent } from './task/asign/asign.component';
 import { ListboardtasksComponent } from './board/listboardtasks/listboardtasks.component';
 import { UnassignComponent } from './task/unassign/unassign.component';
 import { SidenavComponent } from './home/sidenav/sidenav.component';
-
+import {MatListModule} from '@angular/material/list'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -91,7 +91,8 @@ import { SidenavComponent } from './home/sidenav/sidenav.component';
     MatPaginatorModule,
     MatSidenavModule,
     MatMenuModule,
-    MatDividerModule
+    MatDividerModule,
+    MatListModule
   ],
   providers: [
     UserService,
