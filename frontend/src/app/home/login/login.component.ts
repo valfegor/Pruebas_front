@@ -41,6 +41,7 @@ export class LoginComponent implements OnInit {
           this._router.navigate(['/listBoard']);
           this.getRole(this.loginData.email);
           this.loginData = {};
+          location.reload();
         },
         (err) => {
           this.message = err.error;
@@ -49,6 +50,7 @@ export class LoginComponent implements OnInit {
       );
     }
   }
+  
 
   getRole(email: string) {
     this._userService.getRole(email).subscribe(
