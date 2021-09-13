@@ -1,34 +1,22 @@
 <div class="bgComponent">
-    <div class="form">
+  <div class="form">
       <mat-card class="card">
-        <mat-card-title>Login</mat-card-title>
-        <mat-card-content>
-          <div class="container">
-            <mat-form-field>
-              <input
-                
-                type="email"
-                matInput
-                placeholder="Email"
-                required
-              />
-            </mat-form-field>
-            <mat-form-field>
-              <input
-                
-                type="password"
-                matInput
-                placeholder="Password"
-                required
-              />
-            </mat-form-field>
-          </div>
-        </mat-card-content>
-        <mat-card-actions>
-          <button class="button colorButton" mat-raised-button>
-            Go!!
-          </button>
-        </mat-card-actions>
+          <mat-card-title>Login</mat-card-title>
+          <mat-card-content>
+              <div class="container">
+                  <mat-form-field>
+                      <input [(ngModel)]="loginData.email" type="email" matInput placeholder="Email" required />
+                  </mat-form-field>
+                  <mat-form-field>
+                      <input [(ngModel)]="loginData.password" type="password" matInput placeholder="Password" required />
+                  </mat-form-field>
+              </div>
+          </mat-card-content>
+          <mat-card-actions>
+              <button (click)="login()" class="button colorButton" mat-raised-button>
+          Go!!
+        </button>
+          </mat-card-actions>
       </mat-card>
-    </div>
   </div>
+</div>

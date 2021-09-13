@@ -41,7 +41,7 @@ export class AsignComponent implements OnInit {
 
 
   getUserData(){
-      this._userService.listUser().subscribe(
+      this._userService.listUserAll().subscribe(
         (res)=>{
           this.userData = res.users;
           

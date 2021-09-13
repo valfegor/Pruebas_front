@@ -17,13 +17,17 @@ export class UserService {
     return this._http.post<any>(this.env + 'user/registerUser', user);
   }
 
-  
+
   login(user: any) {
     return this._http.post<any>(this.env + 'user/login', user);
   }
 
   loggedIn() {
     return !!localStorage.getItem('token');
+  }
+
+  nameIn() {
+    return localStorage.getItem('name');
   }
 
   getToken() {
@@ -37,6 +41,7 @@ export class UserService {
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('role');
+    localStorage.removeItem('name');
     this._router.navigate(['/login']);
   }
 
@@ -44,8 +49,12 @@ export class UserService {
     return this._http.get<any>(this.env + 'user/getRole/' + email);
   }
 
-  listUser() {
-    return this._http.get<any>(this.env + 'user/listUsers/' );
+  getNombre(email: string) {
+    return this._http.get<any>(this.env + 'user/getNombre/' + email);
+  }
+
+  listUser(name: string) {
+    return this._http.get<any>(this.env + 'user/listUsers/' + name);
   }
 
   updateUser(user: any) {
@@ -60,6 +69,10 @@ export class UserService {
     return this._http.post<any>(this.env + 'user/registerAdmin', user);
   }
   
+  listUserAll(){
+    return this._http.get<any>(this.env + 'user/listUsers/');
+  }
+
   getProfile(){
     return this._http.get<any>(this.env + 'user/getProfile');
   }
