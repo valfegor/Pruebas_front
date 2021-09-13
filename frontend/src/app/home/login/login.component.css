@@ -6,8 +6,8 @@
 	align-items: center;
 	min-height: 100vh;
 	font-family: 'Jost', sans-serif;
-  background: rgb(2,0,36);
-  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(78,56,61,1) 9%, rgba(35,69,89,1) 68%, rgba(8,88,105,1) 77%); 
+  background: rgb(134,142,10);
+  background: linear-gradient(90deg, rgba(134,142,10,1) 1%, rgba(196,163,39,1) 10%, rgba(35,69,89,1) 68%, rgba(8,88,105,1) 77%); 
 }
 .main{
 	width: 350px;
