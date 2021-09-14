@@ -79,7 +79,7 @@ export class ListBoardComponent implements OnInit {
 
       940: {
 
-        items: 4
+        items: 6
 
       }
 
