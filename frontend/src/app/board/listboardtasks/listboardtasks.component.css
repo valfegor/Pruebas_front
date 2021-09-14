@@ -3,11 +3,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  background-color: #262626;
-  
+  background-color: #2b475e;
   flex-wrap: wrap;
   padding-top: 50px;
   padding-bottom: 50px;
+  z-index: 1;
   
 } 
 .outer{
@@ -31,7 +31,7 @@ img{
 .content{
   position: relative;
   left:20px;
-  z-index: 3;
+  
 }
 h1{
   color:#111;
@@ -120,7 +120,7 @@ p{
 }
 
 .board {
-  background: #141316;
+  background-color: #2b475e;
   border: 1px solid #FD9F1F11;
   border-radius: 4px;
   width: 100%;
