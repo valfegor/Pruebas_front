@@ -1,124 +1,45 @@
-<div class="board">
-
-  <div class="board-bar">
-    <p class="board-name">Hello</p>
-  </div>
-
-  <div class="board-wrapper">
-
-    <div class="board-columns" >
-      <div class="board-column" >
-        <div>
-          <div class="column-title">
-            <p>to-do</p>
-          </div>
-          <div class="test" *ngFor="let task of taskData">
-            <div class="container position-relative">   
-  
-              <div  class="row position absolute" >      
-                <div class = "col mt-4" *ngIf='task.taskStatus=="to-do"' hideToggle="false" >
-                 <a routerLink="listboardtasks/{{task._id}}">{{task.name}}</a>
-                  <div class="example-button-container">
-                    <button mat-mini-fab class="button" routerLink="/saveTask">
-                      New ListTask
-                    </button>
+<div class="boards">
+  <div class="board">
+    <h3>Todo</h3>
+    <div class="dropzone">
+      <div class="bgComponent">
+        <div class="wrapper" *ngFor="let task of taskData">
+          <div class="outer" >
+              <div class="content">
+                  <span class="bg">Author : {{task.author}}</span>
+                  <h1>{{task.name}}<br/></h1>
+                  <p>{{task.description}}</p>
+        
+                  <div class="button">
+                      <a href="#">$115</a><a href="#" class="cart-btn"><i class="fa fa-plus cart-icon"></i> ADD TO CART</a>
                   </div>
-                <mat-card class="example-card" style="width: 20rem;">
-                  
-                  <mat-card-header>          
-                    <mat-card-title>{{ task.name }}</mat-card-title>
-                    <mat-card-subtitle> {{ task.description }} </mat-card-subtitle>
-                    
-                  </mat-card-header>
-                  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-                 
-                </mat-card>
-              
-                </div>   
               </div>
-            </div>
-          </div>  
-        </div>
-        
-        
-        
-      </div>
-
-    </div>
-    <div class="board-columns" >
-      <div class="board-column" >
-
-        <div class="column-title">
-          <p>in-progress</p>
-        </div>
-        <div *ngFor="let task of taskData">
-          <div class="container position-relative">   
-
-            <div  class="row position absolute" >      
-              <div class = "col mt-4" *ngIf='task.taskStatus=="in-progress"' hideToggle="false" >
-               <a routerLink="listboardtasks/{{task._id}}">{{task.name}}</a>
-                <div class="example-button-container">
-                  <button mat-mini-fab class="button" routerLink="/saveTask">
-                    New ListTask
-                  </button>
-                </div>
-              <mat-card class="example-card" style="width: 20rem;">
-                
-                <mat-card-header>          
-                  <mat-card-title>{{ task.name }}</mat-card-title>
-                  <mat-card-subtitle> {{ task.description }} </mat-card-subtitle>
-                  
-                </mat-card-header>
-                <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-               
-              </mat-card>
-            
-              </div>   
-            </div>
+              <img src="../../../assets/img/1.jpg">
           </div>
-        </div>  
-        
-      </div>
-
-    </div>
-    <div class="board-columns" >
-      <div class="board-column" >
-
-        <div class="column-title">
-          <p>Done</p>
         </div>
-        <div *ngFor="let task of taskData">
-          <div class="container position-relative">   
-
-            <div  class="row position absolute" >      
-              <div class = "col mt-4" *ngIf='task.taskStatus=="done"' hideToggle="false" >
-               <a routerLink="listboardtasks/{{task._id}}">{{task.name}}</a>
-                <div class="example-button-container">
-                  <button mat-mini-fab class="button" routerLink="/saveTask">
-                    New ListTask
-                  </button>
-                </div>
-              <mat-card class="example-card" style="width: 20rem;">
-                
-                <mat-card-header>          
-                  <mat-card-title>{{ task.name }}</mat-card-title>
-                  <mat-card-subtitle> {{ task.description }} </mat-card-subtitle>
-                  
-                </mat-card-header>
-                <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-               
-              </mat-card>
-            
-              </div>   
-            </div>
-          </div>
-        </div>  
-        
       </div>
-
     </div>
-
   </div>
 
+  <div class="board">
+    <h3>In Progress</h3>
+    <div class="dropzone">
+      <div class="card" draggable="true">
+        <div class="status blue"></div>
+        <div class="content"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="board">
+    <h3>Done</h3>
+    <div class="dropzone">
+      <div class="card" draggable="true">
+        <div class="status red"></div>
+        <div class="content"></div>
+      </div>
+    </div>
+  </div>
 </div>
+
 
