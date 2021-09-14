@@ -37,6 +37,7 @@ export class ListboardtasksComponent implements OnInit {
         this._boardService.getBoardTask(this._id).subscribe(
           (res)=>{
             this.taskData = res.task;
+            console.log(this.taskData)
           },
           (err)=>{
             this.message=err.error;
