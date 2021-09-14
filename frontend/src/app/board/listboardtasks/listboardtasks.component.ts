@@ -38,6 +38,7 @@ export class ListboardtasksComponent implements OnInit {
           (res)=>{
             this.taskData = res.task;
             console.log(this.taskData)
+            
           },
           (err)=>{
             this.message=err.error;
