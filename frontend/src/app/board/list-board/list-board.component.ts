@@ -23,7 +23,7 @@ export class ListBoardComponent implements OnInit {
     private _boardService: BoardService,
     private _snackBar: MatSnackBar
   ) {
-    this.taskData = {};
+    this.taskData = [];
   }
 
   ngOnInit(): void {
