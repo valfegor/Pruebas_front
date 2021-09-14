@@ -33,6 +33,10 @@
   background-size: cover;
 }
 
+img{
+  width:150px;
+  height: 150px;
+}
 .card-text {
   grid-area: text;
   margin: 0px;
@@ -40,6 +44,7 @@
 }
 .card-text .date {
   color: rgb(255, 7, 110);
+  padding-top: 10px;
   font-size:13px;
 }
 .card-text p {
@@ -48,7 +53,7 @@
   font-weight: 300;
 }
 .card-text h2 {
-  margin-top:0px;
+  margin-top:10px;
   font-size:28px;
 }
 .card-stats {
