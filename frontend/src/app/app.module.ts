@@ -48,6 +48,8 @@ import { ListboardtasksComponent } from './board/listboardtasks/listboardtasks.c
 import { UnassignComponent } from './task/unassign/unassign.component';
 import { SidenavComponent } from './home/sidenav/sidenav.component';
 import {MatListModule} from '@angular/material/list'; 
+import { CarouselModule } from 'ngx-owl-carousel-o';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -92,7 +94,8 @@ import {MatListModule} from '@angular/material/list';
     MatSidenavModule,
     MatMenuModule,
     MatDividerModule,
-    MatListModule
+    MatListModule,
+    CarouselModule
   ],
   providers: [
     UserService,
