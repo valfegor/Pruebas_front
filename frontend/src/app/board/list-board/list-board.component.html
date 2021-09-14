@@ -1,26 +1,10 @@
-<div class="bgComponent">
-  <div class="container position-relative">   
-
-    <div  class="row position absolute" >      
-      <div class = "col mt-4" *ngFor="let task of taskData" hideToggle="false" >
-       <a [routerLink]="['listboardtasks/', task._id]">{{task.name}}</a>
-        <div class="example-button-container">
-          <button mat-mini-fab class="button" routerLink="/saveTask">
-            New ListTask
-          </button>
-        </div>
-      <mat-card class="example-card" style="width: 20rem;">
-        
-        <mat-card-header>          
-          <mat-card-title>{{ task.name }}</mat-card-title>
-          <mat-card-subtitle> {{ task.description }} </mat-card-subtitle>
-          
-        </mat-card-header>
-        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-       
-      </mat-card>
-    
-      </div>   
-    </div>
-  </div>
+<div class="lista">
+  <div>Some tags before</div>
+  <owl-carousel-o [options]="customOptions">
+    <ng-template carouselSlide>Slide 1</ng-template>  
+    <ng-template carouselSlide>Slide 2</ng-template>  
+    <ng-template carouselSlide>Slide 3</ng-template>  
+  </owl-carousel-o>
+  <div>Some tags after</div>
 </div>
+

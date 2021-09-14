@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BoardService } from '../../services/board.service';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
@@ -18,10 +19,12 @@ export class ListBoardComponent implements OnInit {
   horizontalPosition: MatSnackBarHorizontalPosition = 'end';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   durationInSeconds: number = 2;
+  
 
   constructor(
     private _boardService: BoardService,
     private _snackBar: MatSnackBar
+      
   ) {
     this.taskData = [];
   }
@@ -38,7 +41,32 @@ export class ListBoardComponent implements OnInit {
     );
   }
 
+  customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    dots: false,
+    navSpeed: 700,
+    navText: ['', ''],
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 2
+      },
+      740: {
+        items: 3
+      },
+      940: {
+        items: 4
+      }
+    },
+    nav: true
+  }
 
+ 
   openSnackBarSuccesfull() {
     this._snackBar.open(this.message, 'X', {
       horizontalPosition: this.horizontalPosition,
