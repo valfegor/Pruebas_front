@@ -14,7 +14,7 @@
   position: relative;
   background-color: #fff;
   height:280px;
-  width:350px;
+  width:400px;
   justify-content: space-between;
   overflow: hidden;
   display: flex;
@@ -34,6 +34,10 @@ img{
   left:20px;
   
 }
+.Info{
+  overflow: hidden;
+  white-space: nowrap;
+}
 h1{
   color:#111;
   word-break: break-all;
@@ -42,11 +46,13 @@ h1{
   text-transform: capitalize;
 }
 p{
-  width:220px;
+  width:250px;
   font-size: 13px;
   line-height: 1.4;
   color:black;
   padding-bottom: 5px;
+  overflow: hidden;
+  word-wrap: break-word
   
 }
 .bg{
@@ -130,6 +136,8 @@ p{
   display: flex;
   margin-top: 32px;
 }
+
+
 
 .board {
   background-color: #2b475e;

@@ -1,87 +1,94 @@
-<div class="boards">
-  <div class="board">
-    <h3>To-do</h3>
-    <div class="dropzone">
-      <div class="bgComponent" *ngFor="let task of taskData">
-        <div class="wrapper" *ngIf='task.taskStatus=="to-do"' >
-          <div class="outer" >
-              <div class="content">
-                  <span class="bg">Author : {{task.author}}</span>
-                  <h1>{{task.name}}<br/></h1>
-                  <p>{{task.description}}</p>
-                  <p>Score:{{task.score}}</p>
-                  <p>BoardName:{{task.boardName}}</p>
-                  <p *ngIf="task.username">Assigned To: {{task.username}}</p>
-                  <div class="button">
-                    <span class="material-icons-outlined">
-                      <mat-icon>edit</mat-icon>
-                      <mat-icon>add</mat-icon>
-                      <mat-icon>delete</mat-icon>
-                      </span>
-                  </div>
-              </div>
-              <img src="{{task.imageUrl}}">
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="board">
-    <h3>in-progress</h3>
-    <div class="dropzone">
-      <div class="bgComponent" *ngFor="let task of taskData">
-        <div class="wrapper" *ngIf='task.taskStatus=="in-progress"' >
-          <div class="outer" >
-              <div class="content">
-                  <span class="bg">Author : {{task.author}}</span>
-                  <h1>{{task.name}}<br/></h1>
-                  <p>{{task.description}}</p>
-                  <p>Score:{{task.score}}</p>
-                  <p>BoardName:{{task.boardName}}</p>
-                  <p>Assigned To: {{task.username}}</p>
-                  <div class="button">
-                    <span class="material-icons-outlined">
-                      <mat-icon>edit</mat-icon>
-                      <mat-icon>add</mat-icon>
-                      <mat-icon>delete</mat-icon>
-                      </span>
-                  </div>
-              </div>
-              <img src="{{task.imageUrl}}">
+<div class="bgComponent">
+  <div class="boards">
+    <div class="board">
+      <h3>To-do</h3>
+      <div class="dropzone">
+        <div class="bgComponent" *ngFor="let task of taskData">
+          <div class="wrapper" *ngIf='task.taskStatus=="to-do"' >
+            <div class="outer" >
+                <div class="content">
+                    <span class="bg">Author : {{task.author}}</span>
+                    <div class="Info">
+                      <h1>{{task.name}}<br/></h1>
+                    <p>{{task.description}}</p>
+                    <p>Score: {{task.score}}</p>
+                    <p>BoardName: {{task.boardName}}</p>
+                    </div>
+                    <p *ngIf="task.username">Assigned To: {{task.username}}</p>
+                    <div class="button">
+                      <span class="material-icons-outlined">
+                        <mat-icon>edit</mat-icon>
+                        <mat-icon>add</mat-icon>
+                        <mat-icon>delete</mat-icon>
+                        </span>
+                    </div>
+                </div>
+                <img src="{{task.imageUrl}}">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="board">
+      <h3>in-progress</h3>
+      <div class="dropzone">
+        <div class="bgComponent" *ngFor="let task of taskData">
+          <div class="wrapper" *ngIf='task.taskStatus=="in-progress"' >
+            <div class="outer" >
+                <div class="content">
+                    <span class="bg">Author : {{task.author}}</span>
+                    <h1>{{task.name}}<br/></h1>
+                    <p>{{task.description}}</p>
+                    <p>Score:{{task.score}}</p>
+                    <p>BoardName:{{task.boardName}}</p>
+                    <p>Assigned To: {{task.username}}</p>
+                    <div class="button">
+                      <span class="material-icons-outlined">
+                        <mat-icon>edit</mat-icon>
+                        <mat-icon>add</mat-icon>
+                        <mat-icon>delete</mat-icon>
+                        </span>
+                    </div>
+                </div>
+                <img src="{{task.imageUrl}}">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="board">
+      <h3>done</h3>
+      <div class="dropzone">
+        <div class="bgComponent" *ngFor="let task of taskData">
+          <div class="wrapper" *ngIf='task.taskStatus=="done"' >
+            <div class="outer" >
+                <div class="content">
+                    <span class="bg">Author : {{task.author}}</span>
+                    <h1>{{task.name}}<br/></h1>
+                    <p>{{task.description}}</p>
+                    <p>Score:{{task.score}}</p>
+                    <p>BoardName:{{task.boardName}}</p>
+          
+                    <div class="button">
+                      <span class="material-icons-outlined">
+                        <mat-icon>edit</mat-icon>
+                        <mat-icon>add</mat-icon>
+                        <mat-icon>delete</mat-icon>
+                        </span>
+                    </div>
+                </div>
+                <img src="{{task.imageUrl}}">
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-
-  <div class="board">
-    <h3>done</h3>
-    <div class="dropzone">
-      <div class="bgComponent" *ngFor="let task of taskData">
-        <div class="wrapper" *ngIf='task.taskStatus=="done"' >
-          <div class="outer" >
-              <div class="content">
-                  <span class="bg">Author : {{task.author}}</span>
-                  <h1>{{task.name}}<br/></h1>
-                  <p>{{task.description}}</p>
-                  <p>Score:{{task.score}}</p>
-                  <p>BoardName:{{task.boardName}}</p>
-        
-                  <div class="button">
-                    <span class="material-icons-outlined">
-                      <mat-icon>edit</mat-icon>
-                      <mat-icon>add</mat-icon>
-                      <mat-icon>delete</mat-icon>
-                      </span>
-                  </div>
-              </div>
-              <img src="{{task.imageUrl}}">
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  
+  
+  
 </div>
-
 
