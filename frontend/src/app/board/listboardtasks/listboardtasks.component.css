@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  background-color: #2b475e;
+  background-color:  #2b475e;
   flex-wrap: wrap;
   padding-top: 50px;
   padding-bottom: 50px;
@@ -27,6 +27,7 @@ img{
   right:-30px;
   z-index:0;
   width:180px;
+  height: 220px;
 }
 .content{
   position: relative;
@@ -35,12 +36,16 @@ img{
 }
 h1{
   color:#111;
+  word-break: break-all;
+  font-size: small;
+  font-weight: bold;
+  
 }
 p{
   width:280px;
   font-size: 13px;
   line-height: 1.4;
-  color:#aaa;
+  color:black;
   margin:20px 0;
 }
 .bg{
@@ -50,12 +55,13 @@ p{
   padding:5px 10px;
   border-radius: 50px;
   font-size: .7em;
-  margin-bottom: 20px;
+  margin-top: 50px;
+  
 }
 .button{
   width:fit-content;
   height: fit-content;
-  margin-top:10px;
+  margin-bottom: 50px;
 }
 .button a{
   display: inline-block;
