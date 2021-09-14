@@ -1,12 +1,24 @@
 <div class="board">
+
   <div class="board-bar">
-    <p class="board-name">Board Name</p>
+    <p class="board-name">Hello</p>
   </div>
+
   <div class="board-wrapper">
-    <div class="board-columns">
-      <div class="board-column">
+
+    <div class="board-columns" cdkDropListGroup>
+      <div class="board-column" *ngFor="let column of board">
+
+        <div class="column-title">
+          {{ column}}
+        </div>
+
         
       </div>
+
     </div>
+
   </div>
+
 </div>
+

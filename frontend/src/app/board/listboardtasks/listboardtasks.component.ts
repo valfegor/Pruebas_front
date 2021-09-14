@@ -19,7 +19,7 @@ export class ListboardtasksComponent implements OnInit {
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   durationInSeconds: number = 2;
   _id:String;
-  
+  board:Array<string>
   constructor(
     private _boardService: TaskService,
     private _snackBar: MatSnackBar,
@@ -27,6 +27,7 @@ export class ListboardtasksComponent implements OnInit {
   ) { 
     this._id=""
     this.taskData=[]
+    this.board=['to-do','in-progress','done']
   }
 
   ngOnInit(): void {
