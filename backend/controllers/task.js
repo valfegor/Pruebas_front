@@ -269,12 +269,11 @@ const asignTask = async (req, res) => {
 
   let assignedtask = await Task.findOne({ _id: req.body._idtask });
 
-  console.log(assignedtask);
+  
 
   let board = await Board.findById(assignedtask.boardId);
 
-  console.log(board.members);
-  console.log(req.body._idUser);
+  
   const filter = board.members.some(
     (element) => element.id == req.body._idUser
   );
@@ -287,7 +286,7 @@ const asignTask = async (req, res) => {
         "Sorry you are not allowed because you are not member of this board please contact the owner"
       );
 
-  console.log(assignedtask);
+  
   if (assignedtask.assigned === true)
     return res.status(400).send(" Sorry the task its already assigned");
 
