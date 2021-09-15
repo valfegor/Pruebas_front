@@ -274,13 +274,14 @@ const asignTask = async (req, res) => {
 
   let board = await Board.findById(assignedtask.boardId);
   
-
+  console.log(board.members)
+  console.log(req.body._idUser)
   const filter = board.members.some(
-    (element) => element.id === req.body.idUser
+    (element) => element.id === req.body._idUser
   );
   console.log(filter);
 
-  if (filter)
+  if (!filter)
     return res
       .status(400)
       .send(
