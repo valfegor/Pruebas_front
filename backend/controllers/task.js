@@ -170,11 +170,21 @@ const updateTask = async (req, res) => {
       let existe = user.EarnedPoints.some(
         (element) => element.scorecompleted >= 1
       );
-      
+      console.log(board.members)
       let boardUser = board.members.findIndex(element=>element.name === req.user.name);
       console.log(boardUser)
 
-      
+      nuevoarray=board.members.map((element,boardUser)=>{
+          element.ranking ++ ;
+      })
+
+      let tablerito = board.members;
+
+      tablerito.push(nuevoarray);
+
+      console.log(tablerito)
+
+
       
 
       if (existe) {
