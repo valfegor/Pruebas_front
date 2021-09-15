@@ -53,7 +53,7 @@ export class AsignComponent implements OnInit {
       
       (res)=>{
         this.taskData = res.filter
-        
+        console.log(this.taskData)
       },
       (err)=>{
         console.log(err.error);
@@ -66,8 +66,11 @@ export class AsignComponent implements OnInit {
       (res)=>{
         this.userData = res;
         console.log(this.userData)
+        
       }
     )
+
+    
   }
 
  

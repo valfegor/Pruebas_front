@@ -21,13 +21,13 @@
             <mat-select [(ngModel)]="registerData._idUser">
               <mat-option
                 *ngFor="let item of userData"
-                value="{{ item._id }}"
+                value="{{ item.id }}"
                 >{{ item.name }}</mat-option
               >
             </mat-select>
           </mat-form-field>
           <mat-form-field>
-            <mat-label>Escoge un rol</mat-label>
+            <mat-label>Selecciona La Tarea</mat-label>
             <mat-select [(ngModel)]="registerData._idtask">
               <mat-option
                 *ngFor="let item2 of taskData"
