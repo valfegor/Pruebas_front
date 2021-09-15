@@ -101,33 +101,42 @@ const updateTask = async (req, res) => {
 
   const inactiveTask = await Task.findById({ _id: req.body._id });
 
-  console.log(inactiveTask)
+  console.log(inactiveTask);
 
   const user = await User.findById(inactiveTask.assignedTo);
- /*
+  /*
   if (req.user._id != inactiveTask.assignedTo)
     return res
       .status(400)
       .send("Please check that user dont have assigned this task");
 */
 
+  /*
+
   if (inactiveTask.dbStatus == false || !inactiveTask || inactiveTask == null) {
     return res.status(400).send("You already did that Task ");
   }
 
+  */
+ 
   const task = await Task.findByIdAndUpdate(req.body._id, {
     taskStatus: req.body.taskStatus,
     dbStatus: status,
     userModify: req.user.name,
   });
 
+  const board = await Board.findById(task.boardId);
 
-  const board = await Board.findById(task.boardId)
+  const filter = board.members.some(
+    (element) => element.name === req.user.name
+  );
 
-  const filter = board.members.some(element=>element.name===req.user.name);
-  
-  if(!filter) return res.status(400).send("Sorry you are not allowed because you are not member of this board please contact the owner");
-
+  if (!filter)
+    return res
+      .status(400)
+      .send(
+        "Sorry you are not allowed because you are not member of this board please contact the owner"
+      );
 
   if (scoreUser == 1) {
     let acumScore = 1;
@@ -142,6 +151,8 @@ const updateTask = async (req, res) => {
       element.completed = true;
     });
 
+
+
     if (user.EarnedPoints.length == 0) {
       data = {
         scorecompleted: acumScore,
@@ -155,9 +166,14 @@ const updateTask = async (req, res) => {
 
       return res.status(200).send({ userPoints });
     } else {
+
       let existe = user.EarnedPoints.some(
         (element) => element.scorecompleted >= 1
       );
+      
+      let boardUser = board.members.findIndex(element=>element.name === req.user.name);
+      console.log(boardUser)
+      
 
       if (existe) {
         const nuevopuntaje = user.EarnedPoints.map((element) => {
@@ -227,8 +243,8 @@ const deleteTask = async (req, res) => {
 const asignTask = async (req, res) => {
   //el id hace referencia al id de la tarea que se va a asignar
   //name al nombre del usuario
-  console.log(req.body._idtask)
-  console.log(req.body._idUser)
+  console.log(req.body._idtask);
+  console.log(req.body._idUser);
   if (!req.body._idtask || !req.body._idUser)
     return res
       .status(400)
@@ -299,7 +315,7 @@ const unassingTask = async (req, res) => {
 
   const task2 = await Task.findByIdAndUpdate(req.body._idTask, {
     assigned: false,
-    assignedTo:req.user._id
+    assignedTo: req.user._id,
   });
 
   if (!task2)
@@ -316,19 +332,18 @@ const unassingTask = async (req, res) => {
 };
 
 const listAsignedTaskForPerson = async (req, res) => {
-/* 
+  /* 
   const validId = mongoose.Types.ObjectId.isValid(req.user._id);
   if (!validId) return res.status(400).send("Invalid id");
 */
-console.log(req.body._id)
-  if(!req.body._idUser) return res.status(400).send("Sorry Have to specify the user ");
+  console.log(req.body._id);
+  if (!req.body._idUser)
+    return res.status(400).send("Sorry Have to specify the user ");
 
-  const task = await Task.find({assignedTo: req.body._idUser})
+  const task = await Task.find({ assignedTo: req.body._idUser });
 
-  return res.status(200).send({ task});
-
-
-}
+  return res.status(200).send({ task });
+};
 
 const listAsignedTasks = async (req, res) => {
   const validId = mongoose.Types.ObjectId.isValid(req.user._id);
@@ -364,20 +379,15 @@ const listRankingPoints = async (req, res) => {
   return res.status(200).send(ranking);
 };
 
-
 const getAlltask = async (req, res) => {
   const task = await Task.find();
 
-  filtro = task.filter(element => element.assigned != true);
+  filtro = task.filter((element) => element.assigned != true);
 
   console.log(filtro);
 
-  return res.status(200).send({filtro});
-
-}
-
-
-
+  return res.status(200).send({ filtro });
+};
 
 module.exports = {
   saveTask,
@@ -389,5 +399,5 @@ module.exports = {
   listAsignedTasks,
   listRankingPoints,
   getAlltask,
-  listAsignedTaskForPerson
+  listAsignedTaskForPerson,
 };
