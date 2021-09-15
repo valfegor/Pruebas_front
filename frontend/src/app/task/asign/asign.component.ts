@@ -7,7 +7,7 @@ import {
   MatSnackBarHorizontalPosition,
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+
 
 
 @Component({
@@ -33,7 +33,7 @@ export class AsignComponent implements OnInit {
     this.boardData={};
     this.taskData ={};
     this.array2=[];
-    this.name={};
+    this.name=[];
     this.message="";
     this.registerData={};
     this.search={}
@@ -41,33 +41,39 @@ export class AsignComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUserData();
-    this.getTaskData();
     this.getBoards();
+    
   }
 
 
   listme(){
-    console.log(this.search)
+    
     this._taskService.getTaskForBoard(this.search).subscribe(
       
       (res)=>{
+        this.taskData = res.filter
         
-        console.log(this.registerData)
-        console.log(res)
       },
       (err)=>{
         console.log(err.error);
         
       }
     )
+
+
+    this._taskService.getTaskMemeber(this.search).subscribe(
+      (res)=>{
+        console.log(res)
+      }
+    )
   }
+
+ 
 
   getUserData(){
       this._userService.listUserAll().subscribe(
         (res)=>{
           this.userData = res.users;
-          
-          
         }
       )
   }
@@ -77,21 +83,16 @@ export class AsignComponent implements OnInit {
     this._boardService.listBoard().subscribe(
       (res)=>{
           this.boardData = res.board
-          console.log(this.boardData)
+          
+      },
+      (err)=>{
+        this.message = err.error;
+        this.openSnackBarError();
       }
     )
   }
 
-  getTaskData(){
-    this._taskService.getTasks().subscribe(
-        (res)=>{
-          this.taskData= res.filtro;
-          
-          
-        }
-    )
-  }
-
+  
   
 
   assingTask(){
@@ -104,7 +105,7 @@ export class AsignComponent implements OnInit {
         console.log(res);
         this.message = "Task asign";
         this.openSnackBarSuccesfull();
-        this.getTaskData()
+        this.listme();
       },
       (err)=>{
         this.message = err.error;

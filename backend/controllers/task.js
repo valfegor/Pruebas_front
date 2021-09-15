@@ -424,7 +424,7 @@ const getAlltask = async (req, res) => {
 };
 
 const getTaskBoard = async (req, res) => {
-  console.log(req.body.boardID)
+ 
   if(!req.body.boardID) return res.status(400).send("Sorry please specify THE BOARD");
 
   const tasks = await Task.find({boardId: req.body.boardID});
@@ -436,6 +436,28 @@ const getTaskBoard = async (req, res) => {
   if(filter.lengt==0) return res.status(400).send("Sorry this board have all the tasks asigned please generate a new one");
 
   return res.status(200).send({filter})
+}
+
+const getMembers = async (req, res) => {
+
+  console.log(req.body.boardID)
+  if(!req.body.boardID) return res.status(400).send("Sorry please specify THE BOARD");
+
+  const board = await Board.find({_id:req.body.boardID});
+  console.log(board)
+
+  if(!board) return res.status(400).send("Board not found");
+
+  let arrayMembers = [];
+
+  for(let i of board){
+    let miembros = i.members
+    return res.status(200).send(miembros)
+  }
+
+  
+
+
 }
 
 module.exports = {
@@ -450,4 +472,5 @@ module.exports = {
   listRankingPoints,
   getAlltask,
   listAsignedTaskForPerson,
+  getMembers
 };
