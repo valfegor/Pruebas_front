@@ -142,7 +142,7 @@ const updateTask = async (req, res) => {
     let acumScore = 1;
 
     let data = {};
-
+    
     let filtrotask = user.AssignedTasks;
 
     filtrotask.filter = (element) => element.idTask === task._id;
@@ -173,19 +173,19 @@ const updateTask = async (req, res) => {
       console.log(board.members)
       let boardUser = board.members.findIndex(element=>element.name === req.user.name);
       console.log(boardUser)
-
-      nuevoarray=board.members.map((element,boardUser)=>{
-          element.ranking ++ ;
-      })
-
-      let tablerito = board.members;
-
-      tablerito.push(nuevoarray);
-
-      console.log(tablerito)
-
-
       
+
+      let array = board.members.map((element,boardUser)=>{
+        element.ranking ++ ;
+        
+      })
+      
+
+      let tablerito = Board.findByIdAndUpdate(task.boardId,{
+        members:array
+      })
+      
+      if(!tablerito) return res.status(400).send("cant save please check");
 
       if (existe) {
         const nuevopuntaje = user.EarnedPoints.map((element) => {
