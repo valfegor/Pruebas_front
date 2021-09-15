@@ -1,53 +1,44 @@
 <div class="bgComponent">
-  <div class="form">
-    <mat-card class="card">
-      <mat-card-title>Please complete all information:</mat-card-title>
-      <br />
-      <mat-card-content>
-        <div class="container">
-          <mat-form-field>
-            <mat-label>Selecciona un tablero</mat-label>
-            <mat-select [(ngModel)]="search.boardID">
-              <mat-option
-                *ngFor="let board of boardData"
-                (click)="listme()"
-                value="{{ board._id }}"
-                >{{ board.name }}</mat-option
-              >
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field>
-            <mat-label>Selecciona el usuario</mat-label>
-            <mat-select [(ngModel)]="registerData._idUser">
-              <mat-option
-                *ngFor="let item of userData"
-                value="{{ item.id }}"
-                >{{ item.name }}</mat-option
-              >
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field>
-            <mat-label>Selecciona La Tarea</mat-label>
-            <mat-select [(ngModel)]="registerData._idtask">
-              <mat-option
-                *ngFor="let item2 of taskData"
-                value="{{ item2._id }}"
-                >{{ item2.name }}</mat-option
-              >
-            </mat-select>
-          </mat-form-field>
-          <input type="file" />
+  <div class="contact-wrapper">
+    <div class="left_side">
+      <img src="../../../assets/img/logo.png" />
+    </div>
+    <div class="right_side">
+      <h2>Assign A Task</h2>
+      <form>
+        <mat-form-field class="formsito">
+          <mat-label>Selecciona un tablero</mat-label>
+          <mat-select [(ngModel)]="search.boardID" name="board">
+            <mat-option
+              *ngFor="let board of boardData"
+              (click)="listme()"
+              value="{{ board._id }}"
+              >{{ board.name }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="formsito">
+          <mat-label>Selecciona el usuario</mat-label>
+          <mat-select [(ngModel)]="registerData._idUser" name="user">
+            <mat-option *ngFor="let item of userData" value="{{ item.id }}">{{
+              item.name
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="formsito">
+          <mat-label>Selecciona La Tarea</mat-label>
+          <mat-select [(ngModel)]="registerData._idtask" name="task">
+            <mat-option
+              *ngFor="let item2 of taskData"
+              value="{{ item2._id }}"
+              >{{ item2.name }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+        <div class="form-row">
+          <button type="submit" (click)="assingTask()">Assign This Task !</button>
         </div>
-      </mat-card-content>
-      <mat-card-actions>
-        <button
-          (click)="assingTask()"
-          class="button colorButton"
-          mat-raised-button
-        >
-          Register
-        </button>
-      </mat-card-actions>
-    </mat-card>
+      </form>
+    </div>
   </div>
 </div>
