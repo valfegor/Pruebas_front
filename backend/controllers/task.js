@@ -101,12 +101,15 @@ const updateTask = async (req, res) => {
 
   const inactiveTask = await Task.findById({ _id: req.body._id });
 
-  const user = await User.findById(inactiveTask.assignedTo);
+  console.log(inactiveTask)
 
+  const user = await User.findById(inactiveTask.assignedTo);
+ /*
   if (req.user._id != inactiveTask.assignedTo)
     return res
       .status(400)
       .send("Please check that user dont have assigned this task");
+*/
 
   if (inactiveTask.dbStatus == false || !inactiveTask || inactiveTask == null) {
     return res.status(400).send("You already did that Task ");
@@ -121,7 +124,9 @@ const updateTask = async (req, res) => {
 
   const board = await Board.findById(task.boardId)
 
-  console.log(board)
+  const filter = board.members.some(element=>element.name===req.user.name);
+  
+  if(!filter) return res.status(400).send("Sorry you are not allowed because you are not member of this board please contact the owner");
 
 
   if (scoreUser == 1) {
