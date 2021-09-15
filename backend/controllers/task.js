@@ -181,9 +181,11 @@ const updateTask = async (req, res) => {
       })
       
 
-      let tablerito = Board.findByIdAndUpdate(task.boardId,{
-        members:array
+      let tablerito = await Board.findByIdAndUpdate(task.boardId,{
+        members:board.members
       })
+
+      
       
       if(!tablerito) return res.status(400).send("cant save please check");
 
