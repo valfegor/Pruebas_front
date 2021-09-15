@@ -130,6 +130,7 @@ const updateTask = async (req, res) => {
   const filter = board.members.some(
     (element) => element.name === req.user.name
   );
+  console.log(filter);
 
   if (!filter)
     return res
@@ -142,7 +143,7 @@ const updateTask = async (req, res) => {
     let acumScore = 1;
 
     let data = {};
-    
+
     let filtrotask = user.AssignedTasks;
 
     filtrotask.filter = (element) => element.idTask === task._id;
@@ -150,8 +151,6 @@ const updateTask = async (req, res) => {
     filtrotask.map((element) => {
       element.completed = true;
     });
-
-
 
     if (user.EarnedPoints.length == 0) {
       data = {
@@ -166,28 +165,32 @@ const updateTask = async (req, res) => {
 
       return res.status(200).send({ userPoints });
     } else {
-
       let existe = user.EarnedPoints.some(
         (element) => element.scorecompleted >= 1
       );
-      console.log(board.members)
-      let boardUser = board.members.findIndex(element=>element.name === req.user.name);
-      console.log(boardUser)
-      
 
-      let array = board.members.map((element,boardUser)=>{
-        element.ranking ++ ;
-        
-      })
-      
+      let existe2 = board.members.some(
+        (element) => element.name == req.user.name
+      );
 
-      let tablerito = await Board.findByIdAndUpdate(task.boardId,{
-        members:board.members
-      })
-
-      
-      
-      if(!tablerito) return res.status(400).send("cant save please check");
+      if (existe2) {
+        board.members.map((element) => {
+          if (element.id == req.user._id) {
+            element.ranking++;
+            return element;
+          } else {
+            return element;
+          }
+        });
+        console.log(board.members);
+        const boarActualizado = await Board.findByIdAndUpdate(task.boardId, {
+          members: board.members,
+        });
+        if (!boarActualizado)
+          return res
+            .status(400)
+            .send("Cant save or the user dont corresponds into this board");
+      }
 
       if (existe) {
         const nuevopuntaje = user.EarnedPoints.map((element) => {

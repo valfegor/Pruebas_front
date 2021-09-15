@@ -66,13 +66,7 @@ const addMember = async (req, res) => {
     ranking: "0",
   };
 
-  for (var i = 0; i < newMember.length; i++) {
-    if (newMember[i].id.toString() === user._id.toString()) {
-      return res
-        .status(400)
-        .send("the user is currently a member of the board");
-    }
-  }
+
 
   newMember.push(data);
   let board = await Board.findByIdAndUpdate(req.body.boardId, {
