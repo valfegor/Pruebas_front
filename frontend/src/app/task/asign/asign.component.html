@@ -1,49 +1,53 @@
 <div class="bgComponent">
-    <div class="form">
-      <mat-card class="card">
-        <mat-card-title>Please complete all information:</mat-card-title>
-        <br>
-        <mat-card-content>
-          <div class="container">
-            <mat-form-field>
-                <mat-label>Selecciona un tablero</mat-label>
-                <mat-select  [(ngModel)]="boardData.boardID">
-                  <mat-option *ngFor="let board of boardData" value= {{board._id}}
-                >{{
-                    board.name
-                  }}</mat-option>
-                </mat-select>
-              </mat-form-field>
-              <mat-form-field>
-                <mat-label>Escoge un rol</mat-label>
-                <mat-select  [(ngModel)]="registerData._idUser">
-                  <mat-option *ngFor="let item of userData" value= {{item._id}}
-                >{{
-                    item.name
-                  }}</mat-option>
-                </mat-select>
-              </mat-form-field>
-              <mat-form-field>
-                <mat-label>Escoge un rol</mat-label>
-                <mat-select  [(ngModel)]="registerData._idtask">
-                  <mat-option *ngFor="let item2 of taskData" value= {{item2._id}}
-                >{{
-                    item2.name
-                  }}</mat-option>
-                </mat-select>
-              </mat-form-field>     
-            <input type="file"  />     
-          </div>
-        </mat-card-content>
-        <mat-card-actions>
-          <button
-            (click)="assingTask()"
-            class="button colorButton"  mat-raised-button >
-            Register
-          </button>
-        </mat-card-actions>
-      </mat-card>
-    </div>
+  <div class="form">
+    <mat-card class="card">
+      <mat-card-title>Please complete all information:</mat-card-title>
+      <br />
+      <mat-card-content>
+        <div class="container">
+          <mat-form-field>
+            <mat-label>Selecciona un tablero</mat-label>
+            <mat-select [(ngModel)]="search.boardID">
+              <mat-option
+                *ngFor="let board of boardData"
+                (click)="listme()"
+                value="{{ board._id }}"
+                >{{ board.name }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Escoge un rol</mat-label>
+            <mat-select [(ngModel)]="registerData._idUser">
+              <mat-option
+                *ngFor="let item of userData"
+                value="{{ item._id }}"
+                >{{ item.name }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Escoge un rol</mat-label>
+            <mat-select [(ngModel)]="registerData._idtask">
+              <mat-option
+                *ngFor="let item2 of taskData"
+                value="{{ item2._id }}"
+                >{{ item2.name }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+          <input type="file" />
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button
+          (click)="assingTask()"
+          class="button colorButton"
+          mat-raised-button
+        >
+          Register
+        </button>
+      </mat-card-actions>
+    </mat-card>
   </div>
-
-  
+</div>

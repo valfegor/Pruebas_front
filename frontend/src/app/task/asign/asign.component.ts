@@ -16,6 +16,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
   styleUrls: ['./asign.component.css']
 })
 export class AsignComponent implements OnInit {
+  public search:any;
   public userData:any;
   public boardData:any;
   public taskData:any;
@@ -35,7 +36,7 @@ export class AsignComponent implements OnInit {
     this.name={};
     this.message="";
     this.registerData={};
-    
+    this.search={}
   }
 
   ngOnInit(): void {
@@ -44,6 +45,22 @@ export class AsignComponent implements OnInit {
     this.getBoards();
   }
 
+
+  listme(){
+    console.log(this.search)
+    this._taskService.getTaskForBoard(this.search).subscribe(
+      
+      (res)=>{
+        
+        console.log(this.registerData)
+        console.log(res)
+      },
+      (err)=>{
+        console.log(err.error);
+        
+      }
+    )
+  }
 
   getUserData(){
       this._userService.listUserAll().subscribe(
