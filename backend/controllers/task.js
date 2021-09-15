@@ -265,9 +265,29 @@ const asignTask = async (req, res) => {
   if (!req.body._idtask || !req.body._idUser)
     return res
       .status(400)
-      .send("Sorry please have to specify a task for the user");
+      .send("Sorry please have to specify a task for the user"); 
+    
 
   let assignedtask = await Task.findOne({ _id: req.body._idtask });
+
+  console.log(assignedtask)
+
+  let board = await Board.findById(assignedtask.boardID);
+  
+
+  const filter = board.members.some(
+    (element) => element.id === req.body.idUser
+  );
+  console.log(filter);
+
+  if (!filter)
+    return res
+      .status(400)
+      .send(
+        "Sorry you are not allowed because you are not member of this board please contact the owner"
+      );
+
+
 
   console.log(assignedtask);
   if (assignedtask.assigned === true)
