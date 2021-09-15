@@ -426,14 +426,19 @@ const getAlltask = async (req, res) => {
 const getTaskBoard = async (req, res) => {
   if(!req.body.boardID) return res.status(400).send("Sorry please specify THE BOARD");
 
-  const tasks = await Task.find({boardId: req.body.boardId});
+  const tasks = await Task.find({boardId: req.body.boardID});
+  
+  const filter = tasks.filter((element)=> element.assigned == false  )
 
-  if(!task || task.length === 0) return res.status(400).send("Sorry no tasks in that board");
+  console.log(filter)
+
+  if(!tasks || tasks.length === 0) return res.status(400).send("Sorry no tasks in that board");
 
   return res.status(200).send({tasks})
 }
 
 module.exports = {
+  getTaskBoard,
   saveTask,
   updateTask,
   listTask,
