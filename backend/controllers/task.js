@@ -272,7 +272,7 @@ const asignTask = async (req, res) => {
 
   console.log(assignedtask)
 
-  let board = await Board.findById(assignedtask.boardID);
+  let board = await Board.findById(assignedtask.boardId);
   
 
   const filter = board.members.some(
@@ -280,7 +280,7 @@ const asignTask = async (req, res) => {
   );
   console.log(filter);
 
-  if (!filter)
+  if (filter)
     return res
       .status(400)
       .send(
