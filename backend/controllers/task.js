@@ -118,7 +118,7 @@ const updateTask = async (req, res) => {
   }
 
   */
- 
+
   const task = await Task.findByIdAndUpdate(req.body._id, {
     taskStatus: req.body.taskStatus,
     dbStatus: status,
@@ -173,6 +173,8 @@ const updateTask = async (req, res) => {
       
       let boardUser = board.members.findIndex(element=>element.name === req.user.name);
       console.log(boardUser)
+
+      
       
 
       if (existe) {
