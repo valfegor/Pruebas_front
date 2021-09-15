@@ -7,6 +7,7 @@ import {
   MatSnackBarHorizontalPosition,
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 
 
@@ -40,7 +41,7 @@ export class AsignComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getUserData();
+    
     this.getBoards();
     
   }
@@ -63,21 +64,15 @@ export class AsignComponent implements OnInit {
 
     this._taskService.getTaskMemeber(this.search).subscribe(
       (res)=>{
-        console.log(res)
+        this.userData = res;
+        console.log(this.userData)
       }
     )
   }
 
  
 
-  getUserData(){
-      this._userService.listUserAll().subscribe(
-        (res)=>{
-          this.userData = res.users;
-        }
-      )
-  }
-
+ 
 
   getBoards(){
     this._boardService.listBoard().subscribe(
