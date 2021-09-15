@@ -276,7 +276,7 @@ const asignTask = async (req, res) => {
   console.log(board.members);
   console.log(req.body._idUser);
   const filter = board.members.some(
-    (element) => element.id === req.body._idUser
+    (element) => element.id == req.body._idUser
   );
   console.log(filter);
 
