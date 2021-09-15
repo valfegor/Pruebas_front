@@ -6,6 +6,15 @@
         <mat-card-content>
           <div class="container">
             <mat-form-field>
+                <mat-label>Selecciona un tablero</mat-label>
+                <mat-select  [(ngModel)]="boardData.boardID">
+                  <mat-option *ngFor="let board of boardData" value= {{board._id}}
+                >{{
+                    board.name
+                  }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field>
                 <mat-label>Escoge un rol</mat-label>
                 <mat-select  [(ngModel)]="registerData._idUser">
                   <mat-option *ngFor="let item of userData" value= {{item._id}}

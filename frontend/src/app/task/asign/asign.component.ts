@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from "../../services/user.service";
 import { TaskService } from "../../services/task.service";
+import {  BoardService} from "../../services/board.service";
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 
 @Component({
@@ -15,6 +17,7 @@ import {
 })
 export class AsignComponent implements OnInit {
   public userData:any;
+  public boardData:any;
   public taskData:any;
   public array2:any;
   public name:any;
@@ -24,8 +27,9 @@ export class AsignComponent implements OnInit {
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   durationInSeconds: number = 2;
   
-  constructor(private _userService: UserService , private _taskService: TaskService , private _snackBar: MatSnackBar) { 
+  constructor(private _userService: UserService , private _taskService: TaskService , private _snackBar: MatSnackBar , private _boardService: BoardService) { 
     this.userData ={};
+    this.boardData={};
     this.taskData ={};
     this.array2=[];
     this.name={};
@@ -37,6 +41,7 @@ export class AsignComponent implements OnInit {
   ngOnInit(): void {
     this.getUserData();
     this.getTaskData();
+    this.getBoards();
   }
 
 
@@ -51,6 +56,15 @@ export class AsignComponent implements OnInit {
   }
 
 
+  getBoards(){
+    this._boardService.listBoard().subscribe(
+      (res)=>{
+          this.boardData = res.board
+          console.log(this.boardData)
+      }
+    )
+  }
+
   getTaskData(){
     this._taskService.getTasks().subscribe(
         (res)=>{
@@ -60,6 +74,8 @@ export class AsignComponent implements OnInit {
         }
     )
   }
+
+  
 
   assingTask(){
     
