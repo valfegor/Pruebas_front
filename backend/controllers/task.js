@@ -118,6 +118,12 @@ const updateTask = async (req, res) => {
     userModify: req.user.name,
   });
 
+
+  const board = await Board.findById(task.boardId)
+
+  console.log(board)
+
+
   if (scoreUser == 1) {
     let acumScore = 1;
 
