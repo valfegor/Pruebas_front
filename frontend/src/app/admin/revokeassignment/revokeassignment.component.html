@@ -33,11 +33,12 @@
           <mat-select [(ngModel)]="registerData._idTask" name="task">
             <mat-option
             *ngFor="let task of taskData"
+            value="{{task._id}}"
             >{{task.name}}</mat-option>
           </mat-select>
         </mat-form-field>
         <div class="form-row">
-          <button type="submit" (click)="removeTask()">Assign This Task !</button>
+          <button type="submit" click="removeTask()" >Assign This Task !</button>
         </div>
       </form>
     </div>
