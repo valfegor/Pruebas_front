@@ -13,12 +13,14 @@ export class RevokeassignmentComponent implements OnInit {
   public search:any;
   public taskData: any;
   public userData: any;
+  public registerData: any;
   constructor(private _taskService: TaskService , private _boardService: BoardService) {
     this.boardData={};
     this.message=""
     this.search={};
     this.taskData={};
     this.userData={};
+    this.registerData = {};
    }
 
   ngOnInit(): void {

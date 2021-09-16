@@ -10,6 +10,7 @@
           <mat-label>Selecciona un tablero</mat-label>
           <mat-select [(ngModel)]="search.boardID" name="board">
             <mat-option
+            (click)="listme()"
               *ngFor="let board of boardData"
               value="{{ board._id }}"
               >{{ board.name }}</mat-option
@@ -17,11 +18,13 @@
           </mat-select>
         </mat-form-field>
         <mat-form-field class="formsito">
-          <mat-label>Selecciona el usuario</mat-label>
-          <mat-select>
-            <mat-option> </mat-option>
-          </mat-select>
-        </mat-form-field>
+            <mat-label>Selecciona el usuario</mat-label>
+            <mat-select [(ngModel)]="registerData._idUser" name="user">
+              <mat-option *ngFor="let item of userData" value="{{ item.id }}">{{
+                item.name
+              }}</mat-option>
+            </mat-select>
+          </mat-form-field>
         <mat-form-field class="formsito">
           <mat-label>Selecciona La Tarea</mat-label>
           <mat-select>
