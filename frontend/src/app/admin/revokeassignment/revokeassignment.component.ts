@@ -66,6 +66,17 @@ export class RevokeassignmentComponent implements OnInit {
       }
     )
   }
+
+  removeTask(){
+    this._taskService.UnassignTask(this.registerData).subscribe(
+      (res)=>{
+        console.log(res)
+      },
+      (err)=>{
+        console.log(err.error)
+      }
+    )
+  }
   
 }
 
