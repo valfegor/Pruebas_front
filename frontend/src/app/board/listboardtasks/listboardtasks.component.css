@@ -10,6 +10,11 @@
   z-index: 1;
   
 } 
+
+.board{
+  padding-bottom: 50px;
+  
+}
 .outer{
   position: relative;
   background-color: #fff;
