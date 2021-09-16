@@ -8,7 +8,7 @@ const User = require("../models/user");
 
 const saveTask = async (req, res) => {
   let validId = mongoose.Types.ObjectId.isValid(req.user._id);
-  console.log(req.user._id);
+  console.log(req.files.image);
   if (!validId) return res.status(400).send("Invalid id");
 
   if (
