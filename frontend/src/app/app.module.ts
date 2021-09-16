@@ -49,6 +49,7 @@ import { UnassignComponent } from './task/unassign/unassign.component';
 import { SidenavComponent } from './home/sidenav/sidenav.component';
 import {MatListModule} from '@angular/material/list'; 
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { RevokeassignmentComponent } from './admin/revokeassignment/revokeassignment.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     ListboardtasksComponent,
     UnassignComponent,
     SidenavComponent,
+    RevokeassignmentComponent,
   ],
   imports: [
     BrowserModule,
