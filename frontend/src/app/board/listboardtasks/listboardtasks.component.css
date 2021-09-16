@@ -20,6 +20,7 @@
 
 .to-do:hover{
   background-color: red;
+  
 }
 
 .in-progress:hover{
@@ -77,7 +78,7 @@ color: #17c0eb
   
 }
 .btns button{
-  
+  text-transform: uppercase;
   width: 40%;  
   padding: 9px 0px;
   outline: none;
@@ -121,14 +122,14 @@ color: #17c0eb
   height:280px;
   width:400px;
   justify-content: space-between;
-  overflow: hidden;
+  
   display: flex;
   align-items: center;
   border-radius: 10px;
 }
 
 .Info{
-  overflow: hidden;
+  
   white-space: nowrap;
 }
 h1{
@@ -144,7 +145,7 @@ p{
   line-height: 1.4;
   color:black;
   padding-bottom: 5px;
-  overflow: hidden;
+  
   word-wrap: break-word
   
 }
@@ -169,6 +170,7 @@ p{
   display: flex;
   margin-top: 32px;
   margin-bottom: 60px;
+  overflow:auto
 }
 
 
