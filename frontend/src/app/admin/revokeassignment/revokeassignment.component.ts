@@ -10,9 +10,15 @@ import { BoardService } from "../../services/board.service";
 export class RevokeassignmentComponent implements OnInit {
   public boardData:any;
   public message:string;
+  public search:any;
+  public taskData: any;
+  public userData: any;
   constructor(private _taskService: TaskService , private _boardService: BoardService) {
     this.boardData={};
     this.message=""
+    this.search={};
+    this.taskData={};
+    this.userData={};
    }
 
   ngOnInit(): void {
@@ -35,5 +41,21 @@ export class RevokeassignmentComponent implements OnInit {
     );
   }
 
+  listme() {
+    this._taskService.getTaskForBoard(this.search).subscribe(
+      (res) => {
+        this.taskData = res.filter;
+        
+      },
+      (err) => {
+        console.log(err.error);
+      }
+    );
+
+    this._taskService.getTaskMemeber(this.search).subscribe((res) => {
+      this.userData = res;
+      
+    });
+  }
   
 }
