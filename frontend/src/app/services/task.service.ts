@@ -46,4 +46,6 @@ export class TaskService {
    getTaskMemeber(board: Object){
     return this.http.post<any>(this.env + 'task/listmemberstasks', board)
    }
+
+   
 }
