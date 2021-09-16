@@ -55,7 +55,7 @@ export class RevokeassignmentComponent implements OnInit {
   }
 
   listAssigned(){
-    console.log(this.registerData)
+    
     this._taskService.Unasign(this.registerData).subscribe(
       
       (res)=>{
