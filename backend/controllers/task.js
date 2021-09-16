@@ -367,9 +367,6 @@ const unassingTask = async (req, res) => {
 
 const listAsignedTaskForPerson = async (req, res) => {
   
- ;
-
-  console.log(req.body._idUser)
   if (!req.body._idUser)
     return res.status(400).send("Sorry Have to specify the user ");
 
