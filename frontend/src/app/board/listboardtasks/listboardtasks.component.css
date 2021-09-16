@@ -6,13 +6,15 @@
   background-color:  #2b475e;
   flex-wrap: wrap;
   padding-top: 50px;
-  padding-bottom: 50px;
+  padding-bottom: 20px;
   z-index: 1;
+  
   
 } 
 
 .board{
   padding-bottom: 50px;
+
   
 }
 .outer{
@@ -140,6 +142,7 @@ p{
 .boards {
   display: flex;
   margin-top: 32px;
+  margin-bottom: 20px;
 }
 
 
