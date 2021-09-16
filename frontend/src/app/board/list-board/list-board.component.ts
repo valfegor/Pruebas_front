@@ -80,7 +80,7 @@ export class ListBoardComponent implements OnInit {
 
       940: {
 
-        items: 6
+        items: 4
 
       }
 

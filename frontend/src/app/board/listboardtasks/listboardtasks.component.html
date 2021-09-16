@@ -9,12 +9,34 @@
                     <img src="{{task.imageUrl}}" alt="">
                   </div>
                   <div class="name_job">{{task.name}}</div>
-                  <div class="rating">
+                  <div class="rating" *ngIf="task.score == 5 ">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                    <i class="far fa-star"></i>
-                    <i class="far fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <div class="rating" *ngIf="task.score == 4 ">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    
+                  </div>
+                  <div class="rating" *ngIf="task.score == 3">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    
+                  </div>
+                  <div class="rating" *ngIf="task.score == 2 ">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    
+                  </div>
+                  <div class="rating" *ngIf="task.score == 1 ">
+                    <i class="fas fa-star"></i>
+                    
                   </div>
                   <p>{{task.description}}</p>
                   <div class="btns">
@@ -23,6 +45,13 @@
                     <button class="done">done</button>
                     
                   </div>
+
+                  <div>
+                    <mat-icon color="primary" class="delete"
+              >delete</mat-icon
+            >
+                  </div>
+
                 </div>
                 
               </div>

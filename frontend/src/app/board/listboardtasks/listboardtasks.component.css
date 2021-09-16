@@ -159,12 +159,16 @@ p{
   
 }
 
-
+.delete{
+  margin-top: 5px;
+  cursor: pointer;
+}
 
 
 .boards {
   display: flex;
   margin-top: 32px;
+  margin-bottom: 60px;
 }
 
 
