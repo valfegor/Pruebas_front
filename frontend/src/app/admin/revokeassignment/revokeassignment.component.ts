@@ -44,15 +44,7 @@ export class RevokeassignmentComponent implements OnInit {
   }
 
   listme() {
-    this._taskService.getTaskForBoard(this.search).subscribe(
-      (res) => {
-        this.taskData = res.filter;
-        
-      },
-      (err) => {
-        console.log(err.error);
-      }
-    );
+    
 
     this._taskService.getTaskMemeber(this.search).subscribe((res) => {
       this.userData = res;
@@ -67,7 +59,10 @@ export class RevokeassignmentComponent implements OnInit {
     this._taskService.Unasign(this.registerData).subscribe(
       
       (res)=>{
-        console.log(res)
+        this.taskData = res.task
+      },
+      (err)=>{
+        this.message = err.error;
       }
     )
   }
