@@ -1,14 +1,19 @@
+.bgComponent {
+ 
+    width: 100%;
+    height: 100%;
+    padding-bottom: 5%;
+  }
+  
 .bodyx{
-  width: 100%;
-  height: 100%;
   display: flex;
-  padding-top: 20px;
-  padding-left: 20px;
+  padding-top: 200px;
+  padding-left: 40px;
   padding-right: 20px;
-  padding-bottom: 60px;
   align-items: center;
   justify-content: center;
-  
+  width:250px;
+  max-height:700px;
 }
 .card {
   display: grid;
@@ -25,10 +30,11 @@
 
   transition: 0.5s ease;
   cursor: pointer;
-  
-}
-.card-image {
-  grid-area: image;
+
+  margin-bottom: 50px;
+
+    transition: 0.5s ease;
+    cursor: pointer;
   
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
@@ -100,8 +106,8 @@ img{
 
 .bgComponent{
   width: 100%;
-  height: 100%;
-  
+  height: 92%;
   background-color: #024553;
   padding-bottom: 20px;
+  
 }

@@ -52,7 +52,7 @@ export class ListBoardComponent implements OnInit {
 
     pullDrag: true,
 
-    dots: false,
+    dots: true,
 
     navSpeed: 800,
 
