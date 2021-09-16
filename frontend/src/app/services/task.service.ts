@@ -29,11 +29,11 @@ export class TaskService {
    }
 
    Unasign(user: Object){
-     console.log(user)
+     
      return this.http.post<any>(this.env + 'task/listAllAsigned',user)
    }
 
-   UnassignTask(task: Object){
+   UnassignTask(task: any){
      return this.http.put<any>(this.env + 'task/unassingTask',task);
    }
 
