@@ -51,7 +51,7 @@ export class AsignComponent implements OnInit {
     this._taskService.getTaskForBoard(this.search).subscribe(
       (res) => {
         this.taskData = res.filter;
-        console.log(this.taskData);
+        
       },
       (err) => {
         console.log(err.error);
@@ -60,7 +60,7 @@ export class AsignComponent implements OnInit {
 
     this._taskService.getTaskMemeber(this.search).subscribe((res) => {
       this.userData = res;
-      console.log(this.userData);
+      
     });
   }
 
