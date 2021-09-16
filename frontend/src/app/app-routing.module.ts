@@ -14,7 +14,7 @@ import { SaveTaskComponent } from './task/save-task/save-task.component';
 import { AsignComponent } from './task/asign/asign.component';
 import { ListboardtasksComponent } from "../app/board/listboardtasks/listboardtasks.component";
 import { UnassignComponent } from './task/unassign/unassign.component';
-
+import { RevokeassignmentComponent } from './admin/revokeassignment/revokeassignment.component';
 const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },
   { path: 'registerUser', component: RegisterComponent },
@@ -31,7 +31,7 @@ const routes: Routes = [
   { path: 'listBoard', component : ListBoardComponent},
   {path: 'asign', component : AsignComponent},
   {path: 'listBoard/listboardtasks/:_id', component : ListboardtasksComponent},
-  {path:'unassign',component:UnassignComponent}
+  {path:'unassign',component:RevokeassignmentComponent}
    
 ];
 
