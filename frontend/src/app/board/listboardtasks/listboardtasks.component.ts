@@ -68,46 +68,22 @@ export class ListboardtasksComponent implements OnInit {
     )
   }
 
-  deleteTask(task: any){
+  open(){
     Swal.fire({
-      title: 'Are you sure you want to unsubscribe the task?',
-      text: 'The task will be assigned to the administrator and then assigned to a board member.',
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
       icon: 'warning',
-      position:'top-start',
+      position:'bottom-start',
       showCancelButton: true,
-      confirmButtonText: 'Yes, unsubscribe!',
-      cancelButtonText: 'No, keep it'
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire(
-          'unsubscribed!',
-          'Your file has been unsubscribe.',
+          'Deleted!',
+          'Your file has been deleted.',
           'success'
-        );
-        this._taskService.deleteTask(task).subscribe(
-          (res)=>{
-            let index = this.taskData.indexOf(task);
-            if(index>-1){
-              this.taskData.splice(index,1);
-              this.message=res.message;
-              this.openSnackBarError();
-            
-            
-  
-            }
-            
-          },
-          (err)=>{
-            this.message=err.error;
-            this.openSnackBarError();
-          }
-      )
-      
-      } else if (result.dismiss === Swal.DismissReason.cancel) {
-        Swal.fire(
-          'Cancelled',
-          'You cancell the process have a nice day',
-          'error'
         )
       }
     })

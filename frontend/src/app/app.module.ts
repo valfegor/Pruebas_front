@@ -37,6 +37,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatMenuModule } from "@angular/material/menu";
 import {  MatDividerModule} from "@angular/material/divider";
+import {MatDialogModule} from '@angular/material/dialog'; 
 
 //servicios
 
@@ -50,6 +51,7 @@ import { SidenavComponent } from './home/sidenav/sidenav.component';
 import {MatListModule} from '@angular/material/list'; 
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { RevokeassignmentComponent } from './admin/revokeassignment/revokeassignment.component';
+import { DeleteTasksComponent } from './dialogs/delete-tasks/delete-tasks.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +77,7 @@ import { RevokeassignmentComponent } from './admin/revokeassignment/revokeassign
     UnassignComponent,
     SidenavComponent,
     RevokeassignmentComponent,
+    DeleteTasksComponent,
   ],
   imports: [
     BrowserModule,
@@ -97,7 +100,8 @@ import { RevokeassignmentComponent } from './admin/revokeassignment/revokeassign
     MatMenuModule,
     MatDividerModule,
     MatListModule,
-    CarouselModule
+    CarouselModule,
+    MatDialogModule
   ],
   providers: [
     UserService,
