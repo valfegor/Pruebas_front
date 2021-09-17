@@ -113,7 +113,7 @@
                   <P *ngIf="task.assigned ==false">this task is not assigned</P>
                   <p *ngIf="task.assigned == true">This tasks its asigned to {{task.username}}</p>
               <div class="btns">
-                <button class="to-do">To-do</button>
+                <button class="to-do" (click)="updateTask(task,'to-do')">To-do</button>
                 <button class="in-progress">in-progress</button>
                 <button class="done">done</button>
                 

@@ -50,6 +50,10 @@ export class ListboardtasksComponent implements OnInit {
     )
   }
 
+  updateTask(task: any , status: string){
+      console.log(task)
+  }
+
   openSnackBarSuccesfull() {
     this._snackBar.open(this.message, 'X', {
       horizontalPosition: this.horizontalPosition,
