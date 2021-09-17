@@ -258,10 +258,7 @@ const deleteTask = async (req, res) => {
 };
 
 const asignTask = async (req, res) => {
-  //el id hace referencia al id de la tarea que se va a asignar
-  //name al nombre del usuario
-  console.log(req.body._idtask);
-  console.log(req.body._idUser);
+  
   if (!req.body._idtask || !req.body._idUser)
     return res
       .status(400)
@@ -273,6 +270,14 @@ const asignTask = async (req, res) => {
 
   let board = await Board.findById(assignedtask.boardId);
 
+  let userOwner = board.members.find(element=>element.name === req.user.name)
+
+  let actualRole = userOwner.role;
+
+
+  if(actualRole != "Owner") return res.status(400).send("Sorry you are not the owner of the board please check it out"); 
+
+   
   
   const filter = board.members.some(
     (element) => element.id == req.body._idUser
@@ -292,7 +297,7 @@ const asignTask = async (req, res) => {
 
   const existingUser = await User.findOne({ _id: req.body._idUser });
 
-  console.log(existingUser.name);
+  
 
   const task = await Task.findByIdAndUpdate(
     { _id: req.body._idtask },
@@ -318,8 +323,7 @@ const asignTask = async (req, res) => {
     }
   );
 
-  console.log(user);
-  console.log(task);
+ 
 
   return res.status(200).send({ user });
 };
