@@ -94,7 +94,7 @@ color: #17c0eb
 
 @media (max-width:1045px){
   .container .box{
-    width: calc(50% - 10px);
+    width: 100%;
     margin-bottom: 20px;
   }
 }

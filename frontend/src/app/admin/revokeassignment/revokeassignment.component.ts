@@ -38,7 +38,7 @@ export class RevokeassignmentComponent implements OnInit {
 
 
   alert(){
-    if (!this.registerData._idUser || !this.registerData._idtask) {
+    if (!this.registerData._idUser || !this.registerData._idTask) {
       this.message = 'Failed process please check all the camps';
       this.openSnackBarError();
     } else {
