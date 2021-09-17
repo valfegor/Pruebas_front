@@ -9,7 +9,7 @@
 .container .box{
   width: 100%;
   
-  background: #fff;
+  background: #fd9f1fcc;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -40,7 +40,7 @@ color: #17c0eb
   margin: 10px 0;
   height: 150px;
   width: 150px;
-  background: #8e44ad;
+  background: #2b475e;
   padding: 3px;
   border-radius: 50%;
 }
