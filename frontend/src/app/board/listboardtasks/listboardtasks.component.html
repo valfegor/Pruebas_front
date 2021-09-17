@@ -70,7 +70,7 @@
           <div class="container" *ngIf="task.taskStatus=='in-progress'">
             <div class="box">
               <div>
-                <mat-icon color="primary" class="delete" (click)="open()"
+                <mat-icon color="primary" class="delete" (click)="deleteTask(task)"
           >delete</mat-icon
         >
               </div>
@@ -133,7 +133,7 @@
           <div class="container" *ngIf="task.taskStatus=='done'">
             <div class="box">
               <div>
-                <mat-icon color="primary" class="delete" (click)="open()"
+                <mat-icon color="primary" class="delete" (click)="deleteTask(task)"
           >delete</mat-icon
         >
               </div>
