@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../../services/task.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import Swal from 'sweetalert2'
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
@@ -31,6 +32,10 @@ export class ListboardtasksComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.gettasks()
+  }
+
+  gettasks(){
     this._arouter.params.subscribe((params) => {
       this._id = params['_id'];
       this._taskService.getBoardTask(this._id).subscribe(
@@ -52,34 +57,59 @@ export class ListboardtasksComponent implements OnInit {
     this._taskService.updateTask(task).subscribe(
       (res) => {
         task.status=status;
+        
       },
       (err)=>{
         task.status=tempstatus;
         this.message = err.error;
         this.openSnackBarError();
+        location.reload();
       }
     )
   }
 
   deleteTask(task: any){
-    this._taskService.deleteTask(task).subscribe(
-        (res)=>{
-          let index = this.taskData.indexOf(task);
-          if(index>-1){
-            this.taskData.splice(index,1);
-            this.message=res.message;
+    Swal.fire({
+      title: 'Are you sure you want to unsubscribe the task?',
+      text: 'The task will be assigned to the administrator and then assigned to a board member.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, unsubscribe!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'unsubscribed!',
+          'Your file has been unsubscribe.',
+          'success'
+        );
+        this._taskService.deleteTask(task).subscribe(
+          (res)=>{
+            let index = this.taskData.indexOf(task);
+            if(index>-1){
+              this.taskData.splice(index,1);
+              this.message=res.message;
+              this.openSnackBarError();
+            
+            
+  
+            }
+            
+          },
+          (err)=>{
+            this.message=err.error;
             this.openSnackBarError();
-          
-          
-
           }
-          
-        },
-        (err)=>{
-          this.message=err.error;
-          this.openSnackBarError();
-        }
-    )
+      )
+      
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'You cancell the process have a nice day',
+          'error'
+        )
+      }
+    })
   }
 
   openSnackBarSuccesfull() {
