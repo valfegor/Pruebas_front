@@ -91,25 +91,44 @@ const updateTask = async (req, res) => {
 
   let status = Boolean;
 
+  const inactiveTask = await Task.findById({ _id: req.body._id });
+  const user = await User.findById(inactiveTask.assignedTo);
+
   if (req.body.taskStatus == "done") {
     scoreUser = 1;
-    status = false;
+    status = true;
+    let taskCompleted = user.AssignedTasks;
+    taskCompleted.map(task => {
+      if(task.name == inactiveTask.name){
+        task.completed = true;
+       
+        return task;
+      }
+      else{
+        return task;
+        
+      }
+    });
+    console.log(taskCompleted)
+    const taskChange = await User.findByIdAndUpdate(inactiveTask.assignedTo,{
+      AssignedTasks:taskCompleted,
+    })
+    if(!taskChange) return res.status(400).send("Sorry cant update please search again")
   } else {
     scoreUser = 0;
-    status = true;
+    status = false;
   }
 
-  const inactiveTask = await Task.findById({ _id: req.body._id });
-
-  console.log(inactiveTask);
-
-  const user = await User.findById(inactiveTask.assignedTo);
   
+
+
+
+  
+
   if (req.user._id != inactiveTask.assignedTo)
     return res
       .status(400)
       .send("Please check that user dont have assigned this task");
-
 
   /*
 
@@ -130,7 +149,6 @@ const updateTask = async (req, res) => {
   const filter = board.members.some(
     (element) => element.name === req.user.name
   );
-  console.log(filter);
 
   if (!filter)
     return res
@@ -139,7 +157,7 @@ const updateTask = async (req, res) => {
         "Sorry you are not allowed because you are not member of this board please contact the owner"
       );
 
-  if (scoreUser == 1) {
+  if (scoreUser == 1 && inactiveTask.dbStatus == true) {
     let acumScore = 1;
 
     let data = {};
@@ -147,6 +165,8 @@ const updateTask = async (req, res) => {
     let filtrotask = user.AssignedTasks;
 
     filtrotask.filter = (element) => element.idTask === task._id;
+
+
 
     filtrotask.map((element) => {
       element.completed = true;
@@ -182,7 +202,7 @@ const updateTask = async (req, res) => {
             return element;
           }
         });
-        console.log(board.members);
+        
         const boarActualizado = await Board.findByIdAndUpdate(task.boardId, {
           members: board.members,
         });
@@ -205,11 +225,10 @@ const updateTask = async (req, res) => {
         });
       }
     }
+    if (!task) return res.status(400).send("Sorry Please Try again");
+
+    return res.status(200).send({ task });
   }
-
-  if (!task) return res.status(400).send("Sorry Please Try again");
-
-  return res.status(200).send({ task });
 };
 
 //este metodo corresponde a todas las tareas del usuario.
@@ -217,9 +236,9 @@ const updateTask = async (req, res) => {
 
 const listTask = async (req, res) => {
   if (!req.params._id) return res.status(400).send("Sorry cant show the tasks");
-  console.log(req.params._id);
+
   const task = await Task.find({ boardId: req.params._id });
-  console.log(task);
+  
   if (!task || task.length == 0)
     return res
       .status(400)
@@ -247,7 +266,7 @@ const deleteTask = async (req, res) => {
 
   if (!task) return res.status(400).send("Cant find the task");
 
-  console.log(serverImg);
+  
 
   try {
     fs.unlinkSync(serverImg);
@@ -258,7 +277,6 @@ const deleteTask = async (req, res) => {
 };
 
 const asignTask = async (req, res) => {
-  
   if (!req.body._idtask || !req.body._idUser)
     return res
       .status(400)
@@ -266,23 +284,23 @@ const asignTask = async (req, res) => {
 
   let assignedtask = await Task.findOne({ _id: req.body._idtask });
 
-  
-
   let board = await Board.findById(assignedtask.boardId);
 
-  let userOwner = board.members.find(element=>element.name === req.user.name)
+  let userOwner = board.members.find(
+    (element) => element.name === req.user.name
+  );
 
   let actualRole = userOwner.role;
 
+  if (actualRole != "Owner")
+    return res
+      .status(400)
+      .send("Sorry you are not the owner of the board please check it out");
 
-  if(actualRole != "Owner") return res.status(400).send("Sorry you are not the owner of the board please check it out"); 
-
-   
-  
   const filter = board.members.some(
     (element) => element.id == req.body._idUser
   );
-  console.log(filter);
+ 
 
   if (!filter)
     return res
@@ -291,13 +309,10 @@ const asignTask = async (req, res) => {
         "Sorry you are not allowed because you are not member of this board please contact the owner"
       );
 
-  
   if (assignedtask.assigned === true)
     return res.status(400).send(" Sorry the task its already assigned");
 
   const existingUser = await User.findOne({ _id: req.body._idUser });
-
-  
 
   const task = await Task.findByIdAndUpdate(
     { _id: req.body._idtask },
@@ -323,8 +338,6 @@ const asignTask = async (req, res) => {
     }
   );
 
- 
-
   return res.status(200).send({ user });
 };
 
@@ -340,15 +353,18 @@ const unassingTask = async (req, res) => {
   if (task.assigned !== true)
     return res.status(400).send(" Sorry the task its not asigned please Check");
 
-    const board = await Board.findOne({_id:task.boardId});
+  const board = await Board.findOne({ _id: task.boardId });
 
-    let usuario_actual = board.members.find(element=>element.name === req.user.name)
+  let usuario_actual = board.members.find(
+    (element) => element.name === req.user.name
+  );
 
-    let usuario = usuario_actual.role
+  let usuario = usuario_actual.role;
 
-    
-
-    if(usuario!='Owner') return res.status(400).send("Sorry you are not the Owner please contact the owner")
+  if (usuario != "Owner")
+    return res
+      .status(400)
+      .send("Sorry you are not the Owner please contact the owner");
 
   const indice = user.AssignedTasks.findIndex(
     (element) => element.name === task.name
@@ -379,12 +395,11 @@ const unassingTask = async (req, res) => {
 };
 
 const listAsignedTaskForPerson = async (req, res) => {
-  
   if (!req.body._idUser)
     return res.status(400).send("Sorry Have to specify the user ");
 
   const task = await Task.find({ assignedTo: req.body._idUser });
-  console.log(task);
+
 
   return res.status(200).send({ task });
 };
@@ -396,7 +411,7 @@ const listAsignedTasks = async (req, res) => {
   const user = await User.find({ _id: req.user._id });
 
   for (const iterator of user) {
-    console.log(iterator.AssignedTasks);
+    
     return res.status(200).send(iterator.AssignedTasks);
   }
 
@@ -428,47 +443,49 @@ const getAlltask = async (req, res) => {
 
   filtro = task.filter((element) => element.assigned != true);
 
-  console.log(filtro);
+ 
 
   return res.status(200).send({ filtro });
 };
 
 const getTaskBoard = async (req, res) => {
- 
-  if(!req.body.boardID) return res.status(400).send("Sorry please specify THE BOARD");
+  if (!req.body.boardID)
+    return res.status(400).send("Sorry please specify THE BOARD");
 
-  const tasks = await Task.find({boardId: req.body.boardID});
-  
-  if(!tasks || tasks.length === 0) return res.status(400).send("Sorry no tasks in that board");
+  const tasks = await Task.find({ boardId: req.body.boardID });
 
-  const filter = tasks.filter((element)=> element.assigned != true )
+  if (!tasks || tasks.length === 0)
+    return res.status(400).send("Sorry no tasks in that board");
 
-  if(filter.lengt==0) return res.status(400).send("Sorry this board have all the tasks asigned please generate a new one");
+  const filter = tasks.filter((element) => element.assigned != true);
 
-  return res.status(200).send({filter})
-}
+  if (filter.lengt == 0)
+    return res
+      .status(400)
+      .send(
+        "Sorry this board have all the tasks asigned please generate a new one"
+      );
+
+  return res.status(200).send({ filter });
+};
 
 const getMembers = async (req, res) => {
+  
+  if (!req.body.boardID)
+    return res.status(400).send("Sorry please specify THE BOARD");
 
-  console.log(req.body.boardID)
-  if(!req.body.boardID) return res.status(400).send("Sorry please specify THE BOARD");
+  const board = await Board.find({ _id: req.body.boardID });
+  
 
-  const board = await Board.find({_id:req.body.boardID});
-  console.log(board)
-
-  if(!board) return res.status(400).send("Board not found");
+  if (!board) return res.status(400).send("Board not found");
 
   let arrayMembers = [];
 
-  for(let i of board){
-    let miembros = i.members
-    return res.status(200).send(miembros)
+  for (let i of board) {
+    let miembros = i.members;
+    return res.status(200).send(miembros);
   }
-
-  
-
-
-}
+};
 
 module.exports = {
   getTaskBoard,
@@ -482,5 +499,5 @@ module.exports = {
   listRankingPoints,
   getAlltask,
   listAsignedTaskForPerson,
-  getMembers
+  getMembers,
 };
