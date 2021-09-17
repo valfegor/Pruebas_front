@@ -98,32 +98,60 @@ const updateTask = async (req, res) => {
     scoreUser = 1;
     status = true;
     let taskCompleted = user.AssignedTasks;
-    taskCompleted.map(task => {
-      if(task.name == inactiveTask.name){
+    taskCompleted.map((task) => {
+      if (task.name == inactiveTask.name) {
         task.completed = true;
-       
         return task;
-      }
-      else{
+      } else {
         return task;
-        
       }
     });
-    console.log(taskCompleted)
-    const taskChange = await User.findByIdAndUpdate(inactiveTask.assignedTo,{
-      AssignedTasks:taskCompleted,
-    })
-    if(!taskChange) return res.status(400).send("Sorry cant update please search again")
-  } else {
+   
+    const taskChange = await User.findByIdAndUpdate(inactiveTask.assignedTo, {
+      AssignedTasks: taskCompleted,
+    });
+    if (!taskChange)
+      return res.status(400).send("Sorry cant update please search again");
+  } else if(req.body.taskStatus == "in-progress" || req.body.taskStatus == "to-do"){
     scoreUser = 0;
     status = false;
+    let taskCompleted = user.AssignedTasks;
+    const board2 = await Board.findById(inactiveTask.boardId);
+    taskCompleted.forEach((tasks) => {
+      if (tasks.name == inactiveTask.name) {
+        
+        if (tasks.completed == true) {
+          console.log("me estoy ejecutando")
+           board2.members.forEach((board) => {
+            if (board.id == req.user._id) {
+              board.ranking --;
+              return board;
+            } else {
+              return board;
+            }
+          });
+         tasks.completed = false;
+        }
+      } else {
+        return tasks;
+      }
+    });console.log(taskCompleted);
+    const updateBoard = await Board.findByIdAndUpdate(inactiveTask.boardId,{
+      members:board2.members
+
+    })
+
+    const updateTask = await User.findByIdAndUpdate(req.user._id,{
+      AssignedTasks: taskCompleted
+
+    })
+
+    if(!updateTask) return res.status(400).send("Sorry cant update")
+
+    if(!updateBoard) return res.status(400).send("Sorry cant update please try again");
+
+    
   }
-
-  
-
-
-
-  
 
   if (req.user._id != inactiveTask.assignedTo)
     return res
@@ -157,7 +185,7 @@ const updateTask = async (req, res) => {
         "Sorry you are not allowed because you are not member of this board please contact the owner"
       );
 
-  if (scoreUser == 1 && inactiveTask.dbStatus == true) {
+  if (scoreUser == 1 ) {
     let acumScore = 1;
 
     let data = {};
@@ -165,8 +193,6 @@ const updateTask = async (req, res) => {
     let filtrotask = user.AssignedTasks;
 
     filtrotask.filter = (element) => element.idTask === task._id;
-
-
 
     filtrotask.map((element) => {
       element.completed = true;
@@ -202,7 +228,7 @@ const updateTask = async (req, res) => {
             return element;
           }
         });
-        
+
         const boarActualizado = await Board.findByIdAndUpdate(task.boardId, {
           members: board.members,
         });
@@ -238,7 +264,7 @@ const listTask = async (req, res) => {
   if (!req.params._id) return res.status(400).send("Sorry cant show the tasks");
 
   const task = await Task.find({ boardId: req.params._id });
-  
+
   if (!task || task.length == 0)
     return res
       .status(400)
@@ -265,8 +291,6 @@ const deleteTask = async (req, res) => {
   let task = await Task.findByIdAndDelete(req.params._id);
 
   if (!task) return res.status(400).send("Cant find the task");
-
-  
 
   try {
     fs.unlinkSync(serverImg);
@@ -300,7 +324,6 @@ const asignTask = async (req, res) => {
   const filter = board.members.some(
     (element) => element.id == req.body._idUser
   );
- 
 
   if (!filter)
     return res
@@ -400,7 +423,6 @@ const listAsignedTaskForPerson = async (req, res) => {
 
   const task = await Task.find({ assignedTo: req.body._idUser });
 
-
   return res.status(200).send({ task });
 };
 
@@ -411,7 +433,6 @@ const listAsignedTasks = async (req, res) => {
   const user = await User.find({ _id: req.user._id });
 
   for (const iterator of user) {
-    
     return res.status(200).send(iterator.AssignedTasks);
   }
 
@@ -443,8 +464,6 @@ const getAlltask = async (req, res) => {
 
   filtro = task.filter((element) => element.assigned != true);
 
- 
-
   return res.status(200).send({ filtro });
 };
 
@@ -470,12 +489,10 @@ const getTaskBoard = async (req, res) => {
 };
 
 const getMembers = async (req, res) => {
-  
   if (!req.body.boardID)
     return res.status(400).send("Sorry please specify THE BOARD");
 
   const board = await Board.find({ _id: req.body.boardID });
-  
 
   if (!board) return res.status(400).send("Board not found");
 
