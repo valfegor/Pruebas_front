@@ -8,14 +8,16 @@ html {
   display: flex;
   flex-direction: column;
   height: 100%;
+  
 }
 
 mat-drawer{
-  width:260px;
+  width:190px;
   background-color: #2b475e;
+ 
 }
 
 mat-drawer-container{
   height: 100%;
+  
 }
-
