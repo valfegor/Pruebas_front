@@ -73,6 +73,7 @@ export class ListboardtasksComponent implements OnInit {
       title: 'Are you sure you want to unsubscribe the task?',
       text: 'The task will be assigned to the administrator and then assigned to a board member.',
       icon: 'warning',
+      position:'top-start',
       showCancelButton: true,
       confirmButtonText: 'Yes, unsubscribe!',
       cancelButtonText: 'No, keep it'
