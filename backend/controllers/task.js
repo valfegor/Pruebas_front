@@ -104,12 +104,12 @@ const updateTask = async (req, res) => {
   console.log(inactiveTask);
 
   const user = await User.findById(inactiveTask.assignedTo);
-  /*
+  
   if (req.user._id != inactiveTask.assignedTo)
     return res
       .status(400)
       .send("Please check that user dont have assigned this task");
-*/
+
 
   /*
 
