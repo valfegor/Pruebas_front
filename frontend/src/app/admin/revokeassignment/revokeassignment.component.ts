@@ -40,14 +40,25 @@ export class RevokeassignmentComponent implements OnInit {
       cancelButtonText: 'No, keep it'
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          'unsubscribed!',
-          'Your file has been unsubscribe.',
-          'success'
-        );
-        this.removeTask();
-      // For more information about handling dismissals please visit
-      // https://sweetalert2.github.io/#handling-dismissals
+        this._taskService.UnassignTask(this.registerData).subscribe(
+          (res)=>{
+            Swal.fire(
+              'unsubscribed!',
+              'Your file has been unsubscribe.',
+              'success'
+            );
+            this.listAssigned();
+          },
+          (err)=>{
+            Swal.fire(
+              'Sorry you are not the Owner please contact the Owner',
+              'Cant unsubscribe the task',
+              'error'
+            );
+            console.log(err.error)
+          }
+        )
+        
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         Swal.fire(
           'Cancelled',
