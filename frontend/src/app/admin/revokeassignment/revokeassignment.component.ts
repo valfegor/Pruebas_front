@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from "../../services/task.service";
 import { BoardService } from "../../services/board.service";
+import Swal from 'sweetalert2'
+
 
 @Component({
   selector: 'app-revokeassignment',
@@ -27,6 +29,10 @@ export class RevokeassignmentComponent implements OnInit {
     this.getBoards()
   }
 
+
+  alert(){
+    Swal.fire('ALERT')
+  }
 
 
 
