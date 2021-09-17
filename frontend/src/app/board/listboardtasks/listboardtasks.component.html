@@ -6,7 +6,7 @@
             <div class="container" *ngIf="task.taskStatus=='to-do'">
                 <div class="box" >
                   <div>
-                    <mat-icon color="primary" class="delete"
+                    <mat-icon color="primary" class="delete" (click)="deleteTask(task)"
               >delete</mat-icon
             >
                   </div>

@@ -51,5 +51,9 @@ export class TaskService {
     return this.http.put<any>(this.env + 'task/updateTask', task)
    }
 
+   deleteTask(task: any){
+     return this.http.delete<any>(this.env + 'task/deleteTask/' + task._id);
+   }
+
    
 }

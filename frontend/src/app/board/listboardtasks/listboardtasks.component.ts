@@ -61,6 +61,27 @@ export class ListboardtasksComponent implements OnInit {
     )
   }
 
+  deleteTask(task: any){
+    this._taskService.deleteTask(task).subscribe(
+        (res)=>{
+          let index = this.taskData.indexOf(task);
+          if(index>-1){
+            this.taskData.splice(index,1);
+            this.message=res.message;
+            this.openSnackBarError();
+          
+          
+
+          }
+          
+        },
+        (err)=>{
+          this.message=err.error;
+          this.openSnackBarError();
+        }
+    )
+  }
+
   openSnackBarSuccesfull() {
     this._snackBar.open(this.message, 'X', {
       horizontalPosition: this.horizontalPosition,
