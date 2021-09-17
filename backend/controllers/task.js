@@ -327,7 +327,6 @@ const asignTask = async (req, res) => {
 const unassingTask = async (req, res) => {
   if (!req.body._idUser || !req.body._idTask)
     return res.status(400).send("Sorry please have to specify a user");
-
   const user = await User.findById(req.body._idUser);
   if (!user) return res.status(400).send("The user dont exist please check");
   const task = await Task.findById(req.body._idTask);
@@ -336,6 +335,16 @@ const unassingTask = async (req, res) => {
 
   if (task.assigned !== true)
     return res.status(400).send(" Sorry the task its not asigned please Check");
+
+    const board = await Board.findOne({_id:task.boardId});
+
+    let usuario_actual = board.members.find(element=>element.name === req.user.name)
+
+    let usuario = usuario_actual.role
+
+    
+
+    if(usuario!='Owner') return res.status(400).send("Sorry you are not the Owner please contact the owner")
 
   const indice = user.AssignedTasks.findIndex(
     (element) => element.name === task.name
