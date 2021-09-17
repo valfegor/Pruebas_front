@@ -97,7 +97,24 @@ export class ListboardtasksComponent implements OnInit {
     .afterClosed()
     .subscribe(response=>{
       if(response){
-        alert("diste clic en si mierda")
+        this._taskService.deleteTask(task).subscribe(
+          (res)=>{
+            let index = this.taskData.indexOf(task);
+            if(index>-1){
+              this.taskData.splice(index,1);
+              this.message=res.message;
+              this.openSnackBarError();
+            
+            
+  
+            }
+            
+          },
+          (err)=>{
+            this.message=err.error;
+            this.openSnackBarError();
+          }
+      )
       }
     })
   }
