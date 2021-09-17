@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../../services/task.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { DeleteTasksComponent } from "../../dialogs/delete-tasks/delete-tasks.component";
 import Swal from 'sweetalert2'
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-listboardtasks',
@@ -24,7 +26,8 @@ export class ListboardtasksComponent implements OnInit {
   constructor(
     private _taskService: TaskService,
     private _snackBar: MatSnackBar,
-    private _arouter: ActivatedRoute
+    private _arouter: ActivatedRoute,
+    private _dialog: MatDialog
   ) {
     this._id = '';
     this.taskData = [];
@@ -85,6 +88,16 @@ export class ListboardtasksComponent implements OnInit {
           'Your file has been deleted.',
           'success'
         )
+      }
+    })
+  }
+
+  deleteTask(task:any){
+    this._dialog.open(DeleteTasksComponent,{data:task,width:'500px'})
+    .afterClosed()
+    .subscribe(response=>{
+      if(response){
+        alert("diste clic en si mierda")
       }
     })
   }
