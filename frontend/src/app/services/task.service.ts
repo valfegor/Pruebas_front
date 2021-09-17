@@ -47,7 +47,7 @@ export class TaskService {
     return this.http.post<any>(this.env + 'task/listmemberstasks', board)
    }
 
-   updateBoard(task:any){
+   updateTask(task:any){
     return this.http.put<any>(this.env + 'task/updateTask', task)
    }
 
