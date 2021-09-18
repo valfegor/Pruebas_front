@@ -48,12 +48,10 @@ export class ListBoardComponent implements OnInit {
         
        this.existe = this.taskData.some((element: { userId: any; })=>element.userId === this.userData._id);
        if(this.existe){
-         this.myboard = this.taskData.find((element: { userId: any; })=>{
-          element.userId === this.userData._id
-         })
-
-          console.log(this.myboard)
-
+         
+        this.myboard = this.taskData.filter((element:{userId: any;})=>element.userId === this.userData._id)
+            
+        console.log(this.myboard)
 
        }
 
@@ -65,6 +63,9 @@ export class ListBoardComponent implements OnInit {
         this.openSnackBarError();
       }
     );
+  }
+  element(element: any) {
+    throw new Error('Method not implemented.');
   }
 
   getprofile(){
