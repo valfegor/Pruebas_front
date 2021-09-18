@@ -34,12 +34,30 @@ export class ListBoardComponent implements OnInit {
   ) {
     this.taskData = {};
     this.userData={};
-    this.myboard={};
+    this.myboard=[];
     this.existe=false;
   }
 
   ngOnInit(): void {
+    
     this.getprofile();
+    
+  }
+
+  getprofile(){
+    return this._userService.getProfile().subscribe(
+      (res)=>{
+        this.userData = res.user;
+        this.Boards();
+      },
+      (err) => {
+        this.message= err.error;
+      }
+    )
+   
+  }
+
+  Boards(){
     this._boardService.listBoard().subscribe(
       (res) => {
         this.taskData = res.board;
@@ -50,7 +68,10 @@ export class ListBoardComponent implements OnInit {
        if(this.existe){
          
         this.myboard = this.taskData.filter((element:{userId: any;})=>element.userId === this.userData._id)
-            
+        
+        if(this.myboard === undefined) {
+          location.reload()
+        }
         console.log(this.myboard)
 
        }
@@ -67,19 +88,6 @@ export class ListBoardComponent implements OnInit {
   element(element: any) {
     throw new Error('Method not implemented.');
   }
-
-  getprofile(){
-    return this._userService.getProfile().subscribe(
-      (res)=>{
-        this.userData = res.user;
-      },
-      (err) => {
-        this.message= err.error;
-      }
-    )
-   
-  }
-
 
   customOptions: OwlOptions = {
 
