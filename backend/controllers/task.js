@@ -314,6 +314,8 @@ const asignTask = async (req, res) => {
     (element) => element.name === req.user.name
   );
 
+  if(!userOwner) return res.status(400).send("Sorry you are not a member")
+
   let actualRole = userOwner.role;
 
   if (actualRole != "Owner")
