@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BoardService } from '../../services/board.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
@@ -26,14 +27,16 @@ export class ListBoardComponent implements OnInit {
     private _snackBar: MatSnackBar
       
   ) {
-    this.taskData = [];
+    this.taskData = {};
   }
 
   ngOnInit(): void {
     this._boardService.listBoard().subscribe(
       (res) => {
         this.taskData = res.board;
-        console.log(this.taskData)
+        for (const task of this.taskData) {
+            console.log(task.members);
+        }
       },
       (err) => {
         this.message = err.error;
