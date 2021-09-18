@@ -34,7 +34,7 @@ export class ListBoardComponent implements OnInit {
   ) {
     this.taskData = {};
     this.userData={};
-    this.myboard=[];
+    this.myboard={};
     this.existe=false;
   }
 
@@ -44,13 +44,20 @@ export class ListBoardComponent implements OnInit {
       (res) => {
         this.taskData = res.board;
         console.log(this.userData._id)
-        this.taskData.filter((element: { userId: any; })=>{
-          element.userId === this.userData._id
-          console.log(element.userId)
-        })
+        
         
        this.existe = this.taskData.some((element: { userId: any; })=>element.userId === this.userData._id);
-       console.log(this.existe)
+       if(this.existe){
+         this.myboard = this.taskData.find((element: { userId: any; })=>{
+          element.userId === this.userData._id
+         })
+
+          console.log(this.myboard)
+
+
+       }
+
+       console.log()
 
       },
       (err) => {
