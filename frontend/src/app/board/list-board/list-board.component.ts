@@ -19,6 +19,7 @@ export class ListBoardComponent implements OnInit {
   userData: any;
   myboard: any;
   message: string = '';
+  existe:boolean;
  
   horizontalPosition: MatSnackBarHorizontalPosition = 'end';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
@@ -33,7 +34,8 @@ export class ListBoardComponent implements OnInit {
   ) {
     this.taskData = {};
     this.userData={};
-    this.myboard={}
+    this.myboard=[];
+    this.existe=false;
   }
 
   ngOnInit(): void {
@@ -46,8 +48,9 @@ export class ListBoardComponent implements OnInit {
           element.userId === this.userData._id
           console.log(element.userId)
         })
-        console.log(this.myboard)
-        thi
+        
+       this.existe = this.taskData.some((element: { userId: any; })=>element.userId === this.userData._id);
+       console.log(this.existe)
 
       },
       (err) => {
