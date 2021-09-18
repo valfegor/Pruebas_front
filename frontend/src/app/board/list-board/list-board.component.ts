@@ -33,7 +33,7 @@ export class ListBoardComponent implements OnInit {
   ) {
     this.taskData = {};
     this.userData={};
-    this.myboard=[]
+    this.myboard={}
   }
 
   ngOnInit(): void {
@@ -41,8 +41,14 @@ export class ListBoardComponent implements OnInit {
     this._boardService.listBoard().subscribe(
       (res) => {
         this.taskData = res.board;
-        console.log(this.taskData)
-        this.myboard = this.taskData.filter((element: { name: any; })=>element.name == this.userData._id)
+        console.log(this.userData._id)
+        this.taskData.filter((element: { userId: any; })=>{
+          element.userId === this.userData._id
+          console.log(element.userId)
+        })
+        console.log(this.myboard)
+        thi
+
       },
       (err) => {
         this.message = err.error;
