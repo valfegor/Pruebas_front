@@ -142,6 +142,12 @@ const deleteBoard = async (req, res) => {
  
 };
 
+const myBoards = async (req, res) => {
+  if(!req.params._id) return res.status(400).send("Please check all the camps");
+
+  const board = await 
+}
+
 module.exports = {
   registerBoard,
   listBoard,
