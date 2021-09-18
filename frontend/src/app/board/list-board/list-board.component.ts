@@ -17,7 +17,9 @@ import {
 export class ListBoardComponent implements OnInit {
   taskData: any;
   userData: any;
+  myboard: any;
   message: string = '';
+ 
   horizontalPosition: MatSnackBarHorizontalPosition = 'end';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   durationInSeconds: number = 2;
@@ -31,6 +33,7 @@ export class ListBoardComponent implements OnInit {
   ) {
     this.taskData = {};
     this.userData={};
+    this.myboard=[]
   }
 
   ngOnInit(): void {
@@ -39,7 +42,7 @@ export class ListBoardComponent implements OnInit {
       (res) => {
         this.taskData = res.board;
         console.log(this.taskData)
-        
+        this.myboard = this.taskData.filter((element: { name: any; })=>element.name == this.userData._id)
       },
       (err) => {
         this.message = err.error;
@@ -49,7 +52,7 @@ export class ListBoardComponent implements OnInit {
   }
 
   getprofile(){
-    this._userService.getProfile().subscribe(
+    return this._userService.getProfile().subscribe(
       (res)=>{
         this.userData = res.user;
       },
@@ -57,7 +60,7 @@ export class ListBoardComponent implements OnInit {
         this.message= err.error;
       }
     )
-    return this.userData.name
+   
   }
 
 
