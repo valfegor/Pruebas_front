@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { BoardService } from "../../services/board.service";
+import { BoardService } from '../../services/board.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { UserService } from '../../services/user.service';
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
@@ -10,7 +11,7 @@ import {
 @Component({
   selector: 'app-shared-boards',
   templateUrl: './shared-boards.component.html',
-  styleUrls: ['./shared-boards.component.css']
+  styleUrls: ['./shared-boards.component.css'],
 })
 export class SharedBoardsComponent implements OnInit {
   boardData: any;
@@ -18,25 +19,43 @@ export class SharedBoardsComponent implements OnInit {
   horizontalPosition: MatSnackBarHorizontalPosition = 'end';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   durationInSeconds: number = 2;
-
+  public_user: any;
+  filter: any;
   constructor(
     private _boardService: BoardService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private _userService: UserService
   ) {
-    this.boardData = [];
+    this.boardData = {};
+    this.public_user = {};
+    this.filter = [];
   }
 
   ngOnInit(): void {
     this._boardService.listBoardMember().subscribe(
       (res) => {
         this.boardData = res.board;
-        console.log(this.boardData);
+        this.getPROFILE();
+        for (const board of this.boardData) {
+          console.log(board.members);
+        }
+
+        
+        
+
+        
       },
       (err) => {
         this.message = err.error;
         this.openSnackBarError();
       }
     );
+  }
+
+  getPROFILE() {
+    this._userService.getProfile().subscribe((res) => {
+      this.public_user = res.user;
+    });
   }
 
   deleteBoard(board: any) {
@@ -94,7 +113,6 @@ export class SharedBoardsComponent implements OnInit {
       940: {
         items: 4,
       },
-      
     },
     nav: false,
   };
