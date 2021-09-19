@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
           this._router.navigate(['/listBoard']);
           this.getRole(this.loginData.email);
           this.loginData = {};
-          location.reload();
+          
         },
         (err) => {
           this.message = err.error;
@@ -83,7 +83,6 @@ export class LoginComponent implements OnInit {
           this.message = 'Successfull user registration';
           this.openSnackBarSuccesfull();
           this.registerData = {};
-          location.reload();
         },
         (err) => {
           this.message = err.error;
