@@ -57,6 +57,7 @@ import { WelcomeComponent } from './home/welcome/welcome.component';
 import { UpdateBoardComponent } from './board/update-board/update-board.component';
 import { DeleteTasksComponent } from './dialogs/delete-tasks/delete-tasks.component';
 import { RevokeassignmentComponent } from './task/revokeassignment/revokeassignment.component';
+import { SharedBoardsComponent } from './board/shared-boards/shared-boards.component';
 
 @NgModule({
   declarations: [
@@ -86,6 +87,7 @@ import { RevokeassignmentComponent } from './task/revokeassignment/revokeassignm
     UpdateBoardComponent,
     DeleteTasksComponent,
     RevokeassignmentComponent,
+    SharedBoardsComponent,
   ],
   imports: [
     BrowserModule,
