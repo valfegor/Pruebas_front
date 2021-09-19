@@ -17,15 +17,19 @@ export class HeaderComponent implements OnInit {
   }
 
   getUser(){
-    this._userService.getProfile().subscribe(
-      (res)=>{
-        this.userData = res.user;
-        console.log(this.userData);
-      },
-      (err)=>{
-        console.log(err)
-      }
-    )
+    if(this._userService.loggedIn()){
+      
+      this._userService.getProfile().subscribe(
+        (res)=>{
+          this.userData = res.user;
+          console.log(this.userData);
+          
+        },
+        (err)=>{
+          console.log(err)
+        }
+      )
+    }
   }
   toggleSidebar() {
     this.toggleSidebarForMe.emit();
