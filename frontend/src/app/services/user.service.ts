@@ -42,7 +42,9 @@ export class UserService {
     localStorage.removeItem('token');
     localStorage.removeItem('role');
     localStorage.removeItem('name');
+    location.reload();
     this._router.navigate(['/login']);
+    
   }
 
   getRole(email: string) {

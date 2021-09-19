@@ -13,8 +13,23 @@ export class SidenavComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    if(this._userService.loggedIn()){
+      if(this._userService.getToken()){
+        this._userService.getProfile().subscribe(
+          (res)=>{
+            this.userData = res.user;
+          },
+          (err)=>{
+            console.log(err)
+          }
+        )
+      }
+    }
     
-    if(this._userService.getToken()){
+  }
+
+  getProfile(){
+    
       this._userService.getProfile().subscribe(
         (res)=>{
           this.userData = res.user;
@@ -23,11 +38,7 @@ export class SidenavComponent implements OnInit {
           console.log(err)
         }
       )
-    }
-  }
-
-  getProfile(){
-   
+    
    }
 
 }

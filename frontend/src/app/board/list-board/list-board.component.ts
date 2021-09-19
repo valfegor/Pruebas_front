@@ -49,6 +49,7 @@ export class ListBoardComponent implements OnInit {
       (res)=>{
         this.userData = res.user;
         this.Boards();
+       
       },
       (err) => {
         this.message= err.error;
