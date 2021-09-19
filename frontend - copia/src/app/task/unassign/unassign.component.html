@@ -1,0 +1,48 @@
+<div class="bgComponent">
+  <div class="form">
+    <mat-card class="card">
+      <mat-card-title>Please complete all information:</mat-card-title>
+      <br />
+      <mat-card-content>
+        <div class="container">
+          <mat-form-field>
+            <mat-label>Escoge un rol</mat-label>
+            <mat-select [(ngModel)]="registerData._idUser">
+              <mat-option
+              (click)="listme()"
+                *ngFor="let item of userData"
+                value="{{ item._id }}"
+                [disabled]="false"
+                >{{ item.name }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Escoge un rol</mat-label>
+            <mat-select [(ngModel)]="registerData._idTask">
+              <mat-option
+                *ngFor="let task of tasksassinged"
+                value="{{ task._id }}"
+                [disabled]="false"
+                >{{ task.name }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field *ngIf="show != false">
+            <mat-label>Favorite food</mat-label>
+            <input matInput placeholder="User Select" value="" />
+          </mat-form-field>
+          <input type="file" />
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button
+            (click)="unassignThistask()"
+            class="button colorButton"  mat-raised-button >
+            Register
+          </button>
+      
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

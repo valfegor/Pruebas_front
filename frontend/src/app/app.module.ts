@@ -50,8 +50,13 @@ import { UnassignComponent } from './task/unassign/unassign.component';
 import { SidenavComponent } from './home/sidenav/sidenav.component';
 import {MatListModule} from '@angular/material/list'; 
 import { CarouselModule } from 'ngx-owl-carousel-o';
-import { RevokeassignmentComponent } from './admin/revokeassignment/revokeassignment.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { ProfileComponent } from './home/profile/profile.component';
+import { WelcomeComponent } from './home/welcome/welcome.component';
+import { UpdateBoardComponent } from './board/update-board/update-board.component';
 import { DeleteTasksComponent } from './dialogs/delete-tasks/delete-tasks.component';
+import { RevokeassignmentComponent } from './task/revokeassignment/revokeassignment.component';
 
 @NgModule({
   declarations: [
@@ -76,8 +81,11 @@ import { DeleteTasksComponent } from './dialogs/delete-tasks/delete-tasks.compon
     ListboardtasksComponent,
     UnassignComponent,
     SidenavComponent,
-    RevokeassignmentComponent,
+    ProfileComponent,
+    WelcomeComponent,
+    UpdateBoardComponent,
     DeleteTasksComponent,
+    RevokeassignmentComponent,
   ],
   imports: [
     BrowserModule,
@@ -101,6 +109,9 @@ import { DeleteTasksComponent } from './dialogs/delete-tasks/delete-tasks.compon
     MatDividerModule,
     MatListModule,
     CarouselModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
     MatDialogModule
   ],
   providers: [

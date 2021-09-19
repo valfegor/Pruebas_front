@@ -1,0 +1,33 @@
+<div class="bgComponent">
+    <div class="form">
+      <mat-card class="card">
+        <mat-card-title>Update Board</mat-card-title>
+        <mat-card-content>
+          <div class="container">
+            <mat-form-field>
+              <input
+                [(ngModel)]="registerData.name"
+                matInput
+                placeholder="name"
+                disabled
+              />
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                [(ngModel)]="registerData.description"
+                matInput
+                placeholder="description"
+                required
+              />
+            </mat-form-field>                  
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button (click)="updateBoard()" class="button" mat-raised-button>
+            Update
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+  

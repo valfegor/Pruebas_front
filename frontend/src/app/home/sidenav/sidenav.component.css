@@ -32,19 +32,21 @@
     margin-bottom: 4px;
     margin: 0 8px;
     text-decoration: none;
+    margin-top: 20px;
     
 }
 
 .mat-list-item-content{
     border-radius: 5px;
     margin: 0 8px;
-    text-decoration: none
+    text-decoration: none;
+   
 }
 
 a{
     text-decoration: none;
     text-transform: uppercase;
-    padding-top: 20px;
+    
     
 }
 

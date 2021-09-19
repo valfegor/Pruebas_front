@@ -40,4 +40,14 @@ const updateRole = async (req, res) => {
   return res.status(200).send({ role });
 };
 
-module.exports = { registerRole, listRole, updateRole };
+const findRole = async (req, res) => {  
+  const role = await Role.findOne({ _id: req.params["_id"] })
+    .populate("roleId")
+    .exec();
+  if (!role || role.length === 0)
+    return res.status(400).send("No search results");
+  return res.status(200).send({ role });
+};
+
+
+module.exports = { registerRole, listRole, updateRole, findRole};

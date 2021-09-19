@@ -1,29 +1,30 @@
 <div class="bgComponent">
   <owl-carousel-o [options]="customOptions">
-    <ng-template carouselSlide *ngFor="let task of myboard">
+    <ng-template carouselSlide *ngFor="let board of boardData">
       <div class="bodyx">
         <div class="card" >
           <div class="card-image">
-            <img src="{{task.imageUrl}}" alt="">
+            <img src="{{board.imageUrl}}" alt="">
           </div>
           <div class="card-text">
-            <span class="date">{{task.date}}</span>
+            <span class="date">{{board.date |date}}</span>
             
-            <h2>{{task.name }}</h2>
-            <p>{{task.description}}</p><br>
+            <h2>{{board.name }}</h2>
+            <p>{{board.description}}</p><br>
             
           </div>
           <div class="card-stats">
-            <div class="stat border">
-              <mat-icon> person_pin</mat-icon>
+            <div class="stat">
+              <mat-icon [routerLink]="['listMembers/', board._id]"> person_pin</mat-icon>
             </div>
             <div class="stat border">
-              <mat-icon>update</mat-icon>
+              <mat-icon class="colorUpdate updateIcon"
+              [routerLink]="['/updateBoard/', board._id]" >update</mat-icon>
             </div>
-            <div class="stat border">
-              <mat-icon>delete_sweep</mat-icon>
+            <div class="stat">
+              <mat-icon (click)="deleteBoard(board)"> delete_sweep</mat-icon>
             </div>
-            <div class="stat border" [routerLink]="['listboardtasks/', task._id]">
+            <div class="stat border" [routerLink]="['listboardtasks/', board._id]">
               <mat-icon>task</mat-icon>
             </div>
           </div>

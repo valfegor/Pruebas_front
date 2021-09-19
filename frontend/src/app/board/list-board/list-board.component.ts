@@ -1,84 +1,36 @@
 import { Component, OnInit } from '@angular/core';
 import { BoardService } from '../../services/board.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { UserService } from "../../services/user.service";
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
 
-
 @Component({
   selector: 'app-list-board',
   templateUrl: './list-board.component.html',
-  styleUrls: ['./list-board.component.css']
+  styleUrls: ['./list-board.component.css'],
 })
 export class ListBoardComponent implements OnInit {
-  taskData: any;
-  userData: any;
-  myboard: any;
+  boardData: any;
   message: string = '';
-  existe:boolean;
- 
   horizontalPosition: MatSnackBarHorizontalPosition = 'end';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   durationInSeconds: number = 2;
-  
 
   constructor(
     private _boardService: BoardService,
-    private _snackBar: MatSnackBar,
-    private _userService: UserService
-      
+    private _snackBar: MatSnackBar
   ) {
-    this.taskData = {};
-    this.userData={};
-    this.myboard=[];
-    this.existe=false;
+    this.boardData = [];
   }
 
   ngOnInit(): void {
-    
-    this.getprofile();
-    
-  }
-
-  getprofile(){
-    return this._userService.getProfile().subscribe(
-      (res)=>{
-        this.userData = res.user;
-        this.Boards();
-       
-      },
-      (err) => {
-        this.message= err.error;
-      }
-    )
-   
-  }
-
-  Boards(){
     this._boardService.listBoard().subscribe(
       (res) => {
-        this.taskData = res.board;
-        console.log(this.userData._id)
-        
-        
-       this.existe = this.taskData.some((element: { userId: any; })=>element.userId === this.userData._id);
-       if(this.existe){
-         
-        this.myboard = this.taskData.filter((element:{userId: any;})=>element.userId === this.userData._id)
-        
-        if(this.myboard === undefined) {
-          location.reload()
-        }
-        console.log(this.myboard)
-
-       }
-
-       console.log()
-
+        this.boardData = res.board;
+        console.log(this.boardData);
       },
       (err) => {
         this.message = err.error;
@@ -86,63 +38,67 @@ export class ListBoardComponent implements OnInit {
       }
     );
   }
-  element(element: any) {
-    throw new Error('Method not implemented.');
+
+  deleteBoard(board: any) {
+    this._boardService.deleteBoard(board).subscribe(
+      (res) => {
+        let index = this.boardData.indexOf(board);
+        if (index > -1) {
+          this.boardData.splice(index, 1);
+          this.message = res.message;
+          this.openSnackBarSuccesfull();
+        }
+      },
+      (err) => {
+        this.message = err.error;
+        this.openSnackBarError();
+      }
+    );
+  }
+  updateBoard(board: any) {
+    this._boardService.deleteBoard(board).subscribe(
+      (res) => {
+        let index = this.boardData.indexOf(board);
+        if (index > -1) {
+          this.boardData.splice(index, 1);
+          this.message = res.message;
+          this.openSnackBarSuccesfull();
+        }
+      },
+      (err) => {
+        this.message = err.error;
+        this.openSnackBarError();
+      }
+    );
   }
 
   customOptions: OwlOptions = {
-
     loop: false,
-
-    mouseDrag: true,
-
-    touchDrag: false,
-
-    pullDrag: true,
-
+    mouseDrag: false,
+    touchDrag: true,
+    pullDrag: false,
     dots: true,
-
     navSpeed: 800,
-
     navText: ['', ''],
 
     responsive: {
-
       0: {
-
-        items: 1
-
+        items: 1,
       },
-
       400: {
-
-        items: 2
-
+        items: 2,
       },
-
       740: {
-
-        items: 3
-
+        items: 3,
       },
-
       940: {
-
-        items: 4
-
-      }
-
+        items: 4,
+      },
+      
     },
+    nav: false,
+  };
 
-    nav: false
-
-  }
-
-  
-
-    
-
- 
   openSnackBarSuccesfull() {
     this._snackBar.open(this.message, 'X', {
       horizontalPosition: this.horizontalPosition,

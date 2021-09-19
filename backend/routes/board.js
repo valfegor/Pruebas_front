@@ -7,10 +7,31 @@ const Auth = require("../middleware/auth");
 const Upload = require("../middleware/file");
 const ValidateUser = require("../middleware/validateUser");
 
-router.post("/registerBoard",mult,Upload,Auth, ValidateUser,BoardController.registerBoard);
-router.get("/listBoard", BoardController.listBoard);
-router.put("/addMember", BoardController.addMember);
-router.put("/deleteMember", BoardController.deleteMember);
-router.delete("/deleteTask/:_id", BoardController.deleteBoard);
+router.post(
+  "/registerBoard",
+  mult,
+  Upload,
+  Auth,
+  ValidateUser,
+  BoardController.registerBoard
+);
+router.get("/listBoard", Auth, ValidateUser, BoardController.listBoard);
+router.get(
+  "/listBoardMember",
+  Auth,
+  ValidateUser,
+  BoardController.listBoardMember
+);
+router.get("/listMember" , Auth, ValidateUser, BoardController.listMember);
+router.put("/addMember", Auth, ValidateUser, BoardController.addMember);
+router.put("/deleteMember", Auth, ValidateUser, BoardController.deleteMember);
+router.put("/updateBoard" , Auth, ValidateUser, BoardController.updateBoard);
+router.delete(
+  "/deleteBoard/:_id",
+  Auth,
+  ValidateUser,
+  BoardController.deleteBoard
+);
+router.get("/getBoard/:_id" , Auth, ValidateUser, BoardController.getBoard);
 
 module.exports = router;

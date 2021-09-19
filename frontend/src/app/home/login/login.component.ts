@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
+
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
@@ -26,7 +27,7 @@ export class LoginComponent implements OnInit {
     private _snackBar: MatSnackBar
   ) {
     this.loginData = {};
-    this.registerData={};
+    this.registerData = {};
   }
 
   ngOnInit(): void {}
@@ -40,10 +41,10 @@ export class LoginComponent implements OnInit {
       this._userService.login(this.loginData).subscribe(
         (res) => {
           localStorage.setItem('token', res.jwtToken);
-          this._router.navigate(['/listBoard']);
+          location.href = '/listBoard';
           this.getRole(this.loginData.email);
+          this.getNomrbe(this.loginData.email);
           this.loginData = {};
-          
         },
         (err) => {
           this.message = err.error;
@@ -52,7 +53,6 @@ export class LoginComponent implements OnInit {
       );
     }
   }
-  
 
   getRole(email: string) {
     this._userService.getRole(email).subscribe(
@@ -65,8 +65,14 @@ export class LoginComponent implements OnInit {
     );
   }
 
+  getNomrbe(email: string) {
+    this._userService.getNombre(email).subscribe((res) => {
+      localStorage.setItem('name', res.name);
+    });
+  }
+
   registerUser() {
-    console.log(this.registerData)
+    console.log(this.registerData);
     if (
       !this.registerData.name ||
       !this.registerData.email ||
@@ -79,7 +85,7 @@ export class LoginComponent implements OnInit {
       this._userService.registerUser(this.registerData).subscribe(
         (res) => {
           localStorage.setItem('token', res.jwtToken);
-          this._router.navigate(['/saveTask']);
+          location.href = '/saveBoard';
           this.message = 'Successfull user registration';
           this.openSnackBarSuccesfull();
           this.registerData = {};

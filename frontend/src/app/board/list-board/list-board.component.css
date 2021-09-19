@@ -1,4 +1,11 @@
-
+.bgComponent {
+  background-image: url("../../../assets/img/bg2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 5%;
+  }
   
 .bodyx{
   display: flex;
@@ -7,12 +14,12 @@
   padding-right: 20px;
   align-items: center;
   justify-content: center;
-  width:100%;
-  height:100%;
+  width:250px;
+  max-height:700px;
 }
 .card {
   display: grid;
-  grid-template-columns: 190px;
+  grid-template-columns: 180px;
   grid-template-rows: 200px 200px 70px;
   grid-template-areas: "image" "text" "stats";
 
@@ -38,10 +45,8 @@
 
 img{
   border-radius: 15px;
-  width:100%;
-  height: 100%;
-  padding-right: 2px;
- 
+  width:150px;
+  height: 150px;
 }
 .card-text {
   grid-area: text;
@@ -81,8 +86,8 @@ img{
   border-radius: 1px;
 }
 .card-stats .border {
-  border-radius: 5px;
-  
+  border-left: 1px solid rgb(172, 26, 87);
+  border-right: 1px solid rgb(172, 26, 87);
 }
 .card-stats .value{
   font-size:22px;
@@ -108,3 +113,4 @@ img{
   padding-bottom: 20px;
   
 }
+

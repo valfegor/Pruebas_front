@@ -42,11 +42,10 @@ export class RegisterComponent implements OnInit {
       this._userService.registerUser(this.registerData).subscribe(
         (res) => {
           localStorage.setItem('token', res.jwtToken);
-          this._router.navigate(['/saveTask']);
+          this._router.navigate(['/saveBoard']);
           this.message = 'Successfull user registration';
           this.openSnackBarSuccesfull();
           this.registerData = {};
-          location.reload();
         },
         (err) => {
           this.message = err.error;

@@ -12,24 +12,20 @@ export class HeaderComponent implements OnInit {
   constructor(public _userService: UserService) { }
 
   ngOnInit(): void {
-    this.getUser();
     this.userData={};
+    this.getUser();
   }
 
   getUser(){
-    if(this._userService.loggedIn()){
-      
-      this._userService.getProfile().subscribe(
-        (res)=>{
-          this.userData = res.user;
-          console.log(this.userData);
-          
-        },
-        (err)=>{
-          console.log(err)
-        }
-      )
-    }
+    this._userService.getProfile().subscribe(
+      (res)=>{
+        this.userData = res.user;
+        console.log(this.userData);
+      },
+      (err)=>{
+        console.log(err)
+      }
+    )
   }
   toggleSidebar() {
     this.toggleSidebarForMe.emit();

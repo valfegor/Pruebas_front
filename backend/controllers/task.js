@@ -159,11 +159,9 @@ const updateTask = async (req, res) => {
       .send("Please check that user dont have assigned this task");
 
   /*
-
   if (inactiveTask.dbStatus == false || !inactiveTask || inactiveTask == null) {
     return res.status(400).send("You already did that Task ");
   }
-
   */
 
   const task = await Task.findByIdAndUpdate(req.body._id, {
@@ -306,14 +304,18 @@ const asignTask = async (req, res) => {
       .status(400)
       .send("Sorry please have to specify a task for the user");
 
+  
+
   let assignedtask = await Task.findOne({ _id: req.body._idtask });
 
   let board = await Board.findById(assignedtask.boardId);
 
+
+
   let userOwner = board.members.find(
     (element) => element.name === req.user.name
   );
-
+    
   if(!userOwner) return res.status(400).send("Sorry you are not a member")
 
   let actualRole = userOwner.role;
@@ -392,10 +394,12 @@ const unassingTask = async (req, res) => {
       .send("Sorry you are not the Owner please contact the owner");
 
   const indice = user.AssignedTasks.findIndex(
-    (element) => element.name === task.name
+    (element) => element.name == task.name
   );
 
-  if (!indice) return res.status(400).send("Sorry Cant Find the task");
+  
+
+
 
   const arreglo = user.AssignedTasks;
 

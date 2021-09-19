@@ -1,3 +1,12 @@
+.bgComponent {
+  background-image: url("../../../assets/img/bg2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 5%;
+  }
+  
 .container {
   display: flex;
   flex-direction: column;

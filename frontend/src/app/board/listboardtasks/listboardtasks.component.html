@@ -1,195 +1,195 @@
 <div class="bgComponent">
-    <div class="boards">
-      <div class="board">
-        <h3>To-do</h3>
-        <div class="dropzone" *ngFor="let task of taskData">
-            <div class="container" *ngIf="task.taskStatus=='to-do'">
-                <div class="box" >
-                  <div>
-                    <mat-icon color="primary" class="delete" (click)="deleteTask(task)"
-              >delete</mat-icon
-            >
-                  </div>
-                <div class="image">
-                    <img src="{{task.imageUrl}}" alt="">
-                  </div>
-                  <div class="name_job">{{task.name}}</div>
-                  <div class="rating" *ngIf="task.score == 5 ">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                  </div>
-                  <div class="rating" *ngIf="task.score == 4 ">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    
-                  </div>
-                  <div class="rating" *ngIf="task.score == 3">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    
-                  </div>
-                  <div class="rating" *ngIf="task.score == 2 ">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    
-                  </div>
-                  <div class="rating" *ngIf="task.score == 1 ">
-                    <i class="fas fa-star"></i>
-                    
-                  </div>
-                  <p>{{task.description}}</p>
-                  <P>Author: {{task.author}}</P>
-                  <p>Status: {{task.taskStatus}}</p>
-                  <P *ngIf="task.assigned ==false">this task is not assigned</P>
-                  <p *ngIf="task.assigned == true">This tasks its asigned to {{task.username}}</p>
-                  <div class="btns">
-                    <button class="to-do" (click)="updateTask(task,'to-do')">To-do</button>
-                    <button class="in-progress" (click)="updateTask(task,'in-progress')">in-progress</button>
-                    <button class="done" (click)="updateTask(task,'done')">done</button>
-                    
-                  </div>
-
-                  
-
+  <div class="boards">
+    <div class="board">
+      <h3>To-do</h3>
+      <div class="dropzone" *ngFor="let task of taskData">
+          <div class="container" *ngIf="task.taskStatus=='to-do'">
+              <div class="box" >
+                <div>
+                  <mat-icon color="primary" class="delete" (click)="deleteTask(task)"
+            >delete</mat-icon
+          >
                 </div>
+              <div class="image">
+                  <img src="{{task.imageUrl}}" alt="">
+                </div>
+                <div class="name_job">{{task.name}}</div>
+                <div class="rating" *ngIf="task.score == 5 ">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+                <div class="rating" *ngIf="task.score == 4 ">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  
+                </div>
+                <div class="rating" *ngIf="task.score == 3">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  
+                </div>
+                <div class="rating" *ngIf="task.score == 2 ">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  
+                </div>
+                <div class="rating" *ngIf="task.score == 1 ">
+                  <i class="fas fa-star"></i>
+                  
+                </div>
+                <p>{{task.description}}</p>
+                <P>Author: {{task.author}}</P>
+                <p>Status: {{task.taskStatus}}</p>
+                <P *ngIf="task.assigned ==false">this task is not assigned</P>
+                <p *ngIf="task.assigned == true">This tasks its asigned to {{task.username}}</p>
+                <div class="btns">
+                  <button class="to-do" (click)="updateTask(task,'to-do')">To-do</button>
+                  <button class="in-progress" (click)="updateTask(task,'in-progress')">in-progress</button>
+                  <button class="done" (click)="updateTask(task,'done')">done</button>
+                  
+                </div>
+
                 
+
               </div>
+              
+            </div>
+        
+      </div>
+    </div>
+  
+    <div class="board">
+      <h3>in-progress</h3>
+      <div class="dropzone" *ngFor="let task of taskData">
+        <div class="container" *ngIf="task.taskStatus=='in-progress'">
+          <div class="box">
+            <div>
+              <mat-icon color="primary" class="delete" (click)="deleteTask(task)"
+        >delete</mat-icon
+      >
+            </div>
+          <div class="image">
+              <img src="{{task.imageUrl}}" alt="">
+            </div>
+            <div class="name_job">{{task.name}}</div>
+            <div class="rating" *ngIf="task.score == 5 ">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <div class="rating" *ngIf="task.score == 4 ">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              
+            </div>
+            <div class="rating" *ngIf="task.score == 3">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              
+            </div>
+            <div class="rating" *ngIf="task.score == 2 ">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              
+            </div>
+            <div class="rating" *ngIf="task.score == 1 ">
+              <i class="fas fa-star"></i>
+              
+            </div>
+            <p>{{task.description}}</p>
+                <P>Author: {{task.author}}</P>
+                <p>Status: {{task.taskStatus}}</p>
+                <P *ngIf="task.assigned ==false">this task is not assigned</P>
+                <p *ngIf="task.assigned == true">This tasks its asigned to {{task.username}}</p>
+            <div class="btns">
+              <button class="to-do" (click)="updateTask(task,'to-do')">To-do</button>
+              <button class="in-progress" (click)="updateTask(task,'in-progress')">in-progress</button>
+              <button class="done" (click)="updateTask(task,'done')">done</button>
+              
+            </div>
+
+            
+
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  
+    <div class="board">
+      <h3>done</h3>
+      <div class="dropzone" *ngFor="let task of taskData">
+        <div class="container" *ngIf="task.taskStatus=='done'">
+          <div class="box">
+            <div>
+              <mat-icon color="primary" class="delete" (click)="deleteTask(task)"
+        >delete</mat-icon
+      >
+            </div>
+          <div class="image">
+              <img src="{{task.imageUrl}}" alt="">
+            </div>
+            <div class="name_job">{{task.name}}</div>
+            <div class="rating" *ngIf="task.score == 5 ">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <div class="rating" *ngIf="task.score == 4 ">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              
+            </div>
+            <div class="rating" *ngIf="task.score == 3">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              
+            </div>
+            <div class="rating" *ngIf="task.score == 2 ">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              
+            </div>
+            <div class="rating" *ngIf="task.score == 1 ">
+              <i class="fas fa-star"></i>
+              
+            </div>
+            <p>{{task.description}}</p>
+                <P>Author: {{task.author}}</P>
+                <p>Status: {{task.taskStatus}}</p>
+                <P *ngIf="task.assigned ==false">this task is not assigned</P>
+                <p *ngIf="task.assigned == true">This tasks its asigned to {{task.username}}</p>
+            <div class="btns">
+              <button class="to-do" (click)="updateTask(task,'to-do')">To-do</button>
+              <button class="in-progress" (click)="updateTask(task,'in-progress')">in-progress</button>
+              <button class="done" (click)="updateTask(task,'done')">done</button>
+            </div>
+
+            
+
+          </div>
           
         </div>
       </div>
     
-      <div class="board">
-        <h3>in-progress</h3>
-        <div class="dropzone" *ngFor="let task of taskData">
-          <div class="container" *ngIf="task.taskStatus=='in-progress'">
-            <div class="box">
-              <div>
-                <mat-icon color="primary" class="delete" (click)="deleteTask(task)"
-          >delete</mat-icon
-        >
-              </div>
-            <div class="image">
-                <img src="{{task.imageUrl}}" alt="">
-              </div>
-              <div class="name_job">{{task.name}}</div>
-              <div class="rating" *ngIf="task.score == 5 ">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <div class="rating" *ngIf="task.score == 4 ">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                
-              </div>
-              <div class="rating" *ngIf="task.score == 3">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                
-              </div>
-              <div class="rating" *ngIf="task.score == 2 ">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                
-              </div>
-              <div class="rating" *ngIf="task.score == 1 ">
-                <i class="fas fa-star"></i>
-                
-              </div>
-              <p>{{task.description}}</p>
-                  <P>Author: {{task.author}}</P>
-                  <p>Status: {{task.taskStatus}}</p>
-                  <P *ngIf="task.assigned ==false">this task is not assigned</P>
-                  <p *ngIf="task.assigned == true">This tasks its asigned to {{task.username}}</p>
-              <div class="btns">
-                <button class="to-do" (click)="updateTask(task,'to-do')">To-do</button>
-                <button class="in-progress" (click)="updateTask(task,'in-progress')">in-progress</button>
-                <button class="done" (click)="updateTask(task,'done')">done</button>
-                
-              </div>
-
-              
-
-            </div>
-            
-          </div>
-        </div>
-      </div>
-    
-      <div class="board">
-        <h3>done</h3>
-        <div class="dropzone" *ngFor="let task of taskData">
-          <div class="container" *ngIf="task.taskStatus=='done'">
-            <div class="box">
-              <div>
-                <mat-icon color="primary" class="delete" (click)="deleteTask(task)"
-          >delete</mat-icon
-        >
-              </div>
-            <div class="image">
-                <img src="{{task.imageUrl}}" alt="">
-              </div>
-              <div class="name_job">{{task.name}}</div>
-              <div class="rating" *ngIf="task.score == 5 ">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <div class="rating" *ngIf="task.score == 4 ">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                
-              </div>
-              <div class="rating" *ngIf="task.score == 3">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                
-              </div>
-              <div class="rating" *ngIf="task.score == 2 ">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                
-              </div>
-              <div class="rating" *ngIf="task.score == 1 ">
-                <i class="fas fa-star"></i>
-                
-              </div>
-              <p>{{task.description}}</p>
-                  <P>Author: {{task.author}}</P>
-                  <p>Status: {{task.taskStatus}}</p>
-                  <P *ngIf="task.assigned ==false">this task is not assigned</P>
-                  <p *ngIf="task.assigned == true">This tasks its asigned to {{task.username}}</p>
-              <div class="btns">
-                <button class="to-do" (click)="updateTask(task,'to-do')">To-do</button>
-                <button class="in-progress" (click)="updateTask(task,'in-progress')">in-progress</button>
-                <button class="done" (click)="updateTask(task,'done')">done</button>
-              </div>
-
-              
-
-            </div>
-            
-          </div>
-        </div>
-      
-    </div>
-    
-    
-    
   </div>
+  
+  
+  
+</div>

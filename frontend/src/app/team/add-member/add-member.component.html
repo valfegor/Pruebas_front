@@ -1,1 +1,29 @@
-<p>add-member works!</p>
+
+<div class="bgComponent">
+    <div class="form">
+    
+      <mat-card class="card">
+        <mat-card-title>Add Member</mat-card-title>
+      
+        <mat-card-content>
+          <div class="container">
+            <mat-form-field>
+              <input
+                [(ngModel)]="userData.email"
+                type="email"
+                matInput
+                placeholder="Email"
+                required
+              />
+            </mat-form-field>
+           
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button (click)="addMember()" class="button" mat-raised-button [routerLink]="['..']">
+            Register
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>

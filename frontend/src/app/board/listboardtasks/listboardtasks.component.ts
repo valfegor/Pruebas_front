@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../../services/task.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { DeleteTasksComponent } from "../../dialogs/delete-tasks/delete-tasks.component";
+import { UserService } from "../../services/user.service";
 import Swal from 'sweetalert2'
 import {
   MatSnackBar,
@@ -36,7 +37,11 @@ export class ListboardtasksComponent implements OnInit {
 
   ngOnInit(): void {
     this.gettasks()
+    
+    
   }
+
+  
 
   gettasks(){
     this._arouter.params.subscribe((params) => {
@@ -44,7 +49,7 @@ export class ListboardtasksComponent implements OnInit {
       this._taskService.getBoardTask(this._id).subscribe(
         (res) => {
           this.taskData = res.task;
-          console.log(this.taskData);
+          
         },
         (err) => {
           this.message = err.error;

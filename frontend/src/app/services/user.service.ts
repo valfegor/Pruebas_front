@@ -42,9 +42,8 @@ export class UserService {
     localStorage.removeItem('token');
     localStorage.removeItem('role');
     localStorage.removeItem('name');
-    location.reload();
-    this._router.navigate(['/login']);
-    
+    localStorage.removeItem('_id');
+    this._router.navigate(['']);
   }
 
   getRole(email: string) {
@@ -55,12 +54,24 @@ export class UserService {
     return this._http.get<any>(this.env + 'user/getNombre/' + email);
   }
 
+  getId(email: string) {
+    return this._http.get<any>(this.env + 'user/getId/' + email);
+  }
+
   listUser(name: string) {
     return this._http.get<any>(this.env + 'user/listUsers/' + name);
   }
 
+  findUser(_id: string) {
+    return this._http.get<any>(this.env + 'user/findUser/' + _id);
+  }
+
   updateUser(user: any) {
     return this._http.put<any>(this.env + 'user/updateUser', user);
+  }
+
+  updatePhoto(user: any) {
+    return this._http.put<any>(this.env + 'user/updatePhoto', user);
   }
 
   deleteUser(user: any) {
@@ -77,5 +88,9 @@ export class UserService {
 
   getProfile(){
     return this._http.get<any>(this.env + 'user/getProfile');
+  }
+  
+  findUserByEmail(user:any){
+    return this._http.post<any>(this.env + 'user/findUserByEmail' , user);
   }
 }

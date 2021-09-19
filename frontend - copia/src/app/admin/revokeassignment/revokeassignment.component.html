@@ -1,0 +1,46 @@
+<div class="bgComponent">
+  <div class="contact-wrapper">
+    <div class="left_side">
+      <img src="../../../assets/img/logo.png" />
+    </div>
+    <div class="right_side">
+      <h2>Revoke Assigned Task</h2>
+      <form>
+        <mat-form-field class="formsito">
+          <mat-label>Select A Board Please</mat-label>
+          <mat-select [(ngModel)]="search.boardID" name="board">
+            <mat-option
+              (click)="listme()"
+              *ngFor="let board of boardData"
+              value="{{ board._id }}"
+              >{{ board.name }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="formsito">
+          <mat-label>Select The user Please</mat-label>
+          <mat-select [(ngModel)]="registerData._idUser" name="user">
+            <mat-option
+              (click)="listAssigned()"
+              *ngFor="let item of userData"
+              value="{{ item.id }}"
+              >{{ item.name }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="formsito">
+          <mat-label>Select The Task</mat-label>
+          <mat-select [(ngModel)]="registerData._idTask" name="task">
+            <mat-option
+            *ngFor="let task of taskData"
+            value="{{task._id}}"
+            >{{task.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div class="form-row">
+          <button type="submit" (click)="alert()" >Assign This Task !</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

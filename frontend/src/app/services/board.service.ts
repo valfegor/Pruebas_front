@@ -20,6 +20,10 @@ export class BoardService {
     return this._http.get<any>(this.env + 'board/listBoard');
   }
 
+  listBoardMember() {
+    return this._http.get<any>(this.env + 'board/listBoardMember' );
+  }
+  
   addMember(board: any) {
     return this._http.put<any>(this.env + 'board/addMember', board);
   }
@@ -29,10 +33,22 @@ export class BoardService {
   }
 
   deleteMember(board: any) {
-    return this._http.delete<any>(this.env + 'board/deleteMember/' + board._id);
+    return this._http.put<any>(this.env + 'board/deleteMember/' , board);
   }
 
-  
+  deleteBoard(board: any) {
+    return this._http.delete<any>(this.env + 'board/deleteBoard/' + board._id);
+  }
 
+  updateBoard(board: any) {
+    return this._http.put<any>(this.env + 'board/updateBoard/', board);
+  }
 
+  getBoard(board: any) {
+    return this._http.get<any>(this.env + 'board/getBoard/' + board)
+  }
+
+  listMember(board: any){
+    return this._http.get<any>(this.env + 'board/listMember/' , board._id)
+  }
 }
