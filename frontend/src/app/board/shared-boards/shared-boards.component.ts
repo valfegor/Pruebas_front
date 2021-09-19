@@ -34,11 +34,10 @@ export class SharedBoardsComponent implements OnInit {
   ngOnInit(): void {
     this._boardService.listBoardMember().subscribe(
       (res) => {
-        this.boardData = res.board;
+        this.boardData = res.MyBoards;
+        console.log(this.boardData);
         this.getPROFILE();
-        for (const board of this.boardData) {
-          console.log(board.members);
-        }
+        
 
         
         
