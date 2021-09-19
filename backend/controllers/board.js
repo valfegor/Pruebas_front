@@ -128,17 +128,12 @@ const listBoardMember = async (req, res) => {
   let user = await User.findById(req.user._id);
   if (!user) return res.status(400).send("User not found");
 
-  let MyBoards = []
 
-  let board = await Board.find();
-  board.forEach(boardMember => {
-      console.log(boardMember.members) 
-      
-  })
-  console.log(MyBoards)
+  let board = await Board.find({ "members.id": user._id });
+  console.log(board);
   if (!board || board.length === 0)
-  return res.status(400).send("You have no assigned tasks");
-  return res.status(200).send();
+    return res.status(400).send("You have no assigned tasks");
+  return res.status(200).send({ board });
 };
 
 const deleteBoard = async (req, res) => {
