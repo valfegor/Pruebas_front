@@ -14,6 +14,10 @@
     <a *ngIf="_userService.loggedIn()" mat-list-item routerLink="listBoard" routerLinkActive="list-item-active">
         <mat-icon>add_to_photos</mat-icon>list Your Boards
     </a>
+    <a *ngIf="_userService.loggedIn()" mat-list-item routerLink="SharedBoards" routerLinkActive="list-item-active">
+        <mat-icon>add_to_photos</mat-icon>list Your SharedBoards
+    </a>
+    
     <a *ngIf="_userService.loggedIn()" mat-list-item routerLink="saveBoard" routerLinkActive="list-item-active">
         <mat-icon>edit</mat-icon>Create board
     </a>
