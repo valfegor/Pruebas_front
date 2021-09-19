@@ -14,17 +14,8 @@
               
             </div>
             <div class="card-stats">
-              <div class="stat">
-                <mat-icon [routerLink]="['listMembers/', board._id]"> person_pin</mat-icon>
-              </div>
-              <div class="stat border">
-                <mat-icon class="colorUpdate updateIcon"
-                [routerLink]="['/updateBoard/', board._id]" >update</mat-icon>
-              </div>
-              <div class="stat">
-                <mat-icon (click)="deleteBoard(board)"> delete_sweep</mat-icon>
-              </div>
-              <div class="stat border" [routerLink]="['listboardtasks/', board._id]">
+              
+              <div class="stat" [routerLink]="['listboardtasks/', board._id]">
                 <mat-icon>task</mat-icon>
               </div>
             </div>

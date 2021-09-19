@@ -77,7 +77,8 @@
     background-color: #2b475e;
   }
   .card-stats .stat {
-    padding:10px;
+    padding-left:80px;
+    
     display: flex;
     align-items: center;
     justify-content: center;
