@@ -130,10 +130,23 @@ const listBoardMember = async (req, res) => {
 
 
   let board = await Board.find({ "members.id": user._id });
+
+  let array = [];
+
+  console.log()
+
+  let test = board.map(element=>{
+    if(element.userId!=req.user._id){
+      array.push(element);
+    }
+  })
+
+  if(array.length==0) return res.status(400).send("Sorry you No one have shared board with you")
+  
   
   if (!board || board.length === 0)
     return res.status(400).send("You have no assigned tasks");
-  return res.status(200).send({ board });
+  return res.status(200).send({ array });
 };
 
 const deleteBoard = async (req, res) => {

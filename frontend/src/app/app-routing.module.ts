@@ -53,6 +53,7 @@ const routes: Routes = [
   { path: 'listBoard', component : ListBoardComponent},
   {path: 'asign', component : AsignComponent},
   {path: 'listBoard/listboardtasks/:_id', component : ListboardtasksComponent},
+  {path: 'SharedBoards/listboardtasks/:_id', component : ListboardtasksComponent},
   {path:'unassign',component:UnassignComponent},
   { path: 'profile', component : ProfileComponent},
   { path: 'welcome', component : WelcomeComponent},

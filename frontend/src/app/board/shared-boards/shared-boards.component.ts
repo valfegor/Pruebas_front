@@ -19,42 +19,25 @@ export class SharedBoardsComponent implements OnInit {
   horizontalPosition: MatSnackBarHorizontalPosition = 'end';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   durationInSeconds: number = 2;
-  public_user: any;
-  filter: any;
+
   constructor(
     private _boardService: BoardService,
-    private _snackBar: MatSnackBar,
-    private _userService: UserService
+    private _snackBar: MatSnackBar
   ) {
-    this.boardData = {};
-    this.public_user = {};
-    this.filter = [];
+    this.boardData = [];
   }
 
   ngOnInit(): void {
     this._boardService.listBoardMember().subscribe(
       (res) => {
-        this.boardData = res.board;
+        this.boardData = res.array;
         console.log(this.boardData);
-        this.getPROFILE();
-        
-
-        
-        
-
-        
       },
       (err) => {
         this.message = err.error;
         this.openSnackBarError();
       }
     );
-  }
-
-  getPROFILE() {
-    this._userService.getProfile().subscribe((res) => {
-      this.public_user = res.user;
-    });
   }
 
   deleteBoard(board: any) {
@@ -112,6 +95,7 @@ export class SharedBoardsComponent implements OnInit {
       940: {
         items: 4,
       },
+      
     },
     nav: false,
   };
