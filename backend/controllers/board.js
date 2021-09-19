@@ -129,7 +129,8 @@ const listBoardMember = async (req, res) => {
   if (!user) return res.status(400).send("User not found");
 
 
-  let board = await Board.find({ "members.id": user._id });
+  let board = await Board.find();
+  
   if (!board || board.length === 0)
     return res.status(400).send("You have no assigned tasks");
   return res.status(200).send({ board });
