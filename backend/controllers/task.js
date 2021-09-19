@@ -377,10 +377,13 @@ const unassingTask = async (req, res) => {
   if (!task)
     return res.status(400).send("Sorry the task dont exist please check");
 
+  console.log(task)
   if (task.assigned !== true)
     return res.status(400).send(" Sorry the task its not asigned please Check");
 
   const board = await Board.findOne({ _id: task.boardId });
+
+  console.log(board)
 
   let usuario_actual = board.members.find(
     (element) => element.name === req.user.name
