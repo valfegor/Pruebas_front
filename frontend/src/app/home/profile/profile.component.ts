@@ -51,7 +51,7 @@ export class ProfileComponent {
        }
      )
 
-     this._boardService.listBoardMember().subscribe(
+     this._boardService.listBoard().subscribe(
       (res) => {
         this.boardData = res.board;
       },
