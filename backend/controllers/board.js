@@ -130,9 +130,12 @@ const listBoardMember = async (req, res) => {
 
 
   let board = await Board.find();
-  
+  board.forEach(boardMember => {
+    let result = boardMember.members.find(element=>element.id == req.user._id && element.role === "Guest");
+    console.log(result)
+  })
   if (!board || board.length === 0)
-    return res.status(400).send("You have no assigned tasks");
+  return res.status(400).send("You have no assigned tasks");
   return res.status(200).send({ board });
 };
 
