@@ -289,9 +289,10 @@ const deleteTask = async (req, res) => {
 
   const board = await Board.find({ _id:taskImg.boardId})
 
-  let filtro = board.members.find(element=>element.id === req.user._id);
-
-  console.log(filtro)
+  board.forEach(element=>{
+    console.log(element.members)
+    
+  })
 
   taskImg = taskImg.imageUrl;
   taskImg = taskImg.split("/")[4];
