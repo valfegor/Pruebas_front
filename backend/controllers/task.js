@@ -283,9 +283,13 @@ const deleteTask = async (req, res) => {
       .status(400)
       .send("Sorry cant Erase that Task its Already Completed");
 
-  console.log(taskImg.assigned)
+  
 
   if(taskImg.assigned=="true") return res.status(400).send("Sorry Please Revoke the task first ")
+
+  const board = await Board.find({ _id:taskImg.boardId})
+
+  console.log(board)
 
   taskImg = taskImg.imageUrl;
   taskImg = taskImg.split("/")[4];
