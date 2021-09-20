@@ -94,6 +94,8 @@ const updateTask = async (req, res) => {
 
   const inactiveTask = await Task.findById({ _id: req.body._id });
   const user = await User.findById(inactiveTask.assignedTo);
+  
+  if(inactiveTask.assigned== false) return res.status(400).send("Sorry please Asign this task to a member please")
 
   if (req.body.taskStatus == "done") {
     scoreUser = 1;
