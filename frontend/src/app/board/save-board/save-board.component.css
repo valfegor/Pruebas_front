@@ -44,6 +44,10 @@ p{
   
 }
 
+.izquierda{
+  padding-top: 30px;
+}
+
 .circle.one {
   width: 130px;
   height: 130px;
