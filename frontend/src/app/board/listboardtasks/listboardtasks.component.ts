@@ -77,6 +77,7 @@ export class ListboardtasksComponent implements OnInit {
 
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.taskData, event.previousIndex, event.currentIndex);
+    console.log(moveItemInArray)
   }
 
   deleteTask(task:any){
