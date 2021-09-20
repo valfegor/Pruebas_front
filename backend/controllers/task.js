@@ -277,6 +277,7 @@ const deleteTask = async (req, res) => {
   if (!validId) return res.status(400).send("Invalid id");
 
   let taskImg = await Task.findById(req.params._id);
+  console.log(taskImg)
 
   if (taskImg.taskStatus === "done")
     return res
@@ -289,14 +290,22 @@ const deleteTask = async (req, res) => {
 
   const board = await Board.find({ _id:taskImg.boardId})
 
-  board.forEach(element=>{
-    let filter = element.members.filter(element=>element.name === req.user.name);
-    console.log(filter);
-    
-  })
+  let array = {}
 
-  if(filter.role!="Owner") return res.status(400).send("Sorry just the owner can delete a task");
+  if(board){
+    board.forEach(element=>{
+      let filter = element.members.filter(element=>element.name === req.user.name);
+      filter.map(element=>{
+        array = element.role
+      })
+    })
+    
+  }
+
+  console.log(array)
   
+  if(array!="Owner") return res.status(400).send("Sorry you are not the owner of the board please check")
+
 
   taskImg = taskImg.imageUrl;
   taskImg = taskImg.split("/")[4];
