@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../../services/task.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { DeleteTasksComponent } from "../../dialogs/delete-tasks/delete-tasks.component";
-import { UserService } from "../../services/user.service";
-import Swal from 'sweetalert2'
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
@@ -76,7 +75,9 @@ export class ListboardtasksComponent implements OnInit {
     )
   }
 
-  
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.taskData, event.previousIndex, event.currentIndex);
+  }
 
   deleteTask(task:any){
     this._dialog.open(DeleteTasksComponent,{data:task,width:'500px'})

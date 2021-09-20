@@ -58,6 +58,7 @@ import { UpdateBoardComponent } from './board/update-board/update-board.componen
 import { DeleteTasksComponent } from './dialogs/delete-tasks/delete-tasks.component';
 import { RevokeassignmentComponent } from './task/revokeassignment/revokeassignment.component';
 import { SharedBoardsComponent } from './board/shared-boards/shared-boards.component';
+import {DragDropModule} from '@angular/cdk/drag-drop'
 
 @NgModule({
   declarations: [
@@ -114,7 +115,8 @@ import { SharedBoardsComponent } from './board/shared-boards/shared-boards.compo
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatDialogModule
+    MatDialogModule,
+    DragDropModule
   ],
   providers: [
     UserService,

@@ -1,8 +1,8 @@
 <div class="bgComponent">
   <div class="boards">
-    <div class="board">
+    <div class="board" cdkDropList  (cdkDropListDropped)="drop($event)">
       <h3>To-do</h3>
-      <div class="dropzone" *ngFor="let task of taskData">
+      <div class="dropzone" *ngFor="let task of taskData" cdkDrag>
           <div class="container" *ngIf="task.taskStatus=='to-do'">
               <div class="box" >
                 <div>
@@ -64,9 +64,9 @@
       </div>
     </div>
   
-    <div class="board">
-      <h3>in-progress</h3>
-      <div class="dropzone" *ngFor="let task of taskData">
+    <div class="board" cdkDropList  (cdkDropListDropped)="drop($event)">
+      <h3>In-progress</h3>
+      <div class="dropzone" *ngFor="let task of taskData" cdkDrag>
         <div class="container" *ngIf="task.taskStatus=='in-progress'">
           <div class="box">
             <div>
@@ -127,9 +127,9 @@
       </div>
     </div>
   
-    <div class="board">
-      <h3>done</h3>
-      <div class="dropzone" *ngFor="let task of taskData">
+    <div class="board" cdkDropList  (cdkDropListDropped)="drop($event)">
+      <h3>Done</h3>
+      <div class="dropzone" *ngFor="let task of taskData" cdkDrag>
         <div class="container" *ngIf="task.taskStatus=='done'">
           <div class="box">
             <div>
