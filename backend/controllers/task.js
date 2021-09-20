@@ -8,13 +8,13 @@ const User = require("../models/user");
 
 const saveTask = async (req, res) => {
   let validId = mongoose.Types.ObjectId.isValid(req.user._id);
-  console.log(req.files.image);
+  
   if (!validId) return res.status(400).send("Invalid id");
 
   if (
     !req.body.name ||
     !req.body.description ||
-    !req.body.boardName ||
+    !req.body.boardId||
     !req.body.score
   )
     return res.status(400).send("Incomplete Data Please Try Again");
@@ -24,7 +24,8 @@ const saveTask = async (req, res) => {
       .status(400)
       .send("Sorry you cant just use a number between 1 and 5");
   }
-  const existTask = await Task.find({ boardName: req.body.boardName });
+  const existTask = await Task.find({ boardId: req.body.boardId });
+  
 
   let existantInBoard = existTask.some(
     (element) => element.name == req.body.name
@@ -33,8 +34,8 @@ const saveTask = async (req, res) => {
   if (existantInBoard)
     return res.status(400).send("Take Another Board that task already exist");
 
-  console.log(req.body.boardName);
-  const board = await Board.findOne({ name: req.body.boardName });
+ 
+  const board = await Board.findOne({ _id: req.body.boardId});
 
   if (!board)
     return res
