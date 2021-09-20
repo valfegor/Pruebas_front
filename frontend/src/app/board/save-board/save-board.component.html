@@ -1,36 +1,31 @@
 <div class="bgComponent">
-    <div class="form">
-      <mat-card class="card">
-        <mat-card-title>Please complete all information:</mat-card-title>
-        <br>
-        <mat-card-content>
-          <div class="container">
-            <mat-form-field>
-              <input
-                [(ngModel)]="registerData.name"
-                matInput
-                placeholder="Name Board"
-                required
-              />
-            </mat-form-field>
-            <mat-form-field>
-              <input
-                [(ngModel)]="registerData.description"
-                matInput
-                placeholder="Description"
-                required
-              />
-            </mat-form-field>       
-            <input type="file" (change)="uploadImg($event)" />     
-          </div>
-        </mat-card-content>
-        <mat-card-actions>
-          <button
-            (click)="saveBoard()"
-            class="button colorButton"  mat-raised-button >
-            Register
-          </button>
-        </mat-card-actions>
-      </mat-card>
+  <form action="">
+    <div class="title">
+      <h2>CONTACT</h2>
     </div>
-  </div>
+    <div class="half">
+      <div class="item">
+        <label for="name">NAME</label>
+        <input type="text" id = "name">
+      </div>
+      <div class="item">
+        <label for="email">EMAIL</label>
+        <input type="text" id = "email">
+      </div>
+    </div>
+    <div class="full">
+      <label for="message">MESSAGE</label>
+      <textarea name="" id = "message"></textarea>
+    </div>
+    <div class="action">
+      <input type="submit" value = "SEND MESSAGE">
+      <input type="reset" value = "RESET">
+    </div>
+    <div class="icons">
+      <a href="" class = "fa fa-twitter"></a>
+      <a href="" class = "fa fa-facebook"></a>
+      <a href="" class = "fa fa-instagram"></a>
+      <a href="" class = "fa fa-github"></a>
+    </div>
+  </form>
+</div>
