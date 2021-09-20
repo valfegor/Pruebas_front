@@ -9,6 +9,7 @@
   align-items: center;
   background-color: #333;
   justify-content: center;
+  background-image: url("../../../assets/img/bg2.png");
 }
 
 .form {
@@ -36,6 +37,11 @@ p{
   border-radius: 50%;
   background: linear-gradient(135deg, transparent 20%, #149279);
   position: absolute;
+}
+
+.botones{
+  display:flex;
+  
 }
 
 .circle.one {
