@@ -15,7 +15,7 @@
         <mat-icon>add_to_photos</mat-icon>list Your Boards
     </a>
     <a *ngIf="_userService.loggedIn()" mat-list-item routerLink="SharedBoards" routerLinkActive="list-item-active">
-        <mat-icon>add_to_photos</mat-icon>list Your SharedBoards
+        <mat-icon>share</mat-icon>list Your SharedBoards
     </a>
     
     <a *ngIf="_userService.loggedIn()" mat-list-item routerLink="saveBoard" routerLinkActive="list-item-active">
@@ -41,7 +41,7 @@
 
     <a *ngIf="_userService.loggedIn() && _userService.isAdmin()"
     appearance="fill" mat-list-item routerLink="listRole" routerLinkActive="list-item-active">
-        <mat-icon>group</mat-icon> Roles
+        <mat-icon>supervisor_account</mat-icon> Roles
     </a>
 
     
