@@ -121,9 +121,9 @@ const updateTask = async (req, res) => {
       if (tasks.name == inactiveTask.name) {
         
         if (tasks.completed == true) {
-          console.log("me estoy ejecutando")
+          
            board2.members.forEach((board) => {
-            if (board.id == req.user._id) {
+            if (board.id == req.user._id && board.ranking > 0) {
               board.ranking --;
               return board;
             } else {
