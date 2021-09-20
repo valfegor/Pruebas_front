@@ -25,3 +25,14 @@ mat-drawer-container{
 .content{
   margin: 0;
 }
+
+
+.style-snackBarTrue {
+  background-color: #568003;
+  color: #ffffff;
+}
+.style-snackBarFalse {
+  background-color: #810505;
+  color: #ffffff;
+}
+

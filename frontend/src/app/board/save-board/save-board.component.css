@@ -222,14 +222,14 @@ textarea.input {
 .information {
   display: flex;
   color: #555;
-  margin: 0.7rem 0;
+  margin-left: 65px;
   align-items: center;
   font-size: 0.95rem;
 }
 
 .icon {
-  width: 28px;
-  margin-right: 0.7rem;
+  width: 150px;
+  
 }
 
 .social-media {

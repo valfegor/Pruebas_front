@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BoardService } from '../../services/board.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2'
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
@@ -50,10 +51,13 @@ export class SaveBoardComponent implements OnInit {
 
       this._boardService.registerBoard(data).subscribe(
         (res) => {
+          
           this.message = 'Succes registering your board';
-          this._router.navigate(['/listBoard']);
           this.openSnackBarSuccesfull();
           this.registerData = {};
+          this._router.navigate(['/listBoard']);
+          
+          
         },
         (err) => {
           this.message = err.error;
