@@ -1,54 +1,57 @@
-<div class="container">
-  <span class="big-circle"></span>
-  <img src="img/shape.png" class="square" alt="" />
-  <div class="form">
-    <div class="contact-info">
-      <h3 class="title">Let's get in touch</h3>
-      <p class="text">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
-        dolorum adipisci recusandae praesentium dicta!
-      </p>
-
-      <div class="info">
-        <div class="information">
-          <img src="img/location.png" class="icon" alt="" />
-          <p>92 Cherry Drive Uniondale, NY 11553</p>
+<div class="bgComponent">
+  <div class="container">
+    <span class="big-circle"></span>
+    <img src="img/shape.png" class="square" alt="" />
+    <div class="form">
+      <div class="contact-info">
+        <h3 class="title">Create Your Board</h3>
+        <p class="text">
+          Welcome to the creation of your dashboard, in this module you will be able to generate as many as you need and share them later with other users.
+        </p>
+  
+        <div class="info">
+          <div class="information">
+            <img src="img/location.png" class="icon" alt="" />
+            <p>92 Cherry Drive Uniondale, NY 11553</p>
+          </div>
+          <div class="information">
+            <img src="img/email.png" class="icon" alt="" />
+            <p>lorem@ipsum.com</p>
+          </div>
+          <div class="information">
+            <img src="img/phone.png" class="icon" alt="" />
+            <p>123-456-789</p>
+          </div>
         </div>
-        <div class="information">
-          <img src="img/email.png" class="icon" alt="" />
-          <p>lorem@ipsum.com</p>
-        </div>
-        <div class="information">
-          <img src="img/phone.png" class="icon" alt="" />
-          <p>123-456-789</p>
-        </div>
+  
+      
       </div>
-
-    
-    </div>
-
-    <div class="contact-form">
-      <span class="circle one"></span>
-      <span class="circle two"></span>
-
-      <form action="index.html" autocomplete="off">
-        <h3 class="title">Register Your Board!</h3>
-        <div class="input-container">
-          <P>Board Name</P>
-          <input type="text" name="name" class="input" />
+  
+      <div class="contact-form">
+        <span class="circle one"></span>
+        <span class="circle two"></span>
+  
+        <form action="index.html" autocomplete="off">
+          <h3 class="title">Register Your Board!</h3>
+          <div class="input-container">
+            <P>Board Name</P>
+            <input type="text" name="name" class="input" />
+            
+            
+          </div>
+          <div class="input-container textarea">
+            <P>Board Description</P>
+            <textarea name="message" class="input"></textarea>
+            
+          </div>
           
-          
-        </div>
-        <div class="input-container textarea">
-          <P>Board Description</P>
-          <textarea name="message" class="input"></textarea>
-          
-        </div>
-        
-        <input type="file" (change)="uploadImg($event)" class="btn izquierda" />
-
-        <input type="submit" value="Register My Board" class="btn text" />
-      </form>
+          <input type="file" (change)="uploadImg($event)" class="btn izquierda" />
+  
+          <input type="submit" value="Register My Board" class="btn text" />
+        </form>
+      </div>
     </div>
   </div>
 </div>
+
+
