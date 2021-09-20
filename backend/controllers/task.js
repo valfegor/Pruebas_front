@@ -283,7 +283,7 @@ const deleteTask = async (req, res) => {
       .status(400)
       .send("Sorry cant Erase that Task its Already Completed");
 
-  if(taskImg.assigned="true")
+  if(taskImg.assigned="true") return res.status(400).send("Sorry Please Revoke the task first ")
 
   taskImg = taskImg.imageUrl;
   taskImg = taskImg.split("/")[4];
