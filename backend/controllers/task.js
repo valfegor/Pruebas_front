@@ -290,9 +290,13 @@ const deleteTask = async (req, res) => {
   const board = await Board.find({ _id:taskImg.boardId})
 
   board.forEach(element=>{
-    console.log(element.members)
+    let filter = element.members.filter(element=>element.name === req.user.name);
+    console.log(filter);
     
   })
+
+  if(filter.role!="Owner") return res.status(400).send("Sorry just the owner can delete a task");
+  
 
   taskImg = taskImg.imageUrl;
   taskImg = taskImg.split("/")[4];
