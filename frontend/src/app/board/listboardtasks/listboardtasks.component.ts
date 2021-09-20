@@ -23,6 +23,7 @@ export class ListboardtasksComponent implements OnInit {
   durationInSeconds: number = 2;
   _id: String;
   board: Array<string>;
+  public reload: any;
   constructor(
     private _taskService: TaskService,
     private _snackBar: MatSnackBar,
@@ -32,6 +33,7 @@ export class ListboardtasksComponent implements OnInit {
     this._id = '';
     this.taskData = [];
     this.board = ['to-do', 'in-progress', 'done'];
+    
   }
 
   ngOnInit(): void {
@@ -60,6 +62,7 @@ export class ListboardtasksComponent implements OnInit {
 
   updateTask(task: any, status: string) {
     let tempstatus = task.taskStatus;
+    
     task.taskStatus = status;
     this._taskService.updateTask(task).subscribe(
       (res) => {
@@ -70,7 +73,10 @@ export class ListboardtasksComponent implements OnInit {
         task.status=tempstatus;
         this.message = err.error;
         this.openSnackBarError();
-        location.reload();
+        setTimeout(function(){
+          location.reload()
+        },2500)
+        
       }
     )
   }
