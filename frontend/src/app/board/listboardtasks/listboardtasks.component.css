@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 .container{
   max-width: 1100px;
   display: flex;
@@ -6,6 +8,10 @@
   flex-wrap: wrap;
   padding: 20px;
 }
+
+
+
+
 .container .box{
   width: 100%;
   
@@ -145,8 +151,11 @@ p{
   line-height: 1.4;
   color:black;
   padding-bottom: 5px;
-  
-  word-wrap: break-word
+  font-weight: bold;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  font-family: 'Bebas Neue', cursive;
   
 }
 .bg{
