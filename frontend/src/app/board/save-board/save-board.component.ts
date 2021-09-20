@@ -10,7 +10,7 @@ import {
 @Component({
   selector: 'app-save-board',
   templateUrl: './save-board.component.html',
-  styleUrls: ['./save-board.component.css']
+  styleUrls: ['./save-board.component.css'],
 })
 export class SaveBoardComponent implements OnInit {
   registerData: any;
@@ -20,7 +20,7 @@ export class SaveBoardComponent implements OnInit {
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   durationInSeconds: number = 2;
 
-    constructor(
+  constructor(
     private _boardService: BoardService,
     private _router: Router,
     private _snackBar: MatSnackBar
@@ -29,9 +29,7 @@ export class SaveBoardComponent implements OnInit {
     this.selectedFile = null;
   }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 
   uploadImg(event: any) {
     this.selectedFile = <File>event.target.files[0];
@@ -44,16 +42,16 @@ export class SaveBoardComponent implements OnInit {
       this.registerData = {};
     } else {
       const data = new FormData();
-      if ( this.selectedFile != null){
+      if (this.selectedFile != null) {
         data.append('image', this.selectedFile, this.selectedFile.name);
-      }      
+      }
       data.append('name', this.registerData.name);
       data.append('description', this.registerData.description);
 
       this._boardService.registerBoard(data).subscribe(
         (res) => {
+          this.message = 'Succes registering your board';
           this._router.navigate(['/listBoard']);
-          this.message = 'Task create';
           this.openSnackBarSuccesfull();
           this.registerData = {};
         },
@@ -82,6 +80,4 @@ export class SaveBoardComponent implements OnInit {
       panelClass: ['style-snackBarFalse'],
     });
   }
-
-
 }
