@@ -29,7 +29,9 @@
     </a>
         
     <a *ngIf="_userService.loggedIn()" mat-list-item routerLink="profile" routerLinkActive="list-item-active">
-        <mat-icon>group</mat-icon>Profile
+        <mat-icon>account_circle
+
+        </mat-icon>Profile
     </a>
 
     <a *ngIf="_userService.loggedIn() && _userService.isAdmin()"
