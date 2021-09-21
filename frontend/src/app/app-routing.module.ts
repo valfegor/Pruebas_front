@@ -66,7 +66,7 @@ const routes: Routes = [
   { path: 'updateBoard/:_id', component : UpdateBoardComponent, canActivate: [AuthGuard]},
   {path:'revoke',component:RevokeassignmentComponent, canActivate: [AuthGuard]},
   {path:'SharedBoards',component:SharedBoardsComponent , canActivate: [AuthGuard]},
-  {path:"SharedProfile/findUser/:_id" , component :SharedprofileComponent  , canActivate: [AuthGuard]}
+  {path:"SharedProfile/:_id" , component :SharedprofileComponent  , canActivate: [AuthGuard]}
 ];
 
 @NgModule({
