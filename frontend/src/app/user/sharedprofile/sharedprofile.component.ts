@@ -3,6 +3,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { User } from "../../models/UserInterface";
 import { UserService } from "../../../../src/app/services/user.service";
 import { BoardService } from "../../services/board.service";
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-sharedprofile',
@@ -12,15 +13,20 @@ import { BoardService } from "../../services/board.service";
 export class SharedprofileComponent implements OnInit {
   public id:string;
   public userData:User;
+  public profile:User;
+  public boards: any;
   
   
   constructor(private _client:ActivatedRoute ,  private _userService: UserService , private _boardService: BoardService) { 
   this.id = ""
   this.userData={};
+  this.profile={}
+  this.boards=[]
   }
 
   ngOnInit(): void {
     this.getUser()
+    this.getprofile();
   }
 
 
@@ -31,7 +37,8 @@ export class SharedprofileComponent implements OnInit {
       this._userService.findUser(this.id).subscribe(
         (res)=>{
           this.userData=res.user;
-          this._boardService.listBoardMember()
+          
+          
         },
         (err)=>{
           console.log(err);
@@ -41,4 +48,25 @@ export class SharedprofileComponent implements OnInit {
     })
   }
 
+  getprofile(){
+    this._userService.getProfile().subscribe(
+      (res)=>{
+        this.profile = res.user;
+        const{_id} = this.profile;
+        this._boardService.listMyShared(_id).subscribe(
+          (res)=>{
+            this.boards = res.board;
+            console.log(this.boards)
+          },
+          (err)=>{
+            console.log(err)
+          }
+        )
+      },
+      (err)=>{
+        console.log(err)
+      }
+    )
+  }
 }
+
