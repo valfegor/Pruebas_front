@@ -30,10 +30,12 @@
   
   
         <div class="card2 col-3">
-          <h2>Your boards</h2>
-          <h3 *ngFor="let board of boards" hideToggle="false">
-            {{ board.name }}
-          </h3>
+          <h2>You have shared this boards with {{userData.name}}</h2>
+          <div *ngFor="let board of boards">
+            <h3  *ngIf="board.userId != profile._id" hideToggle="false">
+                {{ board.name }}
+              </h3>
+          </div>
         </div>
       </div>
     </div>
