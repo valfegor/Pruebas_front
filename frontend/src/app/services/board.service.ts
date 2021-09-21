@@ -53,6 +53,6 @@ export class BoardService {
   }
 
   listMyShared(user: any){
-    return this._http.get<any>(this.env + 'board/listShared/' + user._id)
+    return this._http.get<any>(this.env + 'board/listShared/' , user)
   }
 }

@@ -15,13 +15,15 @@ export class SharedprofileComponent implements OnInit {
   public userData:User;
   public profile:User;
   public boards: any;
+  public filter: any;
   
   
   constructor(private _client:ActivatedRoute ,  private _userService: UserService , private _boardService: BoardService) { 
   this.id = ""
   this.userData={};
-  this.profile={}
-  this.boards=[]
+  this.profile={};
+  this.boards=[];
+  this.filter=[]
   }
 
   ngOnInit(): void {
@@ -56,7 +58,7 @@ export class SharedprofileComponent implements OnInit {
         console.log(_id)
         this._boardService.listMyShared(_id).subscribe(
           (res)=>{
-            this.boards = res.board;
+            this.boards = res
             console.log(this.boards)
           },
           (err)=>{
