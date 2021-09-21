@@ -9,14 +9,15 @@ import { UserService } from "../../../../src/app/services/user.service";
   styleUrls: ['./sharedprofile.component.css']
 })
 export class SharedprofileComponent implements OnInit {
-  public id:any;
-  public user_id: any;
+  public id:string;
+  
   
   constructor(private _client:ActivatedRoute ,  private _userService: UserService) { 
-  this.id = {}
+  this.id = ""
   }
 
   ngOnInit(): void {
+    this.getUser()
   }
 
 
