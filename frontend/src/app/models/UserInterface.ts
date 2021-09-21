@@ -1,4 +1,5 @@
 export interface User{
+    _id: any;
     AssignedTasks:[];
     EarnedPoints?:[];
     name:string;
@@ -7,6 +8,6 @@ export interface User{
     roleId:any;
     dbStatus: boolean;
     photo:string;
-    
-
+    date:Date;
+    _v?:number;
 }
