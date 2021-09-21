@@ -29,10 +29,10 @@
             <h3>Start use app: {{ userData.date | date}}</h3>
         </div>
         
-        <div class="card2 col-3" *ngIf="userData._id === profile._id">
+        <div class="card2 col-3"  *ngIf="userData._id === profile._id">
             <h2>You have shared the next boards</h2>
             <div *ngFor="let board of boards">
-              <h3  *ngIf="board.userId != profile._id" hideToggle="false">
+              <h3  *ngIf="board.userId == profile._id" hideToggle="false">
                   {{ board.name }}
                 </h3>
             </div>
