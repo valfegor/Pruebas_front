@@ -10,7 +10,7 @@
          </div> 
          
          <div class="details">
-           <h2>{{userData.name}}
+           <h2 class="user-name">{{userData.name}}
              <br>
              <span class="job-title" *ngIf="userData._id != profile._id">ITS A GUEST IN YOUR BOARD</span>
              <span class="job-title" *ngIf="userData._id === profile._id">You are the owner of this Board</span>

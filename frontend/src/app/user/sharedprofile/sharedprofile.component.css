@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
 .bgComponent {
   background-image: url("../../../assets/img/bg2.png");
   background-repeat: no-repeat;
@@ -59,7 +60,15 @@ table {
 
 .mat-form-field {
   font-size: 14px;
+  
   width: 100%;
+}
+h2{
+  font-family: 'Courgette', cursive;
+}
+
+h3{
+  font-family: 'Courgette', cursive;
 }
 
 td,
@@ -219,12 +228,17 @@ img{
   margin:30px 0px;
   padding:0;
   text-align: center;
+  font-family: 'Courgette', cursive;
+  
 }
+
+
 .details h2 .job-title{
   font-size: 1rem;
   line-height: 2.5rem;
   color:#333;
   font-weight: 500;
+  
 }
 @media (max-width:767px){
   .card-wrapper{

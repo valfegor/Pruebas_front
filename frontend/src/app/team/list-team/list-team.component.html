@@ -32,13 +32,13 @@
             <td mat-cell *matCellDef="let row">{{ row.ranking }}</td>
           </ng-container>
   
-          <ng-container matColumnDef="ACTIONS">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>ACTIONS</th>
+          <ng-container matColumnDef="ACTIONS" >
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="action" >ACTIONS</th>
             <td mat-cell *matCellDef="let row">
               <mat-icon class="colorDelete deleteIcon" (click)="deleteMember(row)"
                 >delete_forever</mat-icon
               >
-              <mat-icon class="colorDelete deleteIcon" [routerLink]="['/SharedProfile/' , row.id]"
+              <mat-icon class="member" [routerLink]="['/SharedProfile/' , row.id]"
                 >account_circle</mat-icon
               >
             </td>

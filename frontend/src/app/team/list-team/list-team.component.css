@@ -26,9 +26,17 @@
     margin-left: 10px;
   }
 
+  .action{
+    padding-left: 15px;
+  }
+
   td,
   th {
     width: 15%;
+  }
+
+  .member:hover{
+    cursor: pointer;
   }
   
   .bgShearch {
