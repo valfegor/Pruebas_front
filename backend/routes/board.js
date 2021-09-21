@@ -22,6 +22,8 @@ router.get(
   ValidateUser,
   BoardController.listBoardMember
 );
+
+router.get("/listShared", Auth, ValidateUser,BoardController.listBoardShared)
 router.get("/listMember" , Auth, ValidateUser, BoardController.listMember);
 router.put("/addMember", Auth, ValidateUser, BoardController.addMember);
 router.put("/deleteMember", Auth, ValidateUser, BoardController.deleteMember);

@@ -149,6 +149,18 @@ const listBoardMember = async (req, res) => {
   return res.status(200).send({ array });
 };
 
+const listBoardShared = async (req, res) => {
+  let user = await User.findById(req.user._id);
+  if (!user) return res.status(400).send("User not found");
+
+
+  let board = await Board.find({ "members.id": user._id });
+
+  if(!board || board.length === 0) return res.status(400).send("No data");
+
+  return res.status(200).send({board})
+}
+
 const deleteBoard = async (req, res) => {
   let validId = mongoose.Types.ObjectId.isValid(req.params._id);
   if (!validId) return res.status(400).send("Invalid id");
@@ -195,6 +207,8 @@ const updateBoard = async (req, res) => {
   return res.status(200).send({ board });
 };
 
+
+
 //Lista los miembrios de un board
 const listMember = async (req, res) => {
   let board = await Board.findById(req.body.boardId);
@@ -219,4 +233,5 @@ module.exports = {
   updateBoard,
   listMember,
   getBoard,
+  listBoardShared
 };
