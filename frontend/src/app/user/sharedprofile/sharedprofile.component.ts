@@ -56,9 +56,9 @@ export class SharedprofileComponent implements OnInit {
         this.profile = res.user;
         const{_id} = this.profile;
         console.log(_id)
-        this._boardService.listMyShared(_id).subscribe(
+        this._boardService.listMyShared().subscribe(
           (res)=>{
-            this.boards = res
+            this.boards = res.board
             console.log(this.boards)
           },
           (err)=>{
