@@ -5,7 +5,7 @@ export interface User{
     name:string;
     email:string;
     password:string;
-    roleId:any;
+    roleId?:any;
     dbStatus: boolean;
     photo:string;
     date:Date;
