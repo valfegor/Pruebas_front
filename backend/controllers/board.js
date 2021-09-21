@@ -133,7 +133,7 @@ const listBoardMember = async (req, res) => {
 
   let array = [];
 
-  console.log()
+  
 
   let test = board.map(element=>{
     if(element.userId!=req.user._id){
