@@ -30,7 +30,7 @@ export class ListBoardComponent implements OnInit {
     this._boardService.listBoard().subscribe(
       (res) => {
         this.boardData = res.board;
-        console.log(this.boardData);
+        
       },
       (err) => {
         this.message = err.error;
