@@ -1,1 +1,26 @@
-<p>{{userData.name}}</p>
+<div class="bgComponent">
+    <div class="container">
+      <div class="row align-items-start">
+        <div class="card col-4" >
+          <img class="imagenProfile" mat-card-image src="{{ userData.photo }}" alt="User photo" />
+          
+          
+  
+        
+        </div>
+  
+        <div class="card col-3">
+          
+            <h2>Name: {{ userData.name }}</h2>
+            <h3>Email: {{ userData.email }}</h3>
+            <h3>Start use app: {{ userData.date | date}}</h3>
+        </div>
+  
+  
+        <div class="card col-3">
+          <h2>Your boards</h2>
+          
+        </div>
+      </div>
+    </div>
+  </div>
