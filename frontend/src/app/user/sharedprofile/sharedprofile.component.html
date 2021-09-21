@@ -12,7 +12,8 @@
          <div class="details">
            <h2>{{userData.name}}
              <br>
-             <span class="job-title">ITS A GUEST IN YOUR BOARD</span>
+             <span class="job-title" *ngIf="userData._id != profile._id">ITS A GUEST IN YOUR BOARD</span>
+             <span class="job-title" *ngIf="userData._id === profile._id">You are the owner of this Board</span>
            </h2>
          </div>
        </div>
@@ -27,9 +28,17 @@
             <h3>Email: {{ userData.email }}</h3>
             <h3>Start use app: {{ userData.date | date}}</h3>
         </div>
+        
+        <div class="card2 col-3" *ngIf="userData._id === profile._id">
+            <h2>You have shared the next boards</h2>
+            <div *ngFor="let board of boards">
+              <h3  *ngIf="board.userId != profile._id" hideToggle="false">
+                  {{ board.name }}
+                </h3>
+            </div>
+          </div>
   
-  
-        <div class="card2 col-3">
+        <div class="card2 col-3" *ngIf="userData._id !== profile._id">
           <h2>You have shared this boards with {{userData.name}}</h2>
           <div *ngFor="let board of boards">
             <h3  *ngIf="board.userId != profile._id" hideToggle="false">
