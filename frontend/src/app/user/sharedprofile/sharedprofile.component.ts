@@ -28,7 +28,7 @@ export class SharedprofileComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUser()
-    this.getprofile();
+    
   }
 
 
@@ -39,7 +39,30 @@ export class SharedprofileComponent implements OnInit {
       this._userService.findUser(this.id).subscribe(
         (res)=>{
           this.userData=res.user;
-          
+          console.log(this.userData)
+          this._userService.getProfile().subscribe(
+            (res)=>{
+              this.profile = res.user;
+              
+              
+              
+              console.log(this.userData._id)
+              
+              this._boardService.listMyShared(this.userData._id).subscribe(
+                (res)=>{
+                  this.boards = res.array
+                  console.log(this.boards)
+      
+                },
+                (err)=>{
+                  console.log(err)
+                }
+              )
+            },
+            (err)=>{
+              console.log(err)
+            }
+          )
           
         },
         (err)=>{
@@ -50,26 +73,6 @@ export class SharedprofileComponent implements OnInit {
     })
   }
 
-  getprofile(){
-    this._userService.getProfile().subscribe(
-      (res)=>{
-        this.profile = res.user;
-        const{_id} = this.profile;
-        console.log(_id)
-        this._boardService.listMyShared().subscribe(
-          (res)=>{
-            this.boards = res.board
-            console.log(this.boards)
-          },
-          (err)=>{
-            console.log(err)
-          }
-        )
-      },
-      (err)=>{
-        console.log(err)
-      }
-    )
-  }
+  
 }
 

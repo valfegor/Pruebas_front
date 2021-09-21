@@ -150,15 +150,35 @@ const listBoardMember = async (req, res) => {
 };
 
 const listBoardShared = async (req, res) => {
-  let user = await User.findById(req.user._id);
+  console.log(req.params._id)
+  if(!req.params._id) return res.status(400).send("Sorry please send the fucking id")
+  let user = await User.findById(req.params._id);
+  console.log(user)
   if (!user) return res.status(400).send("User not found");
 
+  
 
   let board = await Board.find({ "members.id": user._id });
 
-  if(!board || board.length === 0) return res.status(400).send("No data");
+  console.log(board)
 
-  return res.status(200).send({board})
+  let array = [];
+
+  
+
+  let test = board.map(element=>{
+    if(element.userId != req.params._id ){
+      array.push(element);
+    }
+  })
+
+  
+  if(array.length==0) return res.status(400).send("Sorry you No one have shared board with you")
+  
+  
+  if (!board || board.length === 0)
+    return res.status(400).send("You have no assigned tasks");
+  return res.status(200).send({ array });
 }
 
 const deleteBoard = async (req, res) => {
