@@ -49,7 +49,7 @@ width: 280px;
 
 .card2{
   background-color: rgba(255, 153, 0, 0.322);
-  padding:40px;
+  padding:50px;
   margin:10px;
 }
 
@@ -112,13 +112,13 @@ th {
 }
 
 .card-wrapper{
-  position: relative;
+ 
+  margin-right: 15px;
 }
 .card{
-
-
-  width:350px;
-  height:450px;
+  
+  width:250px;
+  height:300px;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 5px 18px rgba(0,0,0,0.6);
@@ -228,6 +228,10 @@ img{
 }
 @media (max-width:767px){
   .card-wrapper{
-    width:90%;
+    width:50%;
+  }
+  .card2{
+    padding:40px;
+    background-color: #000;
   }
 }
