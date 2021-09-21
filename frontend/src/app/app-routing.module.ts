@@ -21,6 +21,8 @@ import { WelcomeComponent } from './home/welcome/welcome.component';
 import { RevokeassignmentComponent } from './task/revokeassignment/revokeassignment.component';
 import { UpdateBoardComponent } from './board/update-board/update-board.component';
 import { SharedBoardsComponent } from './board/shared-boards/shared-boards.component';
+import { SharedprofileComponent } from "./user/sharedprofile/sharedprofile.component";
+
 
 //guard.
 
@@ -64,6 +66,7 @@ const routes: Routes = [
   { path: 'updateBoard/:_id', component : UpdateBoardComponent, canActivate: [AuthGuard]},
   {path:'revoke',component:RevokeassignmentComponent, canActivate: [AuthGuard]},
   {path:'SharedBoards',component:SharedBoardsComponent , canActivate: [AuthGuard]},
+  {path:"SharedProfile/findUser/:_id"}
 ];
 
 @NgModule({
