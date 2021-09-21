@@ -1,17 +1,45 @@
 <div class="bgComponent">
-  <div class="card-wrapper">
-    <div class="card">
-      <div class="card-image">
-        <img src="images/bg.png" alt="profile-card" />
-      </div>
-      <div class="details">
-        <h2>
-          {{ userData.name }}
-          <br />
-        </h2>
+    <div class="container">
+      <div class="row align-items-start">
+        <div class="card2 col-4" >
+          
+          <div class="card-wrapper">
+       <div class="card">
+         <div class="card-image">
+           <img src="images/bg.png" alt="profile-card">
+         </div> 
+         <ul class="social-icons">
+           <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+           <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+           <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+           <li><a href="#"><i class="fab fa-dribbble"></i></a></li>
+         </ul>
+         <div class="details">
+           <h2>John Smith
+             <br>
+             <span class="job-title">UI Developer</span>
+           </h2>
+         </div>
+       </div>
+     </div>
+          
+          
+        </div>
+  
+        <div class="card2 col-3">
+          
+            <h2>Name: {{ userData.name }}</h2>
+            <h3>Email: {{ userData.email }}</h3>
+            <h3>Start use app: {{ userData.date | date}}</h3>
+        </div>
+  
+  
+        <div class="card2 col-3">
+          <h2>Your boards</h2>
+          <h3 *ngFor="let board of boards" hideToggle="false">
+            {{ board.name }}
+          </h3>
+        </div>
       </div>
     </div>
   </div>
- 
- 
-</div>
