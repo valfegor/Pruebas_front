@@ -53,7 +53,6 @@ export class ListTeamComponent implements OnInit {
         this._boardService.getBoard(this._id).subscribe(
           (res) => {
             this.memberData = res.board.members;
-            console.log(this.memberData);
             
             this.dataSource = new MatTableDataSource(this.memberData);
             this.dataSource.paginator = this.paginator;

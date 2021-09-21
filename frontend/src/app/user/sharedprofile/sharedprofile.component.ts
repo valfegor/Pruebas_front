@@ -10,10 +10,12 @@ import { UserService } from "../../../../src/app/services/user.service";
 })
 export class SharedprofileComponent implements OnInit {
   public id:string;
+  public userData:User;
   
   
   constructor(private _client:ActivatedRoute ,  private _userService: UserService) { 
   this.id = ""
+  this.userData={};
   }
 
   ngOnInit(): void {
@@ -27,10 +29,12 @@ export class SharedprofileComponent implements OnInit {
       this.id = params['_id'];
       this._userService.findUser(this.id).subscribe(
         (res)=>{
-          console.log(res);
+          this.userData=res.user;
+          
         },
         (err)=>{
           console.log(err);
+
         }
       )
     })
