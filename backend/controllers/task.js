@@ -304,7 +304,22 @@ const deleteTask = async (req, res) => {
     
   }
 
-  console.log(array)
+  const user = await User.findById(taskImg.assignedTo);
+
+  const indice = user.AssignedTasks.findIndex(
+    (element) => element.name == task.name
+  );
+  
+  const arreglo = user.AssignedTasks;
+
+  arreglo.splice(indice, 1);
+
+  const user2 = await User.findByIdAndUpdate(req.body._idUser, {
+    AssignedTasks: arreglo,
+  });
+
+  if (!user2)
+    return res.status(400).send("Sorry the user dont exist please check");
   
   if(array!="Owner") return res.status(400).send("Sorry you are not the owner of the board please check")
 
@@ -322,6 +337,9 @@ const deleteTask = async (req, res) => {
   } catch (err) {
     console.log("Image no found in server");
   }
+
+
+
   return res.status(200).send({ message: "Task deleted" });
 };
 
@@ -409,6 +427,8 @@ const unassingTask = async (req, res) => {
     return res.status(400).send(" Sorry the task its not asigned please Check");
 
   const board = await Board.findOne({ _id: task.boardId });
+
+  
 
   console.log(board)
 
