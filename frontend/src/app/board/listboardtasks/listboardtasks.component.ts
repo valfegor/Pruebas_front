@@ -4,6 +4,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { DeleteTasksComponent } from '../../dialogs/delete-tasks/delete-tasks.component';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { UpdateTaskComponent } from '../../dialogs/update-task/update-task.component';
+import { UserService } from "../../services/user.service";
 
 import {
   MatSnackBar,
@@ -26,12 +27,14 @@ export class ListboardtasksComponent implements OnInit {
   _id: String;
   board: Array<string>;
   public reload: any;
+  
   constructor(
     private _taskService: TaskService,
     private _snackBar: MatSnackBar,
     private _arouter: ActivatedRoute,
     private _dialog: MatDialog,
     private _router: Router,
+    private _userService: UserService
   ) {
     this._id = '';
     this.taskData = [];
@@ -40,6 +43,15 @@ export class ListboardtasksComponent implements OnInit {
 
   ngOnInit(): void {
     this.gettasks();
+    this.getprofile();
+  }
+
+  getprofile(){
+    this._userService.getProfile().subscribe(
+      (res)=>{
+        this.reload = res.user
+      }
+    )
   }
 
   gettasks() {
@@ -74,19 +86,30 @@ export class ListboardtasksComponent implements OnInit {
           }
         });
     } else {
-      let tempstatus = task.taskStatus;
 
-      task.taskStatus = status;
-      this._taskService.updateTask(task).subscribe(
-        (res) => {
-          task.status = status;
-        },
-        (err) => {
-          task.status = tempstatus;
-          this.message = err.error;
-          this.openSnackBarError();
-        }
-      );
+      const{_id} = this.reload;
+
+      if(_id != task.assignedTo){
+        this.message = 'Failed process the task its asigned to another person please check'
+        return this.openSnackBarError()
+      }else{
+
+        let tempstatus = task.taskStatus;
+
+        task.taskStatus = status;
+        this._taskService.updateTask(task).subscribe(
+          (res) => {
+            task.status = status;
+          },
+          (err) => {
+            task.status = tempstatus;
+            this.message = err.error;
+            this.openSnackBarError();
+          }
+        );
+      }
+
+      
     }
   }
 
