@@ -4,6 +4,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { DeleteTasksComponent } from '../../dialogs/delete-tasks/delete-tasks.component';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { UpdateTaskComponent } from '../../dialogs/update-task/update-task.component';
+
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
@@ -29,7 +30,8 @@ export class ListboardtasksComponent implements OnInit {
     private _taskService: TaskService,
     private _snackBar: MatSnackBar,
     private _arouter: ActivatedRoute,
-    private _dialog: MatDialog
+    private _dialog: MatDialog,
+    private _router: Router,
   ) {
     this._id = '';
     this.taskData = [];
@@ -65,7 +67,7 @@ export class ListboardtasksComponent implements OnInit {
         .afterClosed()
         .subscribe((response) => {
           if (response) {
-            alert('diste click;');
+            this._router.navigate(['asign']);
           } else {
             this.message = 'Sorry please asign this task';
             return this.openSnackBarError();
