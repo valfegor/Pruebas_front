@@ -1,0 +1,59 @@
+h1 {
+    color: green;
+}
+ 
+/* Designing dialog box */
+.container {
+    display: none;
+    background-image: linear-gradient(to right, #66a80f, #c0eb75);
+    background-size:cover;
+    color: white;
+    position: absolute;
+    width: 350px;
+    border-radius: 5px;
+    left: 50%;
+    margin-left: -160px;
+    padding: 16px 8px 8px;
+    box-sizing: border-box;
+}
+ 
+/* Designing dialog box's okay button */
+.yes {
+    background-color: #5c940d;
+    display: inline-block;
+    border-radius: 5px;
+    border: 2px solid gray;
+    padding: 5px;
+    margin-right: 10px;
+    text-align: center;
+    width: 60px;
+    float: right;
+}
+ 
+.no {
+    background-color: #22b8cf;
+    display: inline-block;
+    border-radius: 5px;
+    border: 2px solid gray;
+    padding: 5px;
+    margin-right: 10px;
+    text-align: center;
+    width: 95px;
+    float: right;
+}
+ 
+.yes:hover {
+    background-color: #82c91e;
+
+}
+ 
+.no:hover {
+    background-color: #99e9f2;
+
+}
+ 
+/* Dialog box message decorating */
+.message {
+    text-align: left;
+    padding: 10px 30px;
+}

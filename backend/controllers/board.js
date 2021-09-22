@@ -176,7 +176,7 @@ const listBoardShared = async (req, res) => {
   })
 
   
-  if(array.length==0) return res.status(400).send("Sorry you No one have shared board with you")
+  if(array.length==0) return res.status(400).send("Sorry No one have shared boards with you")
   
   
   if (!board || board.length === 0)
