@@ -307,14 +307,14 @@ const deleteTask = async (req, res) => {
   const user = await User.findById(taskImg.assignedTo);
 
   const indice = user.AssignedTasks.findIndex(
-    (element) => element.name == task.name
+    (element) => element.name == taskImg.name
   );
   
   const arreglo = user.AssignedTasks;
 
   arreglo.splice(indice, 1);
 
-  const user2 = await User.findByIdAndUpdate(req.body._idUser, {
+  const user2 = await User.findByIdAndUpdate(taskImg.assignedTo, {
     AssignedTasks: arreglo,
   });
 
@@ -428,6 +428,10 @@ const unassingTask = async (req, res) => {
 
   const board = await Board.findOne({ _id: task.boardId });
 
+  if(task.taskStatus=="done"){
+    return res.status(400).send("Sorry The Task its Already Completed");
+  }
+
   
 
   console.log(board)
@@ -435,7 +439,7 @@ const unassingTask = async (req, res) => {
   let usuario_actual = board.members.find(
     (element) => element.name === req.user.name
   );
-
+  
   let usuario = usuario_actual.role;
 
   if (usuario != "Owner")
