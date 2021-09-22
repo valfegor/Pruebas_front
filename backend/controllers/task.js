@@ -125,7 +125,7 @@ const updateTask = async (req, res) => {
         
         if (tasks.completed == true) {
           
-           board2.members.forEach((board) => {
+           board2.members.map((board) => {
             if (board.id == req.user._id && board.ranking > 0) {
               board.ranking --;
               return board;
