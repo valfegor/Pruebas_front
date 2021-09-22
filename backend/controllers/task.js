@@ -115,7 +115,7 @@ const updateTask = async (req, res) => {
     });
     if (!taskChange)
       return res.status(400).send("Sorry cant update please search again");
-  } else if(req.body.taskStatus == "in-progress" || req.body.taskStatus == "to-do"){
+  } else if(req.body.taskStatus === "in-progress" || req.body.taskStatus === "to-do"){
     scoreUser = 0;
     status = false;
     let taskCompleted = user.AssignedTasks;
