@@ -61,9 +61,10 @@ export class RevokeassignmentComponent implements OnInit {
               this.listAssigned();
             },
             (err)=>{
+              this.message = err.error;
               Swal.fire(
-                'Sorry you are not the Owner please contact the Owner OR you are the admin please check the asignement module',
-                'Cant unsubscribe the task',
+                this.message,
+                'Cant unsubscribe the task , go and change the status',
                 'error'
               );
               console.log(err.error)
