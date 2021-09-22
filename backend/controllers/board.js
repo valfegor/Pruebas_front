@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const fs = require("fs");
 const path = require("path");
 const moment = require("moment");
+const Task = require("../models/task");
 
 const registerBoard = async (req, res) => {
   if (!req.body.name || !req.body.description)
@@ -99,6 +100,8 @@ const deleteMember = async (req, res) => {
   if (member.userId.toString() !== req.user._id.toString())
     return res.status(400).send("You have no permission");
 
+ 
+
   let delMember = member.members;
 
   for (var i = 0; i < delMember.length; i++) {
@@ -193,6 +196,10 @@ const deleteBoard = async (req, res) => {
   taskImg = taskImg.imageUrl;
   taskImg = taskImg.split("/")[4];
   let serverImg = "./uploads/" + taskImg;
+
+  const task = await Task.find({ boardId:req.params._id});
+
+  if(task.length > 0 ) return res.status(400).send("Sorry please delete all the tasks of this board to eliminate the board");
 
   let board = await Board.findByIdAndDelete(req.params._id);
   if (!board) return res.status(400).send("Board not found");
