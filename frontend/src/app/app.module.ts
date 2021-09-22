@@ -59,7 +59,8 @@ import { DeleteTasksComponent } from './dialogs/delete-tasks/delete-tasks.compon
 import { RevokeassignmentComponent } from './task/revokeassignment/revokeassignment.component';
 import { SharedBoardsComponent } from './board/shared-boards/shared-boards.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
-import { SharedprofileComponent } from './user/sharedprofile/sharedprofile.component'
+import { SharedprofileComponent } from './user/sharedprofile/sharedprofile.component';
+import { UpdateTaskComponent } from './dialogs/update-task/update-task.component'
 
 @NgModule({
   declarations: [
@@ -91,6 +92,7 @@ import { SharedprofileComponent } from './user/sharedprofile/sharedprofile.compo
     RevokeassignmentComponent,
     SharedBoardsComponent,
     SharedprofileComponent,
+    UpdateTaskComponent,
   ],
   imports: [
     BrowserModule,

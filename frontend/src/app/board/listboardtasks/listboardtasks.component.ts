@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../../services/task.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { DeleteTasksComponent } from "../../dialogs/delete-tasks/delete-tasks.component";
-import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+import { DeleteTasksComponent } from '../../dialogs/delete-tasks/delete-tasks.component';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { UpdateTaskComponent } from '../../dialogs/update-task/update-task.component';
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
@@ -33,24 +34,19 @@ export class ListboardtasksComponent implements OnInit {
     this._id = '';
     this.taskData = [];
     this.board = ['to-do', 'in-progress', 'done'];
-    
   }
 
   ngOnInit(): void {
-    this.gettasks()
-    
-    
+    this.gettasks();
   }
 
-  
-
-  gettasks(){
+  gettasks() {
     this._arouter.params.subscribe((params) => {
       this._id = params['_id'];
       this._taskService.getBoardTask(this._id).subscribe(
         (res) => {
           this.taskData = res.task;
-          console.log(this.taskData)
+          console.log(this.taskData);
         },
         (err) => {
           this.message = err.error;
@@ -61,56 +57,64 @@ export class ListboardtasksComponent implements OnInit {
   }
 
   updateTask(task: any, status: string) {
-    let tempstatus = task.taskStatus;
-    
-    task.taskStatus = status;
-    this._taskService.updateTask(task).subscribe(
-      (res) => {
-        task.status=status;
-        
-      },
-      (err)=>{
-        task.status=tempstatus;
-        this.message = err.error;
-        this.openSnackBarError();
-        setTimeout(function(){
-          location.reload()
-        },2500)
-        
-      }
-    )
+    console.log(task);
+    if (task.assigned != true) {
+      this.message = 'Sorry please asign this task';
+      this._dialog
+        .open(UpdateTaskComponent, { data: task, width: '500px' })
+        .afterClosed()
+        .subscribe((response) => {
+          if (response) {
+            alert('diste click;');
+          } else {
+            this.message = 'Sorry please asign this task';
+            return this.openSnackBarError();
+          }
+        });
+    } else {
+      let tempstatus = task.taskStatus;
+
+      task.taskStatus = status;
+      this._taskService.updateTask(task).subscribe(
+        (res) => {
+          task.status = status;
+        },
+        (err) => {
+          task.status = tempstatus;
+          this.message = err.error;
+          this.openSnackBarError();
+        }
+      );
+    }
   }
 
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.taskData, event.previousIndex, event.currentIndex);
-    console.log(moveItemInArray)
+    console.log(moveItemInArray);
   }
 
-  deleteTask(task:any){
-    this._dialog.open(DeleteTasksComponent,{data:task,width:'500px'})
-    .afterClosed()
-    .subscribe(response=>{
-      if(response){
-        this._taskService.deleteTask(task).subscribe(
-          (res)=>{
-            let index = this.taskData.indexOf(task);
-            if(index>-1){
-              this.taskData.splice(index,1);
-              this.message=res.message;
+  deleteTask(task: any) {
+    this._dialog
+      .open(DeleteTasksComponent, { data: task, width: '500px' })
+      .afterClosed()
+      .subscribe((response) => {
+        if (response) {
+          this._taskService.deleteTask(task).subscribe(
+            (res) => {
+              let index = this.taskData.indexOf(task);
+              if (index > -1) {
+                this.taskData.splice(index, 1);
+                this.message = res.message;
+                this.openSnackBarError();
+              }
+            },
+            (err) => {
+              this.message = err.error;
               this.openSnackBarError();
-            
-            
-  
             }
-            
-          },
-          (err)=>{
-            this.message=err.error;
-            this.openSnackBarError();
-          }
-      )
-      }
-    })
+          );
+        }
+      });
   }
 
   openSnackBarSuccesfull() {
